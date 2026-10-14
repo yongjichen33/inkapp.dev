@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings: Editor — Ink manual</title>
+<meta name="description" content="How the glyph editor looks and behaves: zoom, point sizes, rounding, snapping, and what new windows show by default.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.st td{padding:13px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.st td:first-child{font-weight:700;color:#2d3336;width:28%}
+.st td:last-child{font-family:'JetBrains Mono',monospace;font-size:13px;color:#5a6063;white-space:nowrap;text-align:right}
+.st tr:nth-child(even){background:#f9f9fa}
+.st th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html" class="on">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual · Settings</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Editor</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">How the glyph editor looks and behaves: zoom, point sizes, rounding, snapping, and what new windows show by default.</p>
+
+<h2>Zoom and points</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="st" style="width: 100%; border-collapse: collapse; min-width: 560px">
+<thead><tr><th>Setting</th><th>What it does</th><th style="text-align: right">Default</th></tr></thead>
+<tbody>
+<tr><td>Zoom min</td><td>The furthest you can zoom out (0.01–1).</td><td>0.02</td></tr>
+<tr><td>Zoom max</td><td>The furthest you can zoom in (2–200).</td><td>50</td></tr>
+<tr><td>Zoom step</td><td>Scroll-wheel zoom multiplier (1.01–2).</td><td>1.1</td></tr>
+<tr><td>On-curve point radius</td><td>Size of on-curve points, in pixels (1–20).</td><td>5 px</td></tr>
+<tr><td>Off-curve point size</td><td>Size of handles, in pixels (1–20).</td><td>7 px</td></tr>
+<tr><td>Hit detection radius</td><td>How close a click must be to select a point (2–30 px).</td><td>8 px</td></tr>
+<tr><td>Pencil fit tolerance</td><td>How closely the pencil traces your stroke. Lower keeps more nodes; higher gives smoother curves (0.1–10).</td><td>1.5</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Coordinates</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="st" style="width: 100%; border-collapse: collapse; min-width: 560px">
+<thead><tr><th>Setting</th><th>What it does</th><th style="text-align: right">Default</th></tr></thead>
+<tbody>
+<tr><td>Round when editing</td><td>Rounds coordinates to the font's grid step as you draw — whole units on the default grid. Turn it off to draw in fractional space; coordinates are still trimmed to the precision below. Applies whether or not the grid is shown.</td><td>On</td></tr>
+<tr><td>Coordinate precision</td><td>Decimal places kept on coordinates, 0–3. 0 keeps whole units. A font with a finer grid keeps the decimals its grid needs, and a font whose grid spacing is 0 keeps full precision.</td><td>3 dp</td></tr>
+<tr><td>Default advance width</td><td>Width of new glyphs at 1000 units per em (0–2000), scaled for other UPMs. Marks start at 0 and spaces at UPM ÷ 4.</td><td>500</td></tr>
+</tbody>
+</table>
+</div>
+<p>Each font's rounding step is set by <strong>Grid spacing</strong> and <strong>Grid subdivision</strong> in <a href="fontinfo-general.html">Font Info → General</a>.</p>
+
+<h2>Defaults for new windows</h2>
+<p>These set what a newly opened font window starts with. Each open window keeps its own state, changed from the View menu — changing a default here doesn't flip windows that are already open.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="st" style="width: 100%; border-collapse: collapse; min-width: 560px">
+<thead><tr><th>Setting</th><th>What it does</th><th style="text-align: right">Default</th></tr></thead>
+<tbody>
+<tr><td>Show pixel grid</td><td>The grid behind the outline (View → Show Grid, <kbd>Ctrl '</kbd>).</td><td>On</td></tr>
+<tr><td>Show alignment zones</td><td>Shaded overshoot zones (View → Show Zones).</td><td>On</td></tr>
+<tr><td>Show Glyph Reference</td><td>The tracing reference font behind the outline.</td><td>Off</td></tr>
+<tr><td>Show Rulers</td><td>Rulers along the canvas edges.</td><td>On</td></tr>
+<tr><td>Snap to metrics &amp; zones</td><td>Dragged points snap to metric lines and alignment zones.</td><td>On</td></tr>
+<tr><td>Snap to nodes</td><td>Dragged points align with, and land on, other nodes.</td><td>On</td></tr>
+<tr><td>Snap to handles</td><td>Off-curve handles count as snap targets too.</td><td>On</td></tr>
+</tbody>
+</table>
+</div>
+<p>Round when editing (above) follows the same rule; toggle it in an open window with <kbd>Ctrl Shift '</kbd> / <kbd>⌘ ⇧ '</kbd>.</p>
+
+<h2>Text mode</h2>
+<p>See the <a href="manual-text-mode.html">Text mode manual</a> for how these are used.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="st" style="width: 100%; border-collapse: collapse; min-width: 560px">
+<thead><tr><th>Setting</th><th>What it does</th><th style="text-align: right">Default</th></tr></thead>
+<tbody>
+<tr><td>Metrics Table</td><td>Shows the table under the preview with LSB, RSB, advance width and, from two glyphs on, kerning for the line the cursor is on — one editable column per glyph. Same as View → Show Metrics Table; applies everywhere at once.</td><td>On</td></tr>
+<tr><td>Text line length</td><td>Glyphs per line before text wraps (5–200). Raising it doesn't rejoin lines already wrapped; lowering it applies from your next edit.</td><td>50</td></tr>
+</tbody>
+</table>
+</div>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Good to know</div>
+<ul>
+<li>The Fit Curve presets (<kbd>Ctrl Alt 1</kbd>–<kbd>8</kbd>) take their tension range from the Fit Curve panel in the editor, not from this page — but <strong>Reset to Defaults</strong> here resets that range too.</li>
+<li>Zoom and point-size changes apply to open windows straight away.</li>
+</ul>
+</div>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="settings-general.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← General</a>
+<a href="settings-export.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Export →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

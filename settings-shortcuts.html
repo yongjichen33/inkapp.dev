@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings: Keyboard Shortcuts — Ink manual</title>
+<meta name="description" content="Search Ink's commands and rebind them to the keys you prefer.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.kt td{padding:10px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.kt td:first-child{color:#5a6063;font-size:13px;font-family:'JetBrains Mono',monospace;width:16%}
+.kt tr:nth-child(even){background:#f9f9fa}
+.kt th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html" class="on">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual · Settings</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Keyboard shortcuts</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Search Ink's commands and rebind them to the keys you prefer.</p>
+
+<h2>The shortcut list</h2>
+<ul>
+<li><strong>Search commands…</strong> filters by command name or category.</li>
+<li>Commands are grouped by category in tables of <strong>Action</strong>, <strong>When</strong>, <strong>Keybinding</strong> and <strong>Source</strong>.</li>
+<li><strong>When</strong> says where the shortcut works: <em>Font Loaded</em>, <em>Editor</em> or <em>Grid</em>.</li>
+<li><strong>Source</strong> reads <em>Default</em> or <em>User</em>; your changes are highlighted.</li>
+</ul>
+
+<h2>Rebinding</h2>
+<ul>
+<li><strong>Click</strong> a binding — it pulses “Press keys...” — then press the new combination. It saves and applies to open windows at once. Click elsewhere to cancel.</li>
+<li><strong>Right-click</strong> a binding to reset it to the default.</li>
+<li><strong>Reset All Shortcuts</strong> restores every default, without asking.</li>
+<li>If another command in the same context already uses those keys, a ⚠ appears naming it. The new binding is still saved, so resolve the clash yourself.</li>
+</ul>
+<p><strong>On macOS</strong>, bindings are shown as “Ctrl+…”, and <code>Ctrl</code> in a binding matches either <kbd>Ctrl</kbd> or <kbd>⌘</kbd> — so “Ctrl+Z” is <kbd>⌘ Z</kbd>.</p>
+
+<h2>Default bindings you can change</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="kt" style="width: 100%; border-collapse: collapse; min-width: 520px">
+<thead><tr><th>Category</th><th>Action</th><th>When</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td>View</td><td>Command Palette</td><td>Font Loaded</td><td><kbd>Ctrl Shift P</kbd></td></tr>
+<tr><td>View</td><td>Close Tab</td><td>Font Loaded</td><td><kbd>Ctrl W</kbd></td></tr>
+<tr><td>View</td><td>New Editor Tab</td><td>Font Loaded</td><td><kbd>Ctrl T</kbd></td></tr>
+<tr><td>View</td><td>Fit in Pane</td><td>Editor</td><td><kbd>Ctrl 0</kbd></td></tr>
+<tr><td>Tools</td><td>Select · Draw · Pencil · Shape</td><td>Editor</td><td><kbd>S</kbd> <kbd>D</kbd> <kbd>P</kbd> <kbd>U</kbd></td></tr>
+<tr><td>Tools</td><td>Knife · Measurement · Hand</td><td>Editor</td><td><kbd>K</kbd> <kbd>M</kbd> <kbd>H</kbd></td></tr>
+<tr><td>Edit</td><td>Undo · Redo</td><td>Editor</td><td><kbd>Ctrl Z</kbd> · <kbd>Ctrl Shift Z</kbd></td></tr>
+<tr><td>Edit</td><td>Select All Points</td><td>Editor</td><td><kbd>Ctrl A</kbd></td></tr>
+<tr><td>Edit</td><td>Copy · Paste Outline</td><td>Editor</td><td><kbd>Ctrl C</kbd> · <kbd>Ctrl V</kbd></td></tr>
+<tr><td>Edit</td><td>Delete Selection</td><td>Editor</td><td><kbd>Delete</kbd></td></tr>
+<tr><td>File</td><td>Create Snapshot</td><td>Font Loaded</td><td><kbd>Ctrl S</kbd></td></tr>
+<tr><td>Path</td><td>Fit Curve — Preset 1 … 8</td><td>Editor</td><td><kbd>Ctrl Alt 1</kbd> … <kbd>Ctrl Alt 8</kbd></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Fixed app shortcuts</h2>
+<p>These global shortcuts can't be changed and aren't listed in Settings. Use <kbd>Ctrl</kbd> on Windows and <kbd>⌘</kbd> on macOS.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="kt" style="width: 100%; border-collapse: collapse; min-width: 460px">
+<thead><tr><th>Shortcut</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><kbd>Ctrl N</kbd></td><td>Create new font</td></tr>
+<tr><td><kbd>Ctrl O</kbd></td><td>Open font</td></tr>
+<tr><td><kbd>Ctrl Shift O</kbd></td><td>Open source folder (Windows; macOS has a single Open…)</td></tr>
+<tr><td><kbd>Ctrl I</kbd></td><td>Font Info</td></tr>
+<tr><td><kbd>Ctrl ,</kbd></td><td>Settings</td></tr>
+<tr><td><kbd>Ctrl Shift H</kbd></td><td>Time Machine</td></tr>
+<tr><td><kbd>Ctrl Shift K</kbd></td><td>Kerning Editor</td></tr>
+<tr><td><kbd>Ctrl G</kbd></td><td>Go to glyph grid</td></tr>
+<tr><td><kbd>Ctrl '</kbd></td><td>Show grid</td></tr>
+<tr><td><kbd>Ctrl Shift '</kbd></td><td>Round when editing</td></tr>
+<tr><td><kbd>Ctrl Shift N</kbd></td><td>Add glyph</td></tr>
+<tr><td><kbd>Ctrl Shift G</kbd></td><td>Add glyphs…</td></tr>
+<tr><td><kbd>Ctrl Backspace</kbd></td><td>Remove glyph</td></tr>
+<tr><td><kbd>Ctrl Shift A</kbd></td><td>Add anchor point</td></tr>
+<tr><td><kbd>Ctrl Shift R</kbd></td><td>Correct path direction</td></tr>
+</tbody>
+</table>
+</div>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Good to know</div>
+<ul>
+<li>On macOS, remapping Fit in Pane leaves <kbd>⌘ 0</kbd> working too, because it is also a menu shortcut.</li>
+<li>Shortcuts that plugins add aren't shown in this list.</li>
+</ul>
+</div>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="settings-export.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Export</a>
+<a href="settings-python.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Python →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

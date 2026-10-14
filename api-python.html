@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python reference — Ink API</title>
+<meta name="description" content="The ink module gives Python scripts typed access to an .ink project: fonts, glyphs, layers, masters and kerning. It is a native extension built on the same Rust ink-api crate the app uses, and comes preinstalled in Ink's scripting environment.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:64px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:32px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.pre{margin-top:18px;background:#111314;border-radius:10px;padding:22px 24px;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:22px;color:#d7dbde;white-space:pre;overflow-x:auto}
+.ref td{padding:11px 18px;vertical-align:top;font-size:15px;line-height:23px;color:#3c4245}
+.ref td:first-child{font-family:'JetBrains Mono',monospace;font-size:13px;color:#2d3336;width:40%}
+.ref td:nth-child(2){font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#4a43c8;white-space:nowrap}
+.ref tr:nth-child(even){background:#f9f9fa}
+.ref th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ developers</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #5a6063">Manuals</a>
+<a href="api-plugins.html" style="color: #2d3336">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html" class="on">Python reference</a>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5a6063; padding: 20px 10px 8px">On this page</span>
+<a href="#functions" style="padding: 6px 10px; color: #5a6063">Module functions</a>
+<a href="#font" style="padding: 6px 10px; color: #5a6063">Font</a>
+<a href="#glyph" style="padding: 6px 10px; color: #5a6063">Glyph</a>
+<a href="#layer" style="padding: 6px 10px; color: #5a6063">Layer</a>
+<a href="#master" style="padding: 6px 10px; color: #5a6063">Master</a>
+<a href="#kerning" style="padding: 6px 10px; color: #5a6063">Kerning</a>
+<a href="#ui" style="padding: 6px 10px; color: #5a6063">ink.ui</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 840px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Developers · ink 0.1.2 · Python ≥ 3.9</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Python reference</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">The <code>ink</code> module gives Python scripts typed access to an <code>.ink</code> project: fonts, glyphs, layers, masters and kerning. It is a native extension built on the same Rust <code>ink-api</code> crate the app uses, and comes preinstalled in Ink's scripting environment.</p>
+
+<div class="pre">import ink
+
+font = ink.current_font()
+print(font.family_name, font.style_name, font.units_per_em)
+
+for glyph in ink.selected_glyphs() or font.glyphs:
+    print(glyph.name, len(glyph.contours), glyph.width)</div>
+
+<h3>Conventions</h3>
+<ul>
+<li>Contours, points, components, anchors and guidelines are plain <code>dict</code>s, not classes.</li>
+<li>A contour is <code>{"points": [{"x": float, "y": float, "point_type": "oncurve" | "offcurve" | "smooth"}], "closed": bool}</code>.</li>
+<li>Glyph-level properties act on the <strong>default master</strong>; use <code>Layer</code> or <code>Master.glyph_layer()</code> for other masters.</li>
+<li>Coordinates written through the API are rounded to 3 decimals.</li>
+<li>Failures raise <code>RuntimeError</code> with a message beginning <code>Not found:</code>, <code>Database error:</code>, <code>Invalid data:</code> or <code>IO error:</code>; an unknown <code>point_type</code> raises <code>ValueError</code>.</li>
+</ul>
+
+<h2 id="functions">Module functions</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ref" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Function</th><th>Returns</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>ink.current_font()</td><td>Font | None</td><td>The font Ink launched the script for.</td></tr>
+<tr><td>ink.current_glyph()</td><td>Glyph | None</td><td>The focused glyph, when run from the Script Console.</td></tr>
+<tr><td>ink.selected_glyphs()</td><td>list[Glyph]</td><td>Selected glyphs; empty if none.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="font">Font</h2>
+<p><code>ink.Font(path)</code> opens a project (adding <code>.ink</code> if missing). Compiled OTF, TTF and WOFF files must be saved as <code>.ink</code> first.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ref" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Member</th><th>Type</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>family_name · style_name</td><td>str</td><td>Read / write.</td></tr>
+<tr><td>units_per_em</td><td>int</td><td>Read / write.</td></tr>
+<tr><td>ascender · descender · x_height · cap_height</td><td>float | None</td><td>Read / write.</td></tr>
+<tr><td>glyph_count</td><td>int</td><td>Read-only.</td></tr>
+<tr><td>glyphs</td><td>list[Glyph]</td><td>All glyphs.</td></tr>
+<tr><td>font["A"]</td><td>Glyph</td><td>By name; raises if missing.</td></tr>
+<tr><td>glyph_by_id(id)</td><td>Glyph</td><td>By numeric id.</td></tr>
+<tr><td>add_glyph(name, unicode=None)</td><td>Glyph</td><td>Created with width 500.</td></tr>
+<tr><td>remove_glyph(name)</td><td>None</td><td></td></tr>
+<tr><td>masters · default_master</td><td>list[Master] · Master</td><td></td></tr>
+<tr><td>kerning</td><td>Kerning</td><td>See below.</td></tr>
+<tr><td>save()</td><td>None</td><td>Flush changes to disk.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="glyph">Glyph</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ref" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Member</th><th>Type</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>id</td><td>int</td><td>Read-only.</td></tr>
+<tr><td>name · category</td><td>str | None</td><td>Read-only.</td></tr>
+<tr><td>width</td><td>float | None</td><td>Advance width. Read / write.</td></tr>
+<tr><td>codepoints</td><td>list[int]</td><td>Read / write.</td></tr>
+<tr><td>export</td><td>bool</td><td>Read / write.</td></tr>
+<tr><td>note</td><td>str | None</td><td>Setting replaces the whole note thread.</td></tr>
+<tr><td>production_name</td><td>str | None</td><td>Read / write.</td></tr>
+<tr><td>contours</td><td>list[dict]</td><td>Read / write; lossless, keeps smooth points.</td></tr>
+<tr><td>svg_path</td><td>str | None</td><td>Font-space, y-up SVG. Writing is lossy for smooth points.</td></tr>
+<tr><td>components</td><td>list[dict]</td><td><code>{"base_glyph", "x_offset", "y_offset"}</code>. Read-only.</td></tr>
+<tr><td>layers · active_layer</td><td>list[Layer] · Layer</td><td>Drawing layers; <code>active_layer</code> is the default master's.</td></tr>
+<tr><td>layer_by_name(name)</td><td>Layer</td><td></td></tr>
+<tr><td>get_image_layer()</td><td>dict | None</td><td>Background image: file name, data URL, transform and tint.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="layer">Layer</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ref" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Member</th><th>Type</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>id · name</td><td>str</td><td>Read-only.</td></tr>
+<tr><td>layer_type</td><td>str</td><td><code>"master"</code>, <code>"special"</code> or <code>"sketch"</code>.</td></tr>
+<tr><td>contours · svg_path</td><td>list[dict] · str</td><td>Read / write, as on Glyph.</td></tr>
+<tr><td>advance_width</td><td>float | None</td><td>Read / write.</td></tr>
+<tr><td>lsb</td><td>float | None</td><td>Read-only — move the outline to change it.</td></tr>
+<tr><td>components</td><td>list[dict]</td><td>Read-only.</td></tr>
+<tr><td>anchors</td><td>list[dict]</td><td><code>{"name", "x", "y"}</code>.</td></tr>
+<tr><td>add_anchor(name, x, y) · remove_anchor(name)</td><td>None</td><td><code>remove_anchor</code> removes every anchor with that name.</td></tr>
+<tr><td>guidelines</td><td>list[dict]</td><td><code>{"x", "y", "angle", "name"}</code>, each may be None.</td></tr>
+<tr><td>add_guideline(x=None, y=None, angle=None) · remove_guideline(index)</td><td>None</td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="master">Master</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ref" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Member</th><th>Type</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>id</td><td>str</td><td>Read-only.</td></tr>
+<tr><td>name</td><td>str</td><td>Read / write.</td></tr>
+<tr><td>is_default</td><td>bool</td><td>Read-only.</td></tr>
+<tr><td>coordinates</td><td>list[dict]</td><td><code>{"axis_tag", "value"}</code> per axis.</td></tr>
+<tr><td>ascender · descender · x_height · cap_height</td><td>float | None</td><td>Read / write.</td></tr>
+<tr><td>typo_ascender · typo_descender · typo_line_gap</td><td>float | None</td><td>Read / write.</td></tr>
+<tr><td>hhea_ascender · hhea_descender · hhea_line_gap</td><td>float | None</td><td>Read / write. Win ascent and descent are computed at export.</td></tr>
+<tr><td>glyph_layer(glyph_name)</td><td>Layer</td><td>The glyph's layer for this master.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="kerning">Kerning</h2>
+<p>From <code>font.kerning</code>. Pairs are left-to-right. The optional <code>master</code> argument takes a master's <code>id</code>.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ref" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Method</th><th>Returns</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>get(left, right, master=None)</td><td>float | None</td><td>The effective value.</td></tr>
+<tr><td>entries(left, right, master=None)</td><td>list[dict]</td><td><code>{"value", "lookup_id"}</code> per entry.</td></tr>
+<tr><td>set(left, right, value, master=None, lookup_id=None)</td><td>None</td><td></td></tr>
+<tr><td>remove(left, right, master=None, lookup_id=None)</td><td>None</td><td></td></tr>
+<tr><td>pairs(master=None)</td><td>list[dict]</td><td>Glyph-to-glyph pairs.</td></tr>
+<tr><td>groups()</td><td>list[dict]</td><td><code>{"name", "side", "glyphs"}</code>; side is <code>"first"</code> or <code>"second"</code>.</td></tr>
+<tr><td>clear()</td><td>None</td><td>Remove all kerning.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="ui">ink.ui</h2>
+<p>Dialogs shown by Ink on the script's behalf. Every call waits for the user except <code>progress</code>.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ref" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Function</th><th>Returns</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>alert(message)</td><td>None</td><td></td></tr>
+<tr><td>confirm(message)</td><td>bool</td><td></td></tr>
+<tr><td>select(message, options)</td><td>str | None</td><td></td></tr>
+<tr><td>field(key, field_type, *, label, default, min, max, …)</td><td>dict</td><td>Describes one form field; also supports validation options.</td></tr>
+<tr><td>form(title, *, fields)</td><td>dict | None</td><td>Values keyed by field, or None if cancelled.</td></tr>
+<tr><td>progress(message=None, percent=None)</td><td>None</td><td>Call with no message to dismiss.</td></tr>
+<tr><td>open_file(*, filters, multiple, title) · save_file(…) · open_folder(…)</td><td>dict</td><td><code>{"path", "cancelled"}</code>.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Example: fit sidebearings</h2>
+<p>A complete script that asks for a value, shifts each selected glyph's outline so both sidebearings match it, and reports contour counts.</p>
+<div class="pre">import ink
+
+font = ink.current_font()
+opts = ink.ui.form("Fit sidebearings", fields=[
+    ink.ui.field("sb", "number", label="Sidebearing", default=50, min=0, max=500),
+])
+if font is None or opts is None:
+    raise SystemExit
+
+sb = opts["sb"]
+glyphs = ink.selected_glyphs() or font.glyphs
+for i, g in enumerate(glyphs):
+    ink.ui.progress(f"Fitting {g.name}…", percent=i * 100 // len(glyphs))
+    contours = g.contours
+    xs = [p["x"] for c in contours for p in c["points"]]
+    if not xs or g.components:          # skip empty and composite glyphs
+        continue
+    left, right = min(xs), max(xs)      # control-point bounds
+    for c in contours:
+        for p in c["points"]:
+            p["x"] += sb - left
+    g.contours = contours
+    g.width = (right - left) + 2 * sb
+    print(f"{g.name}: {len(contours)} contours")
+
+ink.ui.progress()
+font.save()</div>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Good to know</div>
+<ul>
+<li>In projects converted from compiled fonts, kerning and anchor writes stay read-only unless Ink was able to turn that data back into native kerning and anchors.</li>
+<li>Image layers are not included in <code>Glyph.layers</code>; use <code>get_image_layer()</code>.</li>
+<li>Axes and font-level guidelines are not exposed to Python yet.</li>
+</ul>
+</div>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="api-plugins.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Building plugins</a>
+<a href="index.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Back to home →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

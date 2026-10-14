@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font Info: Compatibility — Ink manual</title>
+<meta name="description" content="Masters can only interpolate if their outlines share a structure. This tab is a font-wide report of every glyph whose masters don't match the default master — what will block a variable font, and what will merely look wrong.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.spec{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:5px 11px;border-radius:999px;background:#e3e1ec;color:#2f2a96}
+.spec:hover{background:#d6d3ea;color:#231f7a}
+.refs li{font-size:16px;line-height:26px}
+.refs span{color:#5a6063;font-size:14px}
+.ft td{padding:12px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.ft td:first-child{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:#2d3336;width:34%}
+.ft tr:nth-child(even){background:#f9f9fa}
+.ft th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+.pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;border-radius:999px;padding:2px 8px}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html" class="on">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual · Font Info</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Compatibility</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Masters can only interpolate if their outlines share a structure. This tab is a font-wide report of every glyph whose masters don't match the default master — what will block a variable font, and what will merely look wrong.</p>
+
+<h2>When it appears</h2>
+<p>The tab is shown when the font has two or more masters. Its report is always live: it updates whenever a glyph's structure, the masters or the axes change, whatever the <strong>Auto compatibility check</strong> setting is.</p>
+
+<h2>Reading the report</h2>
+<ul>
+<li>A summary line counts issues, blockers and warnings for the whole font. “All glyphs are interpolation-compatible.” means there is nothing to fix.</li>
+<li>Filter with <strong>All</strong>, <strong>Blockers only</strong> or <strong>Warnings only</strong>, and narrow by name with <strong>Filter by glyph name…</strong>.</li>
+<li>The table has <strong>Glyph</strong>, <strong>Master</strong>, <strong>Severity</strong> and <strong>Reason</strong> columns — one row per problem, blockers first, then by glyph name. The Master column names the master that differs from the default.</li>
+</ul>
+
+<h2>Why structure must match</h2>
+<p>A variable font stores one set of outlines — the default master — plus, for every other master, a delta for each point. Point <em>n</em> in one master can only move towards point <em>n</em> in another, so every master needs the same contours, the same points in the same order and the same point types. TrueType variations are stored in the gvar table, PostScript ones as CFF2 blend data.</p>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/otvaroverview" target="_blank" rel="noopener">OpenType spec · Font Variations overview ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/gvar" target="_blank" rel="noopener">gvar ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff2" target="_blank" rel="noopener">CFF2 ↗</a></div>
+
+<h2>What each reason means</h2>
+<p>Every non-default master is compared with the <strong>default master</strong>. Contour, point and component numbers count from 0.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 560px">
+<thead><tr><th>Reason</th><th>Severity</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>ContourCount</td><td><span class="pill" style="background: #fbe3e3; color: #a12525">BLOCKER</span></td><td>A different number of contours.</td></tr>
+<tr><td>PointCount</td><td><span class="pill" style="background: #fbe3e3; color: #a12525">BLOCKER</span></td><td>A contour has a different number of points.</td></tr>
+<tr><td>SegmentKind</td><td><span class="pill" style="background: #fbe3e3; color: #a12525">BLOCKER</span></td><td>A point is a different type — a line where the default has a curve, for example.</td></tr>
+<tr><td>ComponentCount</td><td><span class="pill" style="background: #fbe3e3; color: #a12525">BLOCKER</span></td><td>A different number of components.</td></tr>
+<tr><td>ComponentRef</td><td><span class="pill" style="background: #fbe3e3; color: #a12525">BLOCKER</span></td><td>A component points to a different base glyph.</td></tr>
+<tr><td>CompositeMix</td><td><span class="pill" style="background: #fbe3e3; color: #a12525">BLOCKER</span></td><td>The glyph is a composite in one master and outlines in another.</td></tr>
+<tr><td>PathDirection</td><td><span class="pill" style="background: #fbf0d9; color: #7a5208">WARNING</span></td><td>A contour winds the other way.</td></tr>
+<tr><td>StartPoint</td><td><span class="pill" style="background: #fbf0d9; color: #7a5208">WARNING</span></td><td>A contour starts at a noticeably different point; the distance is shown in units.</td></tr>
+<tr><td>ContourOrder</td><td><span class="pill" style="background: #fbf0d9; color: #7a5208">WARNING</span></td><td>The contours appear to be listed in a different order.</td></tr>
+<tr><td>MissingMasterLayer</td><td><span class="pill" style="background: #fbf0d9; color: #7a5208">WARNING</span></td><td>The master has no usable layer for this glyph.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Point positions are meant to differ between masters and are not checked; neither are anchors, kerning, features or metrics.</p>
+
+<h2>Effect on export</h2>
+<ul>
+<li><strong>Blockers stop variable font and named-instance export.</strong> The export error names up to five glyphs and points you to Font Info → Compatibility for the full list.</li>
+<li>Warnings never block export.</li>
+<li>Exporting a single static master is not checked.</li>
+</ul>
+
+<h2>Fixing issues</h2>
+<p>This tab reports; the fixes live in the glyph editor. Open the glyph on the master named in the row.</p>
+<ul>
+<li>The editor inspector's <strong>Compatibility</strong> section lists each master's issues. Inline <strong>Fix</strong> buttons — <em>Match structure in this contour</em>, <em>Match start to default</em>, <em>Match direction to default</em>, <em>Match order to default</em>, <em>Match reference to default</em> — apply at once and undo with <kbd>Ctrl Z</kbd> / <kbd>⌘ Z</kbd>.</li>
+<li><strong>Propagate structure from default</strong> previews and applies the default master's structure to one master; <strong>Propagate to all</strong> does every master in one undoable step.</li>
+<li>The <strong>Glyph → Path</strong> menu has Correct Path Direction (<kbd>Ctrl Shift R</kbd> / <kbd>⌘ ⇧ R</kbd>), Reverse Path Direction, Make Selected Point Start, and Match Contour &amp; Component Order to Default.</li>
+<li>A different number of contours or components has to be fixed by adding or deleting them by hand; a composite / outline mix by decomposing.</li>
+</ul>
+<p>Fix the default master first — the tools never change the default to match another master.</p>
+
+<h2>Checking as you edit</h2>
+<p>Turn on <strong>Settings → General → Auto compatibility check</strong> (off by default, because it costs time on large fonts) to also see issues in the glyph grid as a colored strip on each affected cell, in the grid inspector, in the editor inspector, and as markers on the canvas. It doesn't change this tab or the export check.</p>
+
+<h2>References</h2>
+<ul class="refs">
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/otvaroverview" target="_blank" rel="noopener">OpenType Font Variations overview</a> <span>· default outlines plus deltas</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gvar" target="_blank" rel="noopener">gvar — Glyph Variations Table</a> <span>· per-point deltas for TrueType outlines</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff2" target="_blank" rel="noopener">CFF2 — Compact Font Format version 2</a> <span>· blended PostScript outlines</span></li>
+</ul>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="fontinfo-advanced.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Advanced</a>
+<a href="settings-general.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Settings → General →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

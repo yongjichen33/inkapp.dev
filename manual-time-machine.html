@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Time Machine snapshots — Ink manual</title>
+<meta name="description" content="Version history that lives inside your font file. Browse every snapshot, compare outlines, and roll the whole font back to any earlier point.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.shot{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 12px 32px rgba(45,51,54,.10)}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html" class="on">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 780px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Time Machine snapshots</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Version history that lives inside your font file. Browse every snapshot, compare outlines, and roll the whole font back to any earlier point.</p>
+
+<div style="margin-top: 32px; background: #e4e9ec; border-radius: 14px; padding: 28px">
+<img class="shot" src="assets/screenshots/time-machine.png" alt="The Time Machine tab: filter chips, a filmstrip of snapshots, a timeline scrubber and a change summary card">
+</div>
+
+<h2>What a snapshot is</h2>
+<p>Every <code>.ink</code> project carries its own history (see <a href="reference-ink-format.html">the .ink file format</a>), so the history travels with the file when you copy or share it. A snapshot records the state of the font at one moment, storing only what changed since the previous one, which keeps history compact.</p>
+<p>Restoring is always font-wide: outlines, layers, kerning, anchors, features and Font Info go back together. You cannot restore a single glyph on its own.</p>
+
+<h2>When snapshots are taken</h2>
+<p>Ink writes each edit to the file as you make it, so there is no separate “Save”. A snapshot is a restore point on top of that.</p>
+<ul>
+<li><strong>Manually</strong> — press <kbd>Ctrl S</kbd> / <kbd>⌘ S</kbd>, or click <strong>+ Create Snapshot</strong> in the Time Machine tab and give it a name.</li>
+<li><strong>On import</strong> — the first time a font is brought into Ink.</li>
+<li><strong>Before every export.</strong></li>
+<li><strong>On structural changes</strong> — when you create, delete or rename a glyph.</li>
+<li><strong>On a timer</strong> — every 10 minutes while there are unsaved changes.</li>
+<li><strong>Before every restore</strong>, as a safety copy.</li>
+</ul>
+<p>Kerning, anchor and layer edits are included in the next snapshot. If nothing has changed, no snapshot is created.</p>
+<p>When you press <kbd>Ctrl S</kbd> on an opened OTF, TTF or WOFF, Ink first asks you to save the font as an <code>.ink</code> project; the conversion becomes that project's first snapshot.</p>
+
+<h2>Opening Time Machine</h2>
+<p>Click the History (clock) icon in the title bar, or press <kbd>Ctrl Shift H</kbd> / <kbd>⌘ ⇧ H</kbd>. Time Machine opens as a tab beside your other views. The top bar shows how many snapshots exist and how much space the history uses.</p>
+
+<h2>Browsing the timeline</h2>
+<ul>
+<li><strong>Navigate</strong> with the filmstrip and the timeline scrubber. Click a frame or a node, or step with the arrow keys — <kbd>↑</kbd> / <kbd>←</kbd> go back in time, <kbd>↓</kbd> / <kbd>→</kbd> go forward.</li>
+<li><strong>Filter by kind</strong> with the chips: Auto Save, Manual, Import, Export and Restore points, each with a count. If nothing matches, use <strong>Reset filters</strong>.</li>
+<li><strong>Read the summary.</strong> The selected snapshot lists what changed, grouped by area: Masters, Metadata, Kerning, Anchors, Features and Outlines.</li>
+<li><strong>Rename</strong> manual snapshots from the card's menu.</li>
+</ul>
+
+<h2>Comparing outlines</h2>
+<p>In the Outlines group, click <strong>N glyphs changed · view →</strong> to open Compare outlines. Search the list of changed glyphs on the left; the preview overlays the earlier shape in red and the later one in green. When a glyph changed on a non-default master, layer pills let you switch between layers.</p>
+<div style="margin-top: 24px; background: #e4e9ec; border-radius: 14px; padding: 28px">
+<img class="shot" loading="lazy" src="assets/screenshots/time-machine-compare.png" alt="Compare outlines dialog with the before shape of A in red and the after shape in green">
+</div>
+
+<h2>Restoring a version</h2>
+<ul>
+<li>Choose <strong>Restore to this version</strong> and confirm.</li>
+<li>Ink first creates a <strong>Pre-restore checkpoint</strong>, so a restore can always be undone by restoring to that checkpoint.</li>
+<li>A progress bar blocks the app while the restore runs. It either succeeds completely or changes nothing, and it cannot be cancelled once started.</li>
+<li>Open editor tabs close and reload from the restored data.</li>
+</ul>
+
+<h2>Retention and clearing history</h2>
+<p>Ink never deletes snapshots on its own, and single snapshots cannot be deleted. The only way to remove history is <strong>Clear history…</strong>, which removes all of it:</p>
+<ul>
+<li>The dialog shows exactly how many snapshots will go, and you type <code>clear</code> to confirm.</li>
+<li>Manual snapshots are deleted too. This cannot be undone.</li>
+<li>Your current font is untouched — only the ability to go back is removed. Ink reports how much space was freed.</li>
+</ul>
+<p>When history grows past 60% of the file's size, a strip suggests clearing it. You can dismiss it for the session.</p>
+
+<h2>What is versioned</h2>
+<div style="margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+<div style="background: #ffffff; border-radius: 12px; padding: 24px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<div style="font-weight: 800; font-size: 17px">Included</div>
+<ul style="margin-top: 10px">
+<li>Outlines, components and metrics</li>
+<li>Glyph names, Unicode values, color labels, export flags, production names</li>
+<li>Drawing and image layers, guidelines, anchors</li>
+<li>Kerning groups and per-master pairs with direction</li>
+<li>Feature code, axes, instances and designspace rules</li>
+<li>Masters, zones, custom parameters, Font Info and name table entries</li>
+</ul>
+</div>
+<div style="background: #ffffff; border-radius: 12px; padding: 24px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<div style="font-weight: 800; font-size: 17px">Not included</div>
+<ul style="margin-top: 10px">
+<li>App settings and preferences, which live outside the font</li>
+<li>Glyph notes — on purpose, so a restore never erases a conversation</li>
+<li>Font-level vendor data such as .glyphs custom parameters and UFO lib.plist</li>
+</ul>
+</div>
+</div>
+
+<div style="margin-top: 56px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Tips</div>
+<ul>
+<li>Change the timer in <a href="settings-general.html"><strong>Settings → General → Auto-snapshot interval</strong></a> (seconds, default 600). Set it to 0 to turn automatic snapshots off.</li>
+<li>A manual snapshot of a large multi-master font can take a few seconds while a “Saving…” overlay is shown.</li>
+<li>The timeline currently shows up to 200 snapshots, and filters reset when you leave the tab.</li>
+</ul>
+</div>
+
+<h2>Shortcuts</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table style="width: 100%; border-collapse: collapse; font-size: 16px; min-width: 420px">
+<thead><tr style="background: #f2f4f5; text-align: left"><th style="padding: 14px 20px; font-weight: 700">Action</th><th style="padding: 14px 20px; font-weight: 700">Windows</th><th style="padding: 14px 20px; font-weight: 700">macOS</th></tr></thead>
+<tbody>
+<tr><td style="padding: 14px 20px">Create a snapshot</td><td style="padding: 14px 20px"><kbd>Ctrl S</kbd></td><td style="padding: 14px 20px"><kbd>⌘ S</kbd></td></tr>
+<tr style="background: #f9f9fa"><td style="padding: 14px 20px">Open Time Machine</td><td style="padding: 14px 20px"><kbd>Ctrl Shift H</kbd></td><td style="padding: 14px 20px"><kbd>⌘ ⇧ H</kbd></td></tr>
+<tr><td style="padding: 14px 20px">Older / newer snapshot</td><td style="padding: 14px 20px"><kbd>←</kbd> <kbd>→</kbd></td><td style="padding: 14px 20px"><kbd>←</kbd> <kbd>→</kbd></td></tr>
+</tbody>
+</table>
+</div>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="index.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Home</a>
+<a href="manual-kerning.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Kerning editor →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

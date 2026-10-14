@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building plugins — Ink API</title>
+<meta name="description" content="Ink plugins are small web apps. They dock into the workspace as panels, talk to the open font through a JavaScript SDK, and hand heavy work to Python scripts that use the ink module.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:64px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:32px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.pre{margin-top:18px;background:#111314;border-radius:10px;padding:22px 24px;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:22px;color:#d7dbde;white-space:pre;overflow-x:auto}
+.ref td{padding:12px 18px;vertical-align:top;font-size:15px;line-height:23px;color:#3c4245}
+.ref td:first-child{font-family:'JetBrains Mono',monospace;font-size:13px;color:#2d3336;width:46%}
+.ref tr:nth-child(even){background:#f9f9fa}
+.ref th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}.flow{flex-direction:column !important;align-items:stretch !important}.flow-arrow{transform:rotate(90deg);align-self:center}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ developers</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #5a6063">Manuals</a>
+<a href="api-plugins.html" style="color: #2d3336">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html" class="on">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 820px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Developers</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Building plugins</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Ink plugins are small web apps. They dock into the workspace as panels, talk to the open font through a JavaScript SDK, and hand heavy work to Python scripts that use the <code>ink</code> module.</p>
+
+<h2>How it fits together</h2>
+<div class="flow" style="margin-top: 22px; display: flex; align-items: center; gap: 12px">
+<div style="flex: 1 1 0; background: #ffffff; border-radius: 12px; padding: 18px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4a43c8">Your plugin</div>
+<div style="font-weight: 700; font-size: 16px; margin-top: 4px">HTML + JS panel</div>
+<div style="font-size: 14px; line-height: 21px; color: #5a6063; margin-top: 4px">Sandboxed iframe, global <code>Ink</code></div>
+</div>
+<svg class="flow-arrow" width="28" height="16" viewBox="0 0 28 16" aria-hidden="true"><path d="M2 8h22M18 3l6 5-6 5" fill="none" stroke="#5a6063" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div style="flex: 1 1 0; background: #ffffff; border-radius: 12px; padding: 18px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4a43c8">postMessage</div>
+<div style="font-weight: 700; font-size: 16px; margin-top: 4px">Ink host</div>
+<div style="font-size: 14px; line-height: 21px; color: #5a6063; margin-top: 4px">Routes each request to a command</div>
+</div>
+<svg class="flow-arrow" width="28" height="16" viewBox="0 0 28 16" aria-hidden="true"><path d="M2 8h22M18 3l6 5-6 5" fill="none" stroke="#5a6063" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div style="flex: 1 1 0; background: #ffffff; border-radius: 12px; padding: 18px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4a43c8">ink-api (Rust)</div>
+<div style="font-weight: 700; font-size: 16px; margin-top: 4px">The .ink project</div>
+<div style="font-size: 14px; line-height: 21px; color: #5a6063; margin-top: 4px">Reads and writes the font database</div>
+</div>
+<svg class="flow-arrow" width="28" height="16" viewBox="0 0 28 16" aria-hidden="true"><path d="M26 8H4M10 3L4 8l6 5" fill="none" stroke="#5a6063" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div style="flex: 1 1 0; background: #2d3336; color: #f9f9fa; border-radius: 12px; padding: 18px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #c9c5f5">Ink.python.run</div>
+<div style="font-weight: 700; font-size: 16px; margin-top: 4px">Python script</div>
+<div style="font-size: 14px; line-height: 21px; color: #c4c9cc; margin-top: 4px"><code style="background: #3c4448; color: #f9f9fa">import ink</code></div>
+</div>
+</div>
+<ul>
+<li>A plugin's UI loads into an <code>&lt;iframe sandbox="allow-scripts"&gt;</code> docked in the <code>right</code> (default), <code>left</code> or <code>bottom</code> slot — or runs <code>headless</code>.</li>
+<li>The host injects a global <code>Ink</code> object. Each call is a message to the host, which routes it into the Rust <code>ink-api</code> crate that reads and writes the open <code>.ink</code> project.</li>
+<li><code>Ink.python.run</code> starts a script declared in your manifest inside the scripting environment Ink manages (see <a href="settings-python.html">Settings → Python</a>), with the <code>ink</code> module already installed.</li>
+</ul>
+
+<h2>The manifest</h2>
+<p>Every plugin is a folder with a <code>plugin.json</code> at its root. Fields are camelCase.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ref" style="width: 100%; border-collapse: collapse; min-width: 560px">
+<thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>id · name · version</td><td>Required. <code>id</code> is lowercase with hyphens; <code>version</code> is semver.</td></tr>
+<tr><td>entry</td><td>Required. HTML file relative to the plugin folder (a full URL in Developer Mode).</td></tr>
+<tr><td>description · author</td><td>Optional metadata.</td></tr>
+<tr><td>slot</td><td><code>"right"</code> (default), <code>"left"</code>, <code>"bottom"</code> or <code>"headless"</code>.</td></tr>
+<tr><td>defaultWidth · minWidth · defaultHeight · minHeight</td><td>Panel size for side and bottom slots.</td></tr>
+<tr><td>activationEvents</td><td><code>onStartup</code> (the default), <code>onCommand:&lt;id&gt;</code>, <code>onView:&lt;id&gt;</code>, <code>onGlyphSelect</code>, <code>onEvent:&lt;event&gt;</code>. Panel plugins must include <code>onStartup</code>.</td></tr>
+<tr><td>contributes</td><td>Arrays of <code>commands</code>, <code>toolbar</code>, <code>menus</code>, <code>contextMenus</code>, <code>statusBar</code>, <code>tools</code>, <code>inspector</code>, <code>tabs</code>, <code>categories</code>, <code>gridOverlays</code> and <code>keybindings</code>.</td></tr>
+<tr><td>python.requires</td><td>Python version constraint, e.g. <code>"&gt;=3.12"</code>.</td></tr>
+<tr><td>python.scripts</td><td>Map of script key → relative path. <code>Ink.python.run</code> takes the <em>key</em>, not a path.</td></tr>
+<tr><td>python.assets</td><td>Downloadable files <code>{id, url, size?, sha256}</code>. <code>sha256</code> is required for remote assets and is verified.</td></tr>
+</tbody>
+</table>
+</div>
+<p><code>when</code> clauses on contributions support <code>&amp;&amp;</code>, <code>||</code>, <code>!</code>, <code>==</code> and <code>!=</code> over keys such as <code>glyphEditor.active</code>, <code>editor.mode</code>, <code>editor.hasSelection</code>, <code>glyph.isComposite</code> and <code>font.isBinary</code>.</p>
+<div class="pre">{
+  "id": "glyph-info",
+  "name": "Glyph Info Panel",
+  "version": "2.0.0",
+  "entry": "index.html",
+  "slot": "right",
+  "defaultWidth": 320,
+  "activationEvents": ["onStartup"],
+  "contributes": {
+    "commands": [
+      { "id": "toggle-panel", "title": "Toggle Glyph Info Panel", "icon": "info" }
+    ],
+    "toolbar": [
+      { "type": "toggle", "icon": "info", "tooltip": "Toggle Glyph Info Panel", "command": "toggle-panel" }
+    ],
+    "statusBar": [ { "id": "glyph-count", "text": "-- glyphs", "align": "right" } ]
+  },
+  "python": {
+    "requires": "&gt;=3.12",
+    "scripts": { "analyzeMetrics": "scripts/analyze_metrics.py" }
+  }
+}</div>
+
+<h2>JavaScript SDK</h2>
+<p>Every call returns a promise and rejects after 30 seconds.</p>
+
+<h3>Font and glyphs</h3>
+<div style="margin-top: 14px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ref" style="width: 100%; border-collapse: collapse; min-width: 560px"><tbody>
+<tr><td>Ink.currentFont()</td><td>The open font: <code>familyName</code>, <code>styleName</code>, <code>unitsPerEm</code>, <code>glyphCount</code>.</td></tr>
+<tr><td>font.getGlyphs() · getGlyph(name) · getGlyphById(id)</td><td>Look up glyphs.</td></tr>
+<tr><td>font.setFamilyName(v) · setStyleName(v) · save()</td><td>Write names; flush to disk.</td></tr>
+<tr><td>glyph.id · name · width · codepoints · category</td><td>Read-only properties.</td></tr>
+<tr><td>glyph.setWidth(v) · setExport(bool) · setNote(text)</td><td>Write glyph fields.</td></tr>
+<tr><td>glyph.getContours() · setContours(c)</td><td>Default-master outline as <code>[{points: [{x, y, pointType}], closed}]</code>.</td></tr>
+<tr><td>glyph.getLayers() · getLayerContours(id) · setLayerContours(id, c)</td><td>Per-layer outlines.</td></tr>
+<tr><td>glyph.addSketchLayer(name) · getImageLayer()</td><td>Sketch and background image layers.</td></tr>
+<tr><td>Ink.getKerning() → get · entries · set</td><td>Read and write kerning; setting 0 removes a value.</td></tr>
+</tbody></table>
+</div>
+
+<h3>UI, canvas and Python</h3>
+<div style="margin-top: 14px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ref" style="width: 100%; border-collapse: collapse; min-width: 560px"><tbody>
+<tr><td>Ink.on(event, cb, options?) · Ink.off(event, cb)</td><td>Events: <code>glyph:focused</code>, <code>glyph:selected</code>, <code>font:changed</code>, <code>command:execute</code>; opt-in canvas events such as <code>cursor:move</code> and <code>selection:changed</code> accept a <code>throttle</code>.</td></tr>
+<tr><td>Ink.overlay.line · circle · rect · path · contours · label · clear</td><td>Draw guides on the editing canvas, batched per tick.</td></tr>
+<tr><td>Ink.ui.alert · confirm · select · form · progress · error</td><td>Native dialogs and progress.</td></tr>
+<tr><td>Ink.ui.openFile · saveFile · openFolder</td><td>File pickers returning <code>{path, cancelled}</code>.</td></tr>
+<tr><td>Ink.ui.render · update · setTree</td><td>Declarative inspector sections.</td></tr>
+<tr><td>Ink.python.run(key, args?, opts?)</td><td>Returns <code>{result, cancel()}</code>; <code>opts</code> takes <code>onOutput</code>, <code>onData</code> and <code>timeout</code> (default 60 s).</td></tr>
+<tr><td>Ink.python.assetStatus(id) · downloadAsset(id, opts)</td><td>Fetch large manifest assets such as ML models.</td></tr>
+<tr><td>Ink.commands · statusBar · toolbar · tabs · windows · grid · categories · plugins</td><td>Commands, status widgets, toggles, plugin tabs and windows, grid overlays, category panels and a cross-plugin event bus.</td></tr>
+</tbody></table>
+</div>
+
+<h3>A panel in twenty lines</h3>
+<div class="pre">&lt;div id="info"&gt;Loading…&lt;/div&gt;
+&lt;button id="analyze"&gt;Analyze metrics&lt;/button&gt;
+&lt;script&gt;
+  let font;
+  Ink.currentFont().then((f) =&gt; {
+    font = f;
+    info.textContent = `${f.familyName} ${f.styleName} · ${f.glyphCount} glyphs`;
+  });
+
+  Ink.on('glyph:focused', async ({ glyphName }) =&gt; {
+    const glyph = await font.getGlyph(glyphName);
+    const contours = await glyph.getContours();
+    Ink.overlay.clear();
+    Ink.overlay.contours(contours, { color: 'rgba(74,67,200,0.5)', width: 1 });
+  });
+
+  analyze.onclick = async () =&gt; {
+    const run = Ink.python.run('analyzeMetrics', { limit: 20 });
+    const { exitCode, data } = await run.result;
+    Ink.ui.alert(`exit ${exitCode}: ${JSON.stringify(data)}`);
+  };
+&lt;/script&gt;</div>
+
+<h2>Talking to Python</h2>
+<p>Scripts receive context through environment variables — <code>INK_FONT_PATH</code>, <code>INK_PLUGIN_DIR</code>, <code>INK_ASSETS_DIR</code> and <code>INK_ARGS</code> (JSON) — and reply on stdout:</p>
+<ul>
+<li><code>__INK_DATA__:&lt;json&gt;</code> is delivered to <code>onData</code>; a payload with <code>"type": "progress"</code> drives a progress bar.</li>
+<li><code>__INK_RESULT__:&lt;json&gt;</code> becomes <code>result.data</code>.</li>
+<li>The <code>ink.ui</code> helpers handle dialogs for you. See the <a href="api-python.html">Python reference</a>.</li>
+</ul>
+
+<h2>Installing and developing</h2>
+<ul>
+<li>Copy the plugin folder into <code>%APPDATA%\com.intaglio.ink\plugins\</code> (Windows) or <code>~/Library/Application Support/com.intaglio.ink/plugins/</code> (macOS), then open <a href="settings-plugins.html"><strong>Settings → Plugins</strong></a>, click Reload and Enable it.</li>
+<li>While developing, turn on <strong>Enable Developer Mode</strong> and paste a manifest whose <code>entry</code> is your dev server URL, e.g. <code>http://localhost:8080/index.html</code>.</li>
+</ul>
+
+<div style="margin-top: 48px; background: #fbefe3; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #8a4a12">Trust and limits</div>
+<ul>
+<li>The iframe sandbox keeps a panel away from Ink's own UI, but there is no per-plugin permission system yet: every enabled plugin gets the full API, and its Python scripts run with your user's full access. Only install plugins you trust.</li>
+<li>One Python script runs per plugin at a time; scripts are stopped after their timeout.</li>
+<li>Installed plugins can only run scripts inside their own folder. Developer Mode lifts that limit — treat enabling it as a trust decision.</li>
+</ul>
+</div>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="settings-plugins.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Settings → Plugins</a>
+<a href="api-python.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Python reference →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

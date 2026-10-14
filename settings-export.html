@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings: Export — Ink manual</title>
+<meta name="description" content="Default parameters for compiled fonts: curve conversion for TrueType, and the autohinters Ink runs when you tick Apply autohinting in an export dialog. Changes apply to your next export.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.spec{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:5px 11px;border-radius:999px;background:#e3e1ec;color:#2f2a96}
+.spec:hover{background:#d6d3ea;color:#231f7a}
+.refs li{font-size:16px;line-height:26px}
+.refs span{color:#5a6063;font-size:14px}
+.st td{padding:12px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.st td:first-child{font-weight:700;color:#2d3336;width:30%}
+.st td:last-child{font-family:'JetBrains Mono',monospace;font-size:13px;color:#5a6063;white-space:nowrap;text-align:right}
+.st tr:nth-child(even){background:#f9f9fa}
+.st th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+.flag{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:400;color:#5a6063;margin-left:6px}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html" class="on">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual · Settings</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Export</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Default parameters for compiled fonts: curve conversion for TrueType, and the autohinters Ink runs when you tick <strong>Apply autohinting</strong> in an export dialog. Changes apply to your next export.</p>
+
+<h2>Autohinter readiness</h2>
+<p>Autohinting runs through Ink's optional Python environment. The box at the top of the page checks it for each hinter:</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="st" style="width: 100%; border-collapse: collapse; min-width: 520px">
+<thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Ready ✓</td><td>The hinter is installed and working — <em>TTF (ttfautohint)</em> or <em>OTF (otfautohint)</em>.</td></tr>
+<tr><td>Install ttfautohint-py · Install afdko</td><td>The package is missing; click to install it into the default Python version.</td></tr>
+<tr><td>No Python environment</td><td>No Python is installed yet. <strong>Open Settings → Python</strong> takes you there.</td></tr>
+<tr><td>Checking…</td><td>Ink is testing the environment.</td></tr>
+</tbody>
+</table>
+</div>
+<p>If you export with autohinting on and a package is missing, the export dialog offers to install it. Without Python, the font still exports — unhinted.</p>
+
+<h2>Curve conversion</h2>
+<p>TTF fonts store outlines in the glyf table as quadratic curves, while OTF fonts keep cubic curves in CFF (or CFF2 for variable fonts). Ink draws in cubics, so a TTF export converts them.</p>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/glyf" target="_blank" rel="noopener">OpenType spec · glyf ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff" target="_blank" rel="noopener">CFF ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff2" target="_blank" rel="noopener">CFF2 ↗</a></div>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="st" style="width: 100%; border-collapse: collapse; min-width: 560px">
+<thead><tr><th>Setting</th><th>What it does</th><th style="text-align: right">Default</th></tr></thead>
+<tbody>
+<tr><td>Cubic → Quadratic tolerance</td><td>How closely TTF quadratic curves follow your cubic outlines (0.01–10). Lower is more accurate but makes a larger file.</td><td>1.0</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>TrueType autohinting (ttfautohint)</h2>
+<div class="specs"><a class="spec" href="https://freetype.org/ttfautohint/doc/ttfautohint.html" target="_blank" rel="noopener">ttfautohint manual ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/gasp" target="_blank" rel="noopener">OpenType spec · gasp ↗</a></div>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="st" style="width: 100%; border-collapse: collapse; min-width: 560px">
+<thead><tr><th>Setting</th><th>What it does</th><th style="text-align: right">Default</th></tr></thead>
+<tbody>
+<tr><td>Hint range min <span class="flag">-l</span></td><td>Smallest pixel size to optimise for (1–255).</td><td>8</td></tr>
+<tr><td>Hint range max <span class="flag">-r</span></td><td>Largest pixel size to optimise for (1–255, at least the minimum).</td><td>50</td></tr>
+<tr><td>Hinting limit <span class="flag">-G</span></td><td>Size above which hinting switches off. 0 means no limit.</td><td>200</td></tr>
+<tr><td>X-height increase limit <span class="flag">-x</span></td><td>Size up to which the x-height may be rounded up for legibility. 0 means no increase.</td><td>14</td></tr>
+<tr><td>Fallback stem width <span class="flag">-H</span></td><td>Stem width to assume when none is detected. Empty means automatic.</td><td>auto</td></tr>
+<tr><td>Family suffix <span class="flag">-F</span></td><td>Text appended to the family name.</td><td>none</td></tr>
+<tr><td>Windows compatibility <span class="flag">-W</span></td><td>Adjusts hinting to avoid clipping in Windows.</td><td>On</td></tr>
+<tr><td>Hint composites <span class="flag">-c</span></td><td>Hints composite glyphs as a whole.</td><td>On</td></tr>
+<tr><td>Adjust subglyphs <span class="flag">-p</span></td><td>Lets ttfautohint adjust component positions.</td><td>Off</td></tr>
+<tr><td>Symbol font <span class="flag">-s</span></td><td>For fonts without standard Latin letters to measure.</td><td>Off</td></tr>
+<tr><td>Add TTFA info</td><td>Stores the hinting parameters in the font. Off passes <code>-n</code>.</td><td>On</td></tr>
+<tr><td>Dehint <span class="flag">-d</span></td><td>Removes all hints instead of adding them.</td><td>Off</td></tr>
+<tr><td>Detailed info <span class="flag">-I</span></td><td>Adds detailed ttfautohint info to the version string.</td><td>Off</td></tr>
+<tr><td>Fallback scaling <span class="flag">-f</span></td><td>Scales glyphs without a matching script instead of hinting them.</td><td>Off</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>PostScript / OTF autohinting (otfautohint)</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="st" style="width: 100%; border-collapse: collapse; min-width: 560px">
+<thead><tr><th>Setting</th><th>What it does</th><th style="text-align: right">Default</th></tr></thead>
+<tbody>
+<tr><td>Suppress flex <span class="flag">--no-flex</span></td><td>Don't add flex hints for shallow curves.</td><td>Off</td></tr>
+<tr><td>Suppress hint substitution <span class="flag">--no-hint-sub</span></td><td>Use one set of hints per glyph.</td><td>Off</td></tr>
+<tr><td>Decimal coordinates <span class="flag">-d</span></td><td>Allow decimal values in hints.</td><td>Off</td></tr>
+<tr><td>Allow outline changes <span class="flag">-c</span></td><td>Let the hinter make small outline fixes.</td><td>Off</td></tr>
+<tr><td>Allow no zones / stems <span class="flag">--no-zones-stems</span></td><td>Hint even when the font defines no alignment zones or stems.</td><td>Off</td></tr>
+<tr><td>Processes <span class="flag">-p</span></td><td>Number of parallel processes. Empty uses every CPU core.</td><td>auto</td></tr>
+<tr><td>Exclude glyphs <span class="flag">-x</span></td><td>Comma-separated glyph names to leave unhinted.</td><td>none</td></tr>
+</tbody>
+</table>
+</div>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Good to know</div>
+<ul>
+<li>Readiness is checked against your <strong>default</strong> Python version. See <a href="settings-python.html">Python</a>.</li>
+<li>PostScript hinting zones and stems for a font are set in <a href="fontinfo-advanced.html">Font Info → Advanced → PostScript</a>; alignment zones per master in <a href="fontinfo-masters.html">Masters</a>.</li>
+</ul>
+</div>
+
+<h2>References</h2>
+<ul class="refs">
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/glyf" target="_blank" rel="noopener">glyf — Glyph Data</a> <span>· quadratic TrueType outlines</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff" target="_blank" rel="noopener">CFF</a> and <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff2" target="_blank" rel="noopener">CFF2</a> <span>· cubic PostScript outlines and hints</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gasp" target="_blank" rel="noopener">gasp — Grid-fitting and Scan-conversion Procedure Table</a></li>
+<li><a href="https://freetype.org/ttfautohint/doc/ttfautohint.html" target="_blank" rel="noopener">ttfautohint documentation</a> <span>· every option above, by its flag</span></li>
+</ul>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="settings-editor.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Editor</a>
+<a href="settings-shortcuts.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Keyboard shortcuts →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

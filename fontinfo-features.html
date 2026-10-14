@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font Info: Features — Ink manual</title>
+<meta name="description" content="Write OpenType feature code — substitutions, positioning, classes and language systems — in AFDKO feature syntax, and check that it compiles exactly as it will on export.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.shot{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 12px 32px rgba(45,51,54,.10)}
+.pre{margin-top:18px;background:#111314;border-radius:10px;padding:22px 24px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:23px;color:#d7dbde;white-space:pre;overflow-x:auto}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.spec{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:5px 11px;border-radius:999px;background:#e3e1ec;color:#2f2a96}
+.spec:hover{background:#d6d3ea;color:#231f7a}
+.refs li{font-size:16px;line-height:26px}
+.refs span{color:#5a6063;font-size:14px}
+.ft td{padding:12px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.ft td:first-child{font-weight:700;color:#2d3336;width:30%}
+.ft tr:nth-child(even){background:#f9f9fa}
+.ft th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html" class="on">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual · Font Info</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Features</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Write OpenType feature code — substitutions, positioning, classes and language systems — in AFDKO feature syntax, and check that it compiles exactly as it will on export.</p>
+
+<div style="margin-top: 32px; background: #e4e9ec; border-radius: 14px; padding: 28px">
+<img class="shot" src="assets/screenshots/font-info-features.png" alt="Features tab: block list with classes, prefixes and features, the ccmp code in the editor, and a diagnostics strip with warnings">
+</div>
+
+<div class="specs">
+<a class="spec" href="https://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html" target="_blank" rel="noopener">Adobe · Feature file syntax ↗</a>
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/gsub" target="_blank" rel="noopener">OpenType spec · GSUB ↗</a>
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/gpos" target="_blank" rel="noopener">GPOS ↗</a>
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/gdef" target="_blank" rel="noopener">GDEF ↗</a>
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/featuretags" target="_blank" rel="noopener">Feature tags ↗</a>
+</div>
+
+<h2>The block list</h2>
+<p>On the left, feature code is split into three groups, each with its own <strong>+</strong>:</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Classes</td><td>Named glyph classes such as <code>@UPPERCASE</code>. <strong>+</strong> opens “New glyph class”.</td></tr>
+<tr><td>Prefixes</td><td>Code at the top of the file: <code>languagesystem</code> lines, standalone lookups, other declarations. <strong>+</strong> adds one straight away, named <code>__prefix_N__</code>.</td></tr>
+<tr><td>Features</td><td>One block per feature tag. <strong>+</strong> opens “New feature”.</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>Hover a row and click its trash icon to delete it; Ink asks first.</li>
+<li>Blocks marked disabled in an imported .glyphs or UFO source are shown struck through and are left out of compiled fonts.</li>
+</ul>
+
+<h3>New feature</h3>
+<ul>
+<li>Pick a feature from the OpenType Feature Tag Registry or type any tag of up to four characters. Suggestions match the tag or its registered name — type “small” to find <code>smcp</code> — and include <code>ss01</code>–<code>ss20</code> and <code>cv01</code>–<code>cv99</code>.</li>
+<li>A valid tag that isn't registered is allowed, with a note saying so.</li>
+<li>If the tag already exists, the dialog offers to open that block instead.</li>
+</ul>
+<h3>New glyph class</h3>
+<p>Type a name using letters, digits, <code>.</code>, <code>_</code> or <code>-</code>; the leading <code>@</code> is added for you.</p>
+
+<h2>Writing code</h2>
+<p>Each block shows its tag and a type badge. What you type depends on the type:</p>
+<ul>
+<li><strong>Feature</strong> — only the body. Ink adds <code>feature xxxx { … } xxxx;</code>.</li>
+<li><strong>Class</strong> — only the members. Ink wraps them as <code>@name = [ … ];</code>.</li>
+<li><strong>Prefix</strong> — free text, used exactly as written.</li>
+</ul>
+<div class="pre"># liga — just the body
+sub f f i by f_f_i;
+sub f f by f_f;
+sub f i by fi;
+sub f l by fl;</div>
+<p>The editor has syntax highlighting, line numbers and undo per block. Every keystroke is saved immediately. If feature code changes elsewhere — a glyph rename rewrites it, or Time Machine restores it — the editor updates to match.</p>
+
+<h3>Editor shortcuts</h3>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 460px">
+<thead><tr><th>Windows</th><th>macOS</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><kbd>Ctrl F</kbd></td><td><kbd>⌘ F</kbd></td><td>Find and replace panel, with match case, regex and whole word</td></tr>
+<tr><td><kbd>F3</kbd> · <kbd>Ctrl G</kbd></td><td><kbd>⌘ G</kbd></td><td>Next match (add <kbd>Shift</kbd> for previous)</td></tr>
+<tr><td><kbd>Ctrl D</kbd></td><td><kbd>⌘ D</kbd></td><td>Select next occurrence</td></tr>
+<tr><td><kbd>Ctrl Shift L</kbd></td><td><kbd>⌘ ⇧ L</kbd></td><td>Select all matches</td></tr>
+<tr><td><kbd>Ctrl Alt G</kbd></td><td><kbd>⌘ ⌥ G</kbd></td><td>Go to line</td></tr>
+<tr><td><kbd>Tab</kbd> · <kbd>Shift Tab</kbd></td><td><kbd>Tab</kbd> · <kbd>⇧ Tab</kbd></td><td>Indent · outdent</td></tr>
+<tr><td><kbd>Ctrl Z</kbd> · <kbd>Ctrl Y</kbd></td><td><kbd>⌘ Z</kbd> · <kbd>⌘ ⇧ Z</kbd></td><td>Undo · redo</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Validation</h2>
+<p>Validation compiles your blocks exactly as export would, including the kerning and mark code Ink generates. It runs when the tab opens and whenever you press <strong>Validate</strong> — not while you type.</p>
+<ul>
+<li>The strip under the editor reads “No diagnostics” or a count of errors and warnings.</li>
+<li>After you edit code, add or delete blocks, or change kerning or glyphs, it shows <strong>Out of date</strong> and dims the old results. Press Validate again. Anchor edits don't mark it out of date, so validate after changing anchors too.</li>
+<li>Each diagnostic shows its block and line. Click it to jump there; problems are also marked in the editor's margin.</li>
+<li>Variable syntax — values such as <code>(wght=400:10 wght=900:50)</code>, <code>conditionset</code> and <code>variation</code> — compiles in variable fonts. A static font reports an error on that line.</li>
+</ul>
+
+<h2>Automatic features</h2>
+<p>On OTF and TTF export Ink generates <code>kern</code> (and <code>dist</code>) from your kerning, and <code>curs</code>, <code>mark</code>, <code>mkmk</code>, <code>abvm</code> and <code>blwm</code> from your anchors. A <code># Automatic Code</code> line inside your own block for one of those tags marks where the generated code goes: code above it runs first, code below it after.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px">
+<thead><tr><th>Your block for the tag</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>None</td><td>Generated code goes in its default place.</td></tr>
+<tr><td>One <code># Automatic Code</code> line</td><td>The line is replaced by the generated code.</td></tr>
+<tr><td><code>mark</code>, <code>mkmk</code>, <code>abvm</code> or <code>blwm</code> without the line</td><td>Your block replaces the generated one.</td></tr>
+<tr><td><code>curs</code> without the line</td><td>Generated code comes before yours.</td></tr>
+<tr><td><code>kern</code> without the line</td><td>Generated kerning comes after yours.</td></tr>
+<tr><td>More than one marker, or a <code>kern</code> marker inside <code>lookup { }</code></td><td>Compile error.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Export per format</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>OTF / TTF</td><td>Blocks are assembled in order with the generated code and compiled. Disabled blocks are left out.</td></tr>
+<tr><td>UFO / designspace</td><td>Written to <code>features.fea</code>. Disabled blocks are written commented out with a <code># disabled</code> line. Generated kern and mark code isn't written — kerning and anchors are exported as data.</td></tr>
+<tr><td>.glyphs</td><td>Written as features, prefixes and classes, keeping the disabled flag. Glyphs uses its own syntax for variable values, so variable code may not compile there.</td></tr>
+</tbody></table>
+</div>
+
+<h2>Compiled fonts</h2>
+<p>A font opened directly as OTF, TTF or WOFF is read-only here. Instead of an editor the tab summarises its GSUB and GPOS features, lookups and script systems, its GDEF classes and any warnings. Choose <strong>File → Export → Export as .ink…</strong> and Ink converts the lookups back into editable code — they appear as prefix blocks, in their original order.</p>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Good to know</div>
+<ul>
+<li>Blocks can't yet be reordered, renamed or disabled from this tab.</li>
+<li>All <code>languagesystem</code> statements are moved to the top at export, so export can accept a placement that Validate flags.</li>
+<li>Feature code is captured by Time Machine.</li>
+</ul>
+</div>
+
+<h2>References</h2>
+<ul class="refs">
+<li><a href="https://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html" target="_blank" rel="noopener">OpenType Feature File Specification</a> <span>· the syntax you write in this tab (Adobe AFDKO)</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gsub" target="_blank" rel="noopener">GSUB — Glyph Substitution Table</a> <span>· <code>sub</code> rules</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gpos" target="_blank" rel="noopener">GPOS — Glyph Positioning Table</a> <span>· <code>pos</code> rules, kerning, mark attachment</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gdef" target="_blank" rel="noopener">GDEF — Glyph Definition Table</a> <span>· glyph classes, mark sets, ligature carets</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/featuretags" target="_blank" rel="noopener">Feature Tag Registry</a> <span>· liga, smcp, ss01–ss20, cv01–cv99 …</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/scripttags" target="_blank" rel="noopener">Script tags</a> and <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/languagetags" target="_blank" rel="noopener">language system tags</a> <span>· for <code>languagesystem</code>, <code>script</code> and <code>language</code></span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/otvaroverview" target="_blank" rel="noopener">Font Variations overview</a> <span>· variable values and FeatureVariations</span></li>
+</ul>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="fontinfo-names.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Names</a>
+<a href="fontinfo-advanced.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Advanced →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

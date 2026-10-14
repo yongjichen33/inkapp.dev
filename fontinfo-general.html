@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font Info: General — Ink manual</title>
+<meta name="description" content="Font Info is the window for everything that applies to the whole font. Its General tab holds identification, credits and common OpenType values.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.shot{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 12px 32px rgba(45,51,54,.10)}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.spec{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:5px 11px;border-radius:999px;background:#e3e1ec;color:#2f2a96}
+.spec:hover{background:#d6d3ea;color:#231f7a}
+.refs li{font-size:16px;line-height:26px}
+.refs span{color:#5a6063;font-size:14px}
+.ft td{padding:13px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.ft td:first-child{font-weight:700;color:#2d3336;width:30%}
+.ft tr:nth-child(even){background:#f9f9fa}
+.ft th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html" class="on">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual · Font Info</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">General</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Font Info is the window for everything that applies to the whole font. Its General tab holds identification, credits and common OpenType values.</p>
+
+<div style="margin-top: 32px; background: #e4e9ec; border-radius: 14px; padding: 28px">
+<img class="shot" src="assets/screenshots/font-info-general.png" alt="Font Info window on the General tab: Family Name, Style Name, Style-Map fields, Units per em, version and copyright">
+</div>
+
+<h2>Opening Font Info</h2>
+<ul>
+<li>Press <kbd>Ctrl I</kbd> / <kbd>⌘ I</kbd>, choose <strong>File → Font Info</strong>, click the Info icon in the title bar, or run “Font Info” from the command palette (<kbd>Ctrl Shift P</kbd>).</li>
+<li>Each open font gets its own Font Info window. Asking again brings the existing window to the front; it closes when you close that font.</li>
+</ul>
+
+<h3>The tabs</h3>
+<p>The sidebar lists <strong>General</strong>, <strong>Masters</strong>, <strong>Designspace</strong>, <strong>Names</strong>, <strong>Features</strong>, <strong>Advanced</strong> and <strong>Compatibility</strong>. Two appear only when they apply:</p>
+<ul>
+<li><a href="fontinfo-designspace.html">Designspace</a> — for source projects whose axes can be edited (.ink, .ufo, .glyphs, .designspace).</li>
+<li><a href="fontinfo-compatibility.html">Compatibility</a> — when the font has two or more masters.</li>
+</ul>
+
+<h3>How edits are saved</h3>
+<ul>
+<li>Text and number fields save when you leave the field or press <kbd>Enter</kbd>. Multi-line fields save when you leave them, so <kbd>Enter</kbd> adds a new line.</li>
+<li>Checkboxes, menus and toggles save immediately.</li>
+<li><strong>Emptying a field unsets it</strong>, so Ink falls back to the value it would derive.</li>
+<li>Changes made in another window show up here automatically.</li>
+<li>Font Info has no undo of its own. Every change is captured by <a href="manual-time-machine.html">Time Machine</a>, which can restore it.</li>
+</ul>
+
+<h2>Identification</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/name" target="_blank" rel="noopener">OpenType spec · name ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/head" target="_blank" rel="noopener">head (unitsPerEm) ↗</a></div>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Family Name</td><td>The family, e.g. “Inter”. Exported as name ID 1 and used to build the full name, PostScript name and other derived names.</td></tr>
+<tr><td>Style Name</td><td>The style, e.g. “Bold Italic” (name ID 2; empty exports as “Regular”). Ink reads it to set the italic and bold style bits: any name containing “italic” or “oblique” is italic, and any containing “bold” is bold.</td></tr>
+<tr><td>Style-Map Family</td><td>The family name used for four-style (R / I / B / BI) style linking.</td></tr>
+<tr><td>Style-Map Style</td><td>One of <code>regular</code>, <code>italic</code>, <code>bold</code> or <code>bold italic</code>.</td></tr>
+<tr><td>Units per em</td><td>The size of the em square, e.g. 1000 or 2048. It cannot be left empty.</td></tr>
+<tr><td>Version Major · Version Minor</td><td>The font's version number.</td></tr>
+<tr><td>Year</td><td>The release year.</td></tr>
+</tbody></table>
+</div>
+
+<h2>Credits</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Copyright</td><td>Copyright notice (name ID 0).</td></tr>
+<tr><td>Trademark</td><td>Trademark notice (name ID 7).</td></tr>
+<tr><td>Designer · Designer URL</td><td>Exported as name IDs 9 and 12.</td></tr>
+<tr><td>Manufacturer · Manufacturer URL</td><td>Exported as name IDs 8 and 11.</td></tr>
+<tr><td>License · License URL</td><td>Licence description and link.</td></tr>
+</tbody></table>
+</div>
+<p>If you edit the Designer, Manufacturer or URL rows on the <a href="fontinfo-names.html">Names</a> tab, those OpenType-specific values take precedence over the fields here.</p>
+
+<h2>OS/2 values</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/os2" target="_blank" rel="noopener">OpenType spec · OS/2 ↗</a></div>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>OS/2 Weight Class</td><td>usWeightClass, 100–900: 100 Thin, 200 Extra-light, 300 Light, 400 Regular, 500 Medium, 600 Semi-bold, 700 Bold, 800 Extra-bold, 900 Black. It also suggests the PostScript weight name.</td></tr>
+<tr><td>OS/2 Width Class</td><td>usWidthClass, 1 (Ultra-condensed) to 9 (Ultra-expanded); 5 is normal.</td></tr>
+<tr><td>OS/2 Vendor ID</td><td>Your four-character vendor tag. Shorter tags are padded with spaces on export.</td></tr>
+</tbody></table>
+</div>
+
+<h2>Notes and references</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Note</td><td>Free-form notes about the font.</td></tr>
+<tr><td>Sample Text</td><td>Sample string shipped in the font (name ID 19).</td></tr>
+<tr><td>Tracing reference font</td><td>An OTF or TTF drawn behind your outline as a tracing template. <strong>Select…</strong> picks a file, <strong>Clear</strong> goes back to the default — Ink's bundled Inter.</td></tr>
+<tr><td>Guidelines (JSON)</td><td>Font-wide guidelines as JSON text.</td></tr>
+</tbody></table>
+</div>
+
+<h2>Grid</h2>
+<p>These two values control how coordinates are <em>rounded</em> in this font — not the grid you see on the canvas, which adapts to the zoom level on its own.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Grid spacing</td><td>The rounding step. Default 1 (whole units). <strong>0 turns off all rounding for this font.</strong></td></tr>
+<tr><td>Grid subdivision</td><td>Coordinates round to spacing ÷ subdivision. Default 1; the minimum is 1.</td></tr>
+</tbody></table>
+</div>
+<p>An empty or invalid entry reverts to the current value. Rounding while you draw is switched by <strong>Round when editing</strong> in <a href="settings-editor.html">Settings → Editor</a>.</p>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Fonts opened as OTF, TTF or WOFF</div>
+<p>A compiled font opened directly is edited in memory only — Font Info changes are not written back to the file. Save it as an <code>.ink</code> project to keep your edits, or export a new font.</p>
+</div>
+
+<h2>References</h2>
+<ul class="refs">
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/name" target="_blank" rel="noopener">name — Naming Table</a> <span>· name IDs 0–25</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/head" target="_blank" rel="noopener">head — Font Header Table</a> <span>· unitsPerEm</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/os2" target="_blank" rel="noopener">OS/2 — OS/2 and Windows Metrics Table</a> <span>· usWeightClass, usWidthClass, achVendID</span></li>
+</ul>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="manual-kerning.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Kerning editor</a>
+<a href="fontinfo-masters.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Masters →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

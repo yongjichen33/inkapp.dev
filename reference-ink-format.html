@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The .ink file format — Ink reference</title>
+<meta name="description" content="An .ink file is a single SQLite database holding one font project — every master, layer, kerning pair, feature and Font Info field — together with the font's own version history.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:64px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.pre{margin-top:18px;background:#111314;border-radius:10px;padding:22px 24px;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:22px;color:#d7dbde;white-space:pre;overflow-x:auto}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.dec{background:#ffffff;border-radius:12px;padding:24px 26px;box-shadow:0 12px 32px rgba(45,51,54,.05);display:flex;flex-direction:column;gap:8px}
+.dec h3{margin:0;font-size:19px}
+.dec p{margin:0;font-size:15.5px;line-height:25px}
+.dec .k{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;text-transform:uppercase;color:#5a6063}
+.cmp td{padding:12px 16px;vertical-align:top;font-size:14.5px;line-height:22px;color:#3c4245;border-top:1px solid rgba(173,179,182,.25)}
+.cmp td:first-child{font-weight:700;color:#2d3336;width:16%}
+.cmp td:nth-child(2){background:#f4f3fb}
+.cmp th{padding:12px 16px;text-align:left;font-size:14px;background:#f2f4f5}
+.ft td{padding:11px 16px;vertical-align:top;font-size:14.5px;line-height:22px;color:#3c4245}
+.ft td:first-child{font-weight:700;color:#2d3336;width:18%}
+.ft td:nth-child(2){font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#2f2a96;width:38%}
+.ft tr:nth-child(even){background:#f9f9fa}
+.ft th{padding:12px 16px;text-align:left;font-size:14px;background:#f2f4f5}
+.refs li{font-size:16px;line-height:26px}
+.refs span{color:#5a6063;font-size:14px}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}.stack{grid-template-columns:minmax(0,1fr) !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ reference</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #5a6063">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html" class="on">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 860px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Reference</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">The .ink file format</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">An <code>.ink</code> file is a single SQLite database holding one font project — every master, layer, kerning pair, feature and Font Info field — together with the font's own version history.</p>
+
+<h2>What's in a .ink file</h2>
+<ul>
+<li><strong>The database is the font.</strong> Ink edits it directly; there is no separate in-memory copy waiting to be saved. UFO, <code>.glyphs</code>, <code>.designspace</code>, OTF and TTF files are written fresh from it on <strong>Export</strong>.</li>
+<li><strong>How a file comes to exist.</strong> Creating a new font makes a native <code>.ink</code>. Opening a UFO or Glyphs source creates a companion file next to it — <code>Font.ufo</code> gets <code>Font.ufo.ink</code> — and Ink works in that from then on. A compiled OTF or TTF is opened in memory and only becomes a file when you save it as <code>.ink</code>.</li>
+<li><strong>Mostly plain tables.</strong> Relational tables hold the data, with JSON where the structure is irregular (outlines, components, vendor data) and compressed blobs only in the history tables.</li>
+<li><strong>One version number.</strong> The file records a single schema version integer.</li>
+</ul>
+
+<h2>Design decisions</h2>
+<div class="stack" style="margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<div class="dec">
+<h3>SQLite, not text files</h3>
+<p><span class="k">Why</span><br>Every format Ink reads goes down one data path. Panels query only what they show, writes are atomic and crash-safe, and constraints enforce invariants such as one default layer per glyph.</p>
+<p><span class="k">Trade-off</span><br>The file is binary, so git can't diff or merge it line by line. Exchange goes through export.</p>
+</div>
+<div class="dec">
+<h3>One file, not a folder</h3>
+<p><span class="k">Why</span><br>A single file is easy to send, back up and double-click. Operating systems associate an app with a file type far more reliably than with a folder bundle such as <code>.ufo</code>.</p>
+<p><span class="k">Trade-off</span><br>While a font is open SQLite keeps a <code>-wal</code> file beside it; close the font before copying the <code>.ink</code> elsewhere.</p>
+</div>
+<div class="dec">
+<h3>Import translates, export rewrites</h3>
+<p><span class="k">Why</span><br>Importers map everything they understand into typed columns, and keep everything else as JSON vendor data on the font, masters, glyphs, layers and instances. Export writes brand-new files, so there is no patching of stale originals.</p>
+<p><span class="k">Trade-off</span><br>What no parser can see — comments, formatting, attribute order, a UFO's <code>data/</code> folder — is not kept.</p>
+</div>
+<div class="dec">
+<h3>History inside the file</h3>
+<p><span class="k">Why</span><br><a href="manual-time-machine.html">Time Machine</a> snapshots travel with the font, and a restore rolls back outlines, kerning, anchors and metadata together.</p>
+<p><span class="k">How</span><br>Glyph layers are stored as keyframes plus small deltas. Snapshot payloads go into a content-addressed store — identical outlines are stored once, compressed — so a snapshot with no changes costs almost nothing.</p>
+<p><span class="k">Trade-off</span><br>History only grows: every snapshot that changes something adds to the file until you clear it. See <a href="#file-size">File size</a>.</p>
+</div>
+<div class="dec">
+<h3>Compact outlines</h3>
+<p><span class="k">How</span><br>Each layer keeps its contours as JSON in one row, with points in a flat positional encoding and persistent point ids. Components carry a full 2×2 matrix and offset.</p>
+<p><span class="k">Why</span><br>One row per layer keeps reads cheap; the flat encoding cut outline data by about three quarters.</p>
+</div>
+<div class="dec">
+<h3>One layer model</h3>
+<p><span class="k">How</span><br>Every layer is a <em>master</em> layer, a <em>special</em> layer (brace or bracket), a free-form <em>sketch</em> layer or an <em>image</em> layer. Anchors, guidelines and metric keys belong to a layer, so they can differ per master.</p>
+<p><span class="k">Why</span><br>It combines Glyphs' structured interpolation layers with UFO's free-form layers.</p>
+</div>
+<div class="dec">
+<h3>Explicit coordinate spaces</h3>
+<p><span class="k">How</span><br>Axis ranges and instances are stored in user space; masters, brace layers and rule conditions in design space; the axis mapping (avar) bridges them and is checked to keep rising.</p>
+<p><span class="k">See</span><br><a href="fontinfo-designspace.html">Font Info → Designspace</a>.</p>
+</div>
+<div class="dec">
+<h3>Kerning as design data</h3>
+<p><span class="k">How</span><br>Groups, group membership and pairs, where each side is a glyph or a group. Every pair has a master and a direction — LTR, RTL or vertical. A glyph belongs to at most one group per side.</p>
+<p><span class="k">Why</span><br>It matches the source-format model; OTF and TTF kerning is generated from it on export.</p>
+</div>
+<div class="dec">
+<h3>Features as text plus generated code</h3>
+<p><span class="k">How</span><br>Feature, prefix and class blocks in AFDKO syntax, with Glyphs-style automatic, disabled and notes flags. Kerning and mark attachment are generated from data at export and placed with the <code># Automatic Code</code> marker.</p>
+<p><span class="k">See</span><br><a href="fontinfo-features.html">Font Info → Features</a>.</p>
+</div>
+<div class="dec">
+<h3>Compiled fonts become source</h3>
+<p><span class="k">How</span><br>Saving an OTF or TTF as <code>.ink</code> turns its kerning, anchors and GSUB / GPOS lookups back into editable data and feature code. Ink recompiles the result and checks it against the original before keeping it; anything that fails is reported. The original binary isn't kept.</p>
+<p><span class="k">Trade-off</span><br>TrueType hinting, colour, bitmap and other unmodelled tables are not carried over.</p>
+</div>
+<div class="dec">
+<h3>One writer at a time</h3>
+<p><span class="k">How</span><br>SQLite runs in write-ahead-log mode with foreign keys on. Ink runs as a single instance and locks each font database it has open.</p>
+<p><span class="k">Why</span><br>The real risk is two editors holding diverging in-memory edits of the same font, not database corruption.</p>
+</div>
+<div class="dec">
+<h3>Forward-only versioning</h3>
+<p><span class="k">How</span><br>The file stores one schema version. Opening an older file migrates it forward inside a transaction, then compacts it. A file from a newer Ink is refused with a request to update.</p>
+<p><span class="k">Trade-off</span><br>No backward compatibility: an older Ink can't open a newer file.</p>
+</div>
+</div>
+<p>App settings, undo history, the clipboard and editor session state never go into the file.</p>
+
+<h2 id="file-size">File size</h2>
+<p>The biggest cost of the format: an <code>.ink</code> file is noticeably larger than the same font saved as <code>.glyphs</code> or UFO. Three things add up.</p>
+<div class="stack" style="margin-top: 18px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<div class="dec">
+<h3>Everything is explicit</h3>
+<p>Every master's outlines, metrics and anchors are stored in full, and kerning is expanded per master and per direction rather than shared or inferred. Source formats lean on defaults, sparse masters and shared group data instead.</p>
+</div>
+<div class="dec">
+<h3>Built for queries</h3>
+<p>Indexes on glyphs, layers and kerning let Ink read only what it shows — but they take space on disk that a text format doesn't need.</p>
+</div>
+<div class="dec">
+<h3>History lives inside</h3>
+<p>Time Machine snapshots are part of the file. The first snapshot is effectively a second, compressed copy of every outline, and each snapshot after it adds whatever changed. Over a long project, history can outweigh the font itself.</p>
+</div>
+</div>
+<h3>Keeping it in check</h3>
+<ul>
+<li>Unchanged outlines are stored once and compressed, so repeated snapshots of the same state cost almost nothing, and a snapshot with no changes is never written.</li>
+<li>When history grows past 60% of the file's size, Ink suggests clearing it. <a href="manual-time-machine.html"><strong>Clear history…</strong></a> removes all snapshots and compacts the file — your current font is untouched.</li>
+<li>To send or archive a font compactly, export it to UFO or <code>.glyphs</code>; neither carries history.</li>
+<li>While a font is open, SQLite's <code>-wal</code> file can temporarily hold another copy of recent changes until it is checkpointed.</li>
+</ul>
+
+<h2>Data model</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 640px">
+<thead><tr><th>Area</th><th>Tables</th><th>Holds</th></tr></thead>
+<tbody>
+<tr><td>Font</td><td>fonts · font_info · name_records</td><td>Source format, units per em, typed name / OS/2 / hhea / head / post / PostScript / WOFF fields, explicit name records</td></tr>
+<tr><td>Designspace</td><td>variation_axes · variation_axis_mappings · variation_axis_labels · variation_instances · designspace_rules</td><td>Axes (user space), avar stops, STAT labels, instances, rules</td></tr>
+<tr><td>Masters</td><td>masters · master_alignment_zones · master_custom_parameters · variation_sources</td><td>Per-master metrics, zones and parameters; interpolation sources (masters and brace layers) in design space</td></tr>
+<tr><td>Glyphs</td><td>glyphs · glyph_codepoints</td><td>Names, production names, export flag, colour, category, Unicode values</td></tr>
+<tr><td>Layers</td><td>glyph_layers · layer_anchors · layer_guidelines · glyph_metric_keys · image_store</td><td>Outlines, components, metrics, anchors, guidelines, metric formulas, images</td></tr>
+<tr><td>Kerning</td><td>kerning_groups · glyph_kerning_assignments · kerning_pairs · kerning_lookups</td><td>Groups, membership, pairs per master and direction</td></tr>
+<tr><td>Layout</td><td>feature_code · attachment_lookups</td><td>Feature blocks; structure of mark, mkmk, curs, abvm and blwm lookups</td></tr>
+<tr><td>Other</td><td>glyph_notes · smart_sets · font_metadata_ext</td><td>Glyph notes, saved glyph sets, conversion records</td></tr>
+<tr><td>History</td><td>snapshots · snapshot_glyph_deltas · snapshot_blobs · …</td><td>Time Machine</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Compared with Glyphs and UFO</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="cmp" style="width: 100%; border-collapse: collapse; min-width: 760px">
+<thead><tr><th></th><th>.ink</th><th>.glyphs / .glyphspackage</th><th>UFO 3 + .designspace</th></tr></thead>
+<tbody>
+<tr><td>Container</td><td>One file (plus a temporary <code>-wal</code> while open)</td><td>One text file, or a package folder with one file per glyph</td><td>A <code>.ufo</code> folder per master — one <code>.glif</code> per glyph per layer, plus plists — and a separate <code>.designspace</code> XML file</td></tr>
+<tr><td>Encoding</td><td>SQLite tables and JSON columns</td><td>OpenStep-style property list</td><td>XML property lists and GLIF; <code>features.fea</code> as text</td></tr>
+<tr><td>Masters</td><td>All in one database; one master layer per glyph per master; brace and bracket layers per glyph</td><td>All in one file; master layers per glyph; brace and bracket layers</td><td>One UFO per source, tied together by the designspace</td></tr>
+<tr><td>Designspace</td><td>Axes, mappings, STAT labels, instances and rules in tables; user and design space explicit</td><td>Axes, masters and instances in the file; mappings and labels through custom parameters</td><td>Designspace 5: axes, maps, sources, instances, rules, labels, variable-font subsets</td></tr>
+<tr><td>Kerning</td><td>Groups and pairs per master <strong>and per direction</strong> (LTR / RTL / vertical)</td><td>Per master; separate LTR, RTL and vertical kerning</td><td><code>groups.plist</code> and <code>kerning.plist</code> per UFO; no direction field</td></tr>
+<tr><td>Features</td><td>Blocks with automatic / disabled / notes flags; kern and mark generated at export</td><td>Features, prefixes and classes with flags; automatic features generated</td><td>One <code>features.fea</code>; kern and mark generated by the compiler</td></tr>
+<tr><td>History</td><td><strong>Built in</strong></td><td>Relies on backups or version control</td><td>Relies on version control</td></tr>
+<tr><td>File size</td><td><strong>Largest</strong> — explicit per-master data, indexes and in-file history; grows with snapshots until history is cleared</td><td>Compact text; one file</td><td>Compact per file, though many small files add file-system overhead</td></tr>
+<tr><td>Version control</td><td>Binary — poor for git; export to UFO for reviewable diffs</td><td>Text diffs; the package format is friendlier</td><td>Best: small per-glyph files that merge well</td></tr>
+<tr><td>Loading</td><td>Queries only what is shown; no full parse on open</td><td>The whole file is parsed (packages per glyph)</td><td>Glyph files can be read lazily; many small files slow bulk reads</td></tr>
+<tr><td>Extensibility</td><td>JSON vendor data on font, master, glyph, layer and instance</td><td><code>customParameters</code> and <code>userData</code></td><td><code>lib.plist</code>, glyph <code>lib</code>, the <code>data/</code> folder</td></tr>
+<tr><td>Interchange</td><td>Ink only — export to UFO, .glyphs, OTF or TTF to share</td><td>Glyphs, glyphsLib / fontmake and other editors</td><td>The broadest open format: fontmake, fontTools and most editors</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>In short:</strong> use <code>.ink</code> as your working file, and UFO or <code>.glyphs</code> for exchange, compact archiving and reviewing changes in version control.</p>
+
+<h2>Round-tripping</h2>
+<h3>UFO and .designspace</h3>
+<ul>
+<li><strong>Kept on import:</strong> outlines with point and component identifiers; components with their full transform; anchors and guidelines; other layers as sketch layers; groups and kerning (direction inferred from each glyph's Unicode bidi class); <code>features.fea</code> split into blocks; fontinfo into Font Info; <code>lib.plist</code> and glyph libs as vendor data; designspace axes, maps, labels, rules and instances.</li>
+<li><strong>Lost on import:</strong> the <code>data/</code> folder, XML comments and formatting.</li>
+<li><strong>On export:</strong> a pair present in both LTR and RTL is written once with its LTR value and a warning; vertical kerning isn't written. Generated kern and mark code isn't written as FEA — kerning and anchors are exported as data for the compiler. Disabled feature blocks are written commented out.</li>
+</ul>
+<h3>.glyphs</h3>
+<ul>
+<li><strong>Kept on import:</strong> master, brace, bracket and background layers; per-master LTR, RTL and vertical kerning and groups; features, prefixes and classes with their flags; metric keys, zones, stems, colours, production names; custom parameters and userData.</li>
+<li><strong>On export:</strong> written in the Glyphs 3 format. Designspace rules aren't written yet, and variable feature code uses feaLib syntax, which Glyphs' own syntax may not compile.</li>
+</ul>
+
+<h2>Inspecting a .ink file</h2>
+<p>Any SQLite client can open a <code>.ink</code> file. Open it read-only, and not while Ink is writing to it:</p>
+<div class="pre">sqlite3 -readonly MyFont.ink
+
+.tables
+SELECT version FROM schema_meta;
+
+SELECT g.glyph_name, l.name, l.advance_width
+FROM glyphs g JOIN glyph_layers l USING (font_id, glyph_id)
+WHERE l.layer_type = 'master';</div>
+<p>JSON columns such as <code>paths_json</code> and <code>vendor_data</code> work with SQLite's <code>json_extract</code> and <code>json_each</code>. History payloads in <code>snapshot_blobs</code> are zstd-compressed.</p>
+
+<div style="margin-top: 48px; background: #fbefe3; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #8a4a12">Stability</div>
+<ul>
+<li>The format is still evolving before Ink 1.0. Newer Ink versions migrate older files forward on open; older versions refuse files from newer ones.</li>
+<li>Don't write to a <code>.ink</code> with another tool while Ink has it open.</li>
+<li>Once a source has been opened, Ink works in its companion <code>.ink</code> and doesn't re-read the original — export when you need the UFO or Glyphs file updated.</li>
+</ul>
+</div>
+
+<h2>References</h2>
+<ul class="refs">
+<li><a href="https://www.sqlite.org/fileformat2.html" target="_blank" rel="noopener">SQLite database file format</a> <span>· and <a href="https://www.sqlite.org/wal.html" target="_blank" rel="noopener">write-ahead logging</a></span></li>
+<li><a href="https://unifiedfontobject.org/versions/ufo3/" target="_blank" rel="noopener">Unified Font Object (UFO) 3 specification</a></li>
+<li><a href="https://fonttools.readthedocs.io/en/latest/designspaceLib/index.html" target="_blank" rel="noopener">designspaceLib — the .designspace format</a></li>
+<li><a href="https://github.com/schriftgestalt/GlyphsSDK/blob/Glyphs3/GlyphsFileFormat/GlyphsFileFormatv3.md" target="_blank" rel="noopener">Glyphs 3 file format</a></li>
+<li><a href="https://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html" target="_blank" rel="noopener">OpenType Feature File Specification</a></li>
+<li><a href="reference-opentype.html">OpenType references</a> <span>· every table Ink writes</span></li>
+</ul>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="settings-plugins.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Settings → Plugins</a>
+<a href="reference-opentype.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: OpenType references →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

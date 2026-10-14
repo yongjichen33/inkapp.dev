@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings: Plugins — Ink manual</title>
+<meta name="description" content="Turn installed plugins on and off, and load a plugin you are developing from a local server.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul,.doc ol{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.pre{margin-top:18px;background:#111314;border-radius:10px;padding:22px 24px;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:22px;color:#d7dbde;white-space:pre;overflow-x:auto}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.ft td{padding:12px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.ft td:first-child{font-weight:700;color:#2d3336;width:34%}
+.ft tr:nth-child(even){background:#f9f9fa}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html" class="on">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual · Settings · Extensions</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Plugins</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Turn installed plugins on and off, and load a plugin you are developing from a local server.</p>
+
+<h2>Installing a plugin</h2>
+<ol>
+<li>Copy the plugin's folder — it contains a <code>plugin.json</code> and its HTML — into the plugins folder:
+<ul>
+<li>Windows: <code>%APPDATA%\com.intaglio.ink\plugins\</code></li>
+<li>macOS: <code>~/Library/Application Support/com.intaglio.ink/plugins/</code></li>
+</ul>
+</li>
+<li>In <strong>Settings → Plugins</strong>, click <strong>Reload</strong>.</li>
+<li>Click <strong>Enable</strong> next to the plugin. New plugins always start disabled.</li>
+</ol>
+<p>A folder without a valid <code>plugin.json</code> is skipped and doesn't appear in the list.</p>
+
+<h2>Installed plugins</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Status dot</td><td>Green when the plugin is enabled.</td></tr>
+<tr><td>Name and version</td><td>From the plugin's manifest.</td></tr>
+<tr><td>Slot</td><td>Where its panel docks: <em>right</em>, <em>left</em>, <em>bottom</em> or <em>headless</em> (no panel).</td></tr>
+<tr><td>dev</td><td>Marks the plugin loaded through Developer Mode.</td></tr>
+<tr><td>Enable / Disable</td><td>Turns it on or off. Menus update straight away, and disabling closes the plugin's windows.</td></tr>
+</tbody></table>
+</div>
+
+<h2>Developer Mode</h2>
+<p>Load a plugin straight from your development server, so changes appear as you work.</p>
+<ol>
+<li>Tick <strong>Enable Developer Mode</strong>. A <strong>Plugin manifest</strong> box appears with a starting manifest.</li>
+<li>Edit it: <code>id</code> and <code>entry</code> are required, and <code>entry</code> is your dev server's URL. Set <code>slot</code> to <code>right</code>, <code>left</code>, <code>bottom</code> or <code>headless</code>.</li>
+<li>Click <strong>Load Plugin</strong>. Ink checks the JSON and that the server answers, then confirms “Plugin loaded — switch to font view to see it”.</li>
+</ol>
+<div class="pre">{ "id": "dev-plugin", "name": "Dev Plugin", "version": "0.0.0",
+  "entry": "http://localhost:5173", "slot": "right", "defaultWidth": 350 }</div>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Invalid JSON</td><td>Fix the manifest's syntax.</td></tr>
+<tr><td>"id" and "entry" fields are required</td><td>Add the missing field.</td></tr>
+<tr><td>Cannot reach …</td><td>Start your dev server, or check the URL.</td></tr>
+<tr><td>Server responded with N</td><td>The server answered with an error; check the URL.</td></tr>
+</tbody></table>
+</div>
+<p>Untick Developer Mode to unload the dev plugin. Building a plugin is covered in <a href="api-plugins.html">Building plugins</a>.</p>
+
+<div style="margin-top: 48px; background: #fbefe3; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #8a4a12">Trust</div>
+<ul>
+<li>Every enabled plugin has full access to your fonts, and its Python scripts run with your account's full access. Only install plugins you trust.</li>
+<li>Developer Mode lets the loaded plugin run scripts from anywhere — enable it only for code you are writing yourself.</li>
+</ul>
+</div>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="settings-python.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Python</a>
+<a href="api-plugins.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Building plugins →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

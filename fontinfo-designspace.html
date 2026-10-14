@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font Info: Designspace — Ink manual</title>
+<meta name="description" content="Define a variable family's axes, its named instances, how user values map to design values, and the style labels apps show. The tab has four sub-tabs: Axes, Instances, Mapping and Labels.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.shot{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 12px 32px rgba(45,51,54,.10)}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.ft td{padding:13px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.ft td:first-child{font-weight:700;color:#2d3336;width:30%}
+.ft tr:nth-child(even){background:#f9f9fa}
+.ft th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.spec{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:5px 11px;border-radius:999px;background:#e3e1ec;color:#2f2a96}
+.spec:hover{background:#d6d3ea;color:#231f7a}
+.refs li{font-size:16px;line-height:26px}
+.refs span{color:#5a6063;font-size:14px}
+.map td{padding:13px 18px;vertical-align:top;font-size:15px;line-height:23px;color:#3c4245}
+.map td:first-child{font-weight:700;color:#2d3336;width:24%}
+.map td:nth-child(2){font-family:'JetBrains Mono',monospace;font-size:13px;color:#2f2a96;width:20%}
+.map tr:nth-child(even){background:#f9f9fa}
+.map th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}.stack{grid-template-columns:minmax(0,1fr) !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html" class="on">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual · Font Info</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Designspace</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Define a variable family's axes, its named instances, how user values map to design values, and the style labels apps show. The tab has four sub-tabs: <strong>Axes</strong>, <strong>Instances</strong>, <strong>Mapping</strong> and <strong>Labels</strong>.</p>
+
+<p>Designspace appears for source projects — <code>.ink</code>, <code>.ufo</code>, <code>.glyphs</code>, <code>.glyphspackage</code> and <code>.designspace</code>. It is hidden for compiled OTF, TTF and WOFF files. Fields save when you leave them.</p>
+
+<h2>Two scales: user space and design space</h2>
+<div class="stack" style="margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<div style="background: #ffffff; border-radius: 12px; padding: 24px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5a6063">USER SPACE</div>
+<div style="font-weight: 800; font-size: 19px; margin-top: 6px">What people pick</div>
+<p style="font-size: 16px; line-height: 25px">The values someone choosing a style sees, such as Weight 100–900. <strong>Axis ranges</strong> and <strong>instance coordinates</strong> are in user space.</p>
+</div>
+<div style="background: #ffffff; border-radius: 12px; padding: 24px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5a6063">DESIGN SPACE</div>
+<div style="font-weight: 800; font-size: 19px; margin-top: 6px">What you draw</div>
+<p style="font-size: 16px; line-height: 25px">The units your outlines are drawn at, such as stem widths 20–220. <strong>Master positions</strong> are in design space.</p>
+</div>
+</div>
+<p>The <a href="#mapping">Mapping</a> sub-tab connects the two. Keeping them straight is the most useful habit here — mixing them is the usual cause of odd results.</p>
+
+<h2 id="opentype">How it maps to OpenType</h2>
+<p>A variable font stores its designspace in a handful of OpenType tables. Each sub-tab of this page corresponds to one of them:</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="map" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>In Ink</th><th>OpenType</th><th>Relationship</th></tr></thead>
+<tbody>
+<tr><td>Axes</td><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/fvar" target="_blank" rel="noopener">fvar</a> axis records</td><td>Each axis is a <em>VariationAxisRecord</em>: tag, name, and minimum, default and maximum in <strong>user</strong> coordinates. <em>Hidden</em> sets the record's HIDDEN_AXIS flag (0x0001), which asks apps not to show the axis.</td></tr>
+<tr><td>Instances</td><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/fvar" target="_blank" rel="noopener">fvar</a> instance records</td><td>In OpenType a named instance is an <em>InstanceRecord</em> — a subfamily name, optional PostScript name and one user coordinate per axis. Ink also exports each active instance as its own static font.</td></tr>
+<tr><td>Mapping</td><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/avar" target="_blank" rel="noopener">avar</a> segment maps</td><td>avar re-maps each axis's <em>normalized</em> coordinate with a piecewise-linear segment map. Ink builds it from your user → design stops and writes it only when some axis is non-linear.</td></tr>
+<tr><td>Labels</td><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/stat" target="_blank" rel="noopener">STAT</a> axis values</td><td>Axis value tables name positions for font menus: format 1 a single value, format 2 a value with a range, format 3 a value linked to another (style linking), format 4 a combination across axes. <em>Older sibling</em> is OLDER_SIBLING_FONT_ATTRIBUTE (0x0001); <em>Elidable</em> is ELIDABLE_AXIS_VALUE_NAME (0x0002).</td></tr>
+<tr><td>Master positions · brace layers</td><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gvar" target="_blank" rel="noopener">gvar</a> / <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff2" target="_blank" rel="noopener">CFF2</a></td><td>The default master becomes the font's default outlines. Every other master and brace layer becomes a set of point deltas attached to its region of the normalized designspace — gvar for TTF, CFF2 blend data for OTF.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Normalized coordinates</h3>
+<p>Inside a variable font every axis is normalized: the minimum maps to −1, the default to 0 and the maximum to +1, linearly on each side of the default. On a Weight axis of 100 / 400 / 900, a weight of 650 normalizes to (650 − 400) ÷ (900 − 400) = 0.5. avar then bends that value — so your mapping decides where 0.5 lands among the masters — and all outline variation is stored against the result.</p>
+<p>Registered axis tags such as <code>wght</code>, <code>wdth</code>, <code>ital</code>, <code>slnt</code> and <code>opsz</code> have defined meanings and ranges in the Design-Variation Axis Tag Registry; tags for your own axes should use uppercase letters, like <code>GRAD</code>.</p>
+<div class="specs">
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/otvaroverview" target="_blank" rel="noopener">Font Variations overview ↗</a>
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg" target="_blank" rel="noopener">Axis tag registry ↗</a>
+</div>
+
+<h2>Axes</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/fvar" target="_blank" rel="noopener">OpenType spec · fvar ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg" target="_blank" rel="noopener">Axis tag registry ↗</a></div>
+<p>Axes are listed on the left with their tag and name; hidden axes carry a <strong>HIDDEN</strong> label. The toolbar has <strong>+ Add axis</strong>, <strong>− Remove axis</strong> and <strong>Move up / down</strong> (which changes the axis order).</p>
+
+<h3>Adding an axis</h3>
+<p>The <strong>Add axis</strong> dialog offers suggested tags; clicking one fills in every field:</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 460px">
+<thead><tr><th>Tag</th><th>Name</th><th>Min / Default / Max</th></tr></thead>
+<tbody>
+<tr><td><code>wght</code></td><td>Weight</td><td>100 / 400 / 900</td></tr>
+<tr><td><code>wdth</code></td><td>Width</td><td>50 / 100 / 200</td></tr>
+<tr><td><code>ital</code></td><td>Italic</td><td>0 / 0 / 1</td></tr>
+<tr><td><code>slnt</code></td><td>Slant</td><td>−90 / 0 / 0</td></tr>
+<tr><td><code>opsz</code></td><td>Optical Size</td><td>6 / 14 / 144</td></tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>Or type your own: a <strong>Tag</strong> of exactly four letters or digits, a <strong>Name</strong>, <strong>Min / Default / Max</strong> with min ≤ default ≤ max, and optionally <strong>Hidden (not shown to end-users)</strong>.</li>
+<li>Typing a registered tag fills in its name for you.</li>
+<li>The new axis is added at the end, and every existing master is placed at its default.</li>
+</ul>
+
+<h3>Editing an axis</h3>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Name</td><td>The axis name shown to users.</td></tr>
+<tr><td>Tag</td><td>Four-character identifier. Renaming it updates every master coordinate, mapping, instance and label that uses it.</td></tr>
+<tr><td>Hidden</td><td>Hidden axes are not offered to end users.</td></tr>
+<tr><td>Minimum · Default · Maximum</td><td>The axis range in user space. Ink refuses a range that would leave a master or brace layer outside it, and lists what is in the way.</td></tr>
+<tr><td>Master positions</td><td>Every master's position on this axis, in design space — the same values as <em>Axis Coordinates</em> on the <a href="fontinfo-masters.html">Masters</a> tab.</td></tr>
+</tbody></table>
+</div>
+
+<h3>Removing an axis</h3>
+<p>An unused axis is removed immediately. If instances or brace layers still use it, Ink removes nothing and lists them, so you can clear those references first.</p>
+
+<h2>Instances</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/fvar" target="_blank" rel="noopener">OpenType spec · fvar instance records ↗</a></div>
+<p>Named instances are the static styles of your family. <strong>+ Add instance</strong> creates “Instance N” at the axis defaults straight away; <strong>−</strong> removes the selected instance and <strong>↑ / ↓</strong> reorder them. Inactive instances carry an <strong>INACTIVE</strong> label.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Name</td><td>Required.</td></tr>
+<tr><td>PostScript name · Style name</td><td>Optional overrides for the exported names.</td></tr>
+<tr><td>Style-map family · Style-map style</td><td>Optional four-style linking for this instance.</td></tr>
+<tr><td>Active</td><td>Inactive instances are skipped on export.</td></tr>
+<tr><td>Axis coordinates</td><td>One value per axis in user space, limited to the axis range shown beside it.</td></tr>
+</tbody></table>
+</div>
+
+<h2 id="mapping">Mapping (avar)</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/avar" target="_blank" rel="noopener">OpenType spec · avar ↗</a></div>
+<p>Mapping tells Ink which design value each user value lands on — so a Weight of 400 can sit wherever your Regular master is actually drawn. Choose an axis from the pills, then edit the plot or the table; they stay in sync.</p>
+<h3>The plot</h3>
+<ul>
+<li>User values run left to right; design values run bottom to top.</li>
+<li>A dashed line shows a straight, linear mapping for reference. Tick marks on the left edge show where each master sits in design space.</li>
+<li>Drag a stop to move it. The change saves when you let go; a click without moving changes nothing.</li>
+</ul>
+<h3>The table</h3>
+<ul>
+<li><strong>USER</strong> and <strong>DESIGN</strong> columns, one row per stop, sorted by user value.</li>
+<li><strong>+ Add stop</strong> places a stop in the widest gap, exactly on the current curve, so the mapping doesn't change until you edit it. <strong>×</strong> removes a stop.</li>
+<li>Stops at the axis minimum and maximum can't be removed, and their user value is locked.</li>
+</ul>
+<h3>Rules</h3>
+<p>The mapping must keep rising, and each user value can appear only once. An edit that breaks this is refused with an explanation, and the plot and table go back to the stored mapping. An axis with no stops maps linearly; Ink writes an <code>avar</code> table on export when any axis is non-linear.</p>
+
+<h2>Labels (STAT)</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/stat" target="_blank" rel="noopener">OpenType spec · STAT ↗</a></div>
+<p>Style labels let apps name positions on each axis — “Bold” at 700, “Condensed” at 75. Pick an axis from the pills.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Name</td><td>The label, e.g. “Bold”.</td></tr>
+<tr><td>Value</td><td>The axis value it names.</td></tr>
+<tr><td>Range</td><td>Optional min and max the label covers.</td></tr>
+<tr><td>Linked</td><td>Optional linked value — for example Regular 400 linked to Bold 700 for style linking.</td></tr>
+<tr><td>Flags</td><td><strong>Older sibling</strong> and <strong>Elidable</strong> (left out of combined names, like “Regular”).</td></tr>
+</tbody></table>
+</div>
+<p><strong>+ Add label</strong> adds one at the axis default. Below the table, the collapsible <strong>Multi-axis labels</strong> section names a combination of values across several axes, each with a name, flags and one value per axis.</p>
+
+<h2>Related in the glyph editor</h2>
+<div style="margin-top: 20px; background: #e4e9ec; border-radius: 14px; padding: 28px">
+<img class="shot" src="assets/screenshots/glyph-editor-variation.png" alt="Glyph editor in VAR mode with masters overlaid, axis sliders, an Add brace layer here button and a designspace plot">
+</div>
+<ul>
+<li><strong>Brace layers</strong> — in the editor's VAR mode, move the axis sliders or the point on the plot and click <strong>Add brace layer here</strong> to draw one glyph at an intermediate location. Or use <strong>+ → Brace {}</strong> in the Layers panel.</li>
+<li><strong>Exporting</strong> — <strong>File → Export → Export Variable Font…</strong> writes OTF (CFF2) or TTF (gvar). <strong>Export as OTF / TTF…</strong> exports a single master or instance. Both are refused while any glyph has a <a href="fontinfo-compatibility.html">compatibility blocker</a>.</li>
+</ul>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Good to know</div>
+<ul>
+<li>Removing an instance or label asks for no confirmation; Time Machine captures axes, instances, mappings and labels.</li>
+<li>avar version 2, designspace rules and <code>&lt;variable-font&gt;</code> descriptors are imported and kept, but cannot be edited here yet.</li>
+</ul>
+</div>
+
+<h2>References</h2>
+<ul class="refs">
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/otvaroverview" target="_blank" rel="noopener">OpenType Font Variations overview</a> <span>· designspace, normalization, regions and deltas</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/fvar" target="_blank" rel="noopener">fvar — Font Variations Table</a> <span>· axes and named instances</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/avar" target="_blank" rel="noopener">avar — Axis Variations Table</a> <span>· axis mapping</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/stat" target="_blank" rel="noopener">STAT — Style Attributes Table</a> <span>· labels, formats 1–4, flags</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gvar" target="_blank" rel="noopener">gvar — Glyph Variations Table</a> <span>· TrueType outline deltas</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff2" target="_blank" rel="noopener">CFF2 — Compact Font Format version 2</a> <span>· PostScript outline variations</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg" target="_blank" rel="noopener">Design-Variation Axis Tag Registry</a> <span>· wght, wdth, ital, slnt, opsz</span></li>
+</ul>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="fontinfo-masters.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Masters</a>
+<a href="fontinfo-names.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Names →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text mode — Ink manual</title>
+<meta name="description" content="Text mode turns the glyph editor into a proofing line. Type a string, see it laid out with your kerning and OpenType shaping, and edit any glyph in it without leaving the words around it.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.shot{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 12px 32px rgba(45,51,54,.10)}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.spec{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:5px 11px;border-radius:999px;background:#e3e1ec;color:#2f2a96}
+.spec:hover{background:#d6d3ea;color:#231f7a}
+.refs li{font-size:16px;line-height:26px}
+.refs span{color:#5a6063;font-size:14px}
+.kt td{padding:11px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.kt tr:nth-child(even){background:#f9f9fa}
+.kt th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+.ft td{padding:12px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.ft td:first-child{font-weight:700;color:#2d3336;width:24%}
+.ft tr:nth-child(even){background:#f9f9fa}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html" class="on">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual · Glyph editor</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Text mode</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Text mode turns the glyph editor into a proofing line. Type a string, see it laid out with your kerning and OpenType shaping, and edit any glyph in it without leaving the words around it.</p>
+
+<div style="margin-top: 32px; background: #e4e9ec; border-radius: 14px; padding: 28px">
+<img class="shot" src="assets/screenshots/glyph-editor-text-mode.png" alt="Glyph editor in text mode: a typed sentence on the canvas, a black preview strip and a metrics table with LSB, RSB, AW and KERN rows">
+</div>
+
+<h2>Starting and stopping</h2>
+<h3>Getting text on the canvas</h3>
+<ul>
+<li>Every editor tab draws its glyphs as a line of text, even outside text mode — a tab opened for one glyph is a line of one.</li>
+<li>Select several glyphs in the grid and choose <strong>Open N Glyphs</strong> (right-click) or <strong>Edit selected glyphs</strong> to open them as one line.</li>
+<li><kbd>Ctrl T</kbd> / <kbd>⌘ T</kbd> opens an empty editor tab to type into.</li>
+</ul>
+<h3>Turning text mode on</h3>
+<p>Click the <strong>Text Mode</strong> button (the <strong>T</strong>) in the editor toolbar. The caret lands to the right of the glyph you were editing, or at the start of an empty line. If the Hand or Measure tool was active, Ink switches to Select.</p>
+<h3>Leaving text mode</h3>
+<p>Each of these hands editing to the glyph just left of the caret:</p>
+<ul>
+<li><kbd>Esc</kbd> switches to the Select tool on that glyph. (If a menu or popover is open, the first <kbd>Esc</kbd> closes it.)</li>
+<li>Clicking an editing tool — Select, Draw, Pencil, Shape, Knife — switches to that tool.</li>
+<li>Clicking <strong>Text Mode</strong> again keeps the current tool.</li>
+<li><strong>Double-clicking</strong> a glyph edits that glyph with the Select tool.</li>
+</ul>
+<p>While the caret is live, tool letters such as <kbd>S</kbd> and <kbd>D</kbd> type letters, and <kbd>Space</kbd> types a space rather than panning.</p>
+
+<h2>Typing and editing</h2>
+<ul>
+<li>Each typed character is matched to a glyph by its Unicode value. A character the font has no glyph for becomes a blank placeholder half an em wide.</li>
+<li><kbd>Enter</kbd> starts a new line. <kbd>Backspace</kbd> deletes to the left and joins lines at a line start; <kbd>Delete</kbd> deletes to the right.</li>
+<li>With a selection, typing, <kbd>Enter</kbd>, <kbd>Backspace</kbd>, <kbd>Delete</kbd> and paste replace it.</li>
+<li>Removing glyphs from the line never removes them from the font — the line is only a viewing surface. It belongs to the tab and is kept until the tab closes.</li>
+<li>Input methods for Chinese, Japanese, Korean and other scripts work: Ink waits for the composition to finish, then inserts the whole phrase, and the candidate window follows the caret.</li>
+</ul>
+
+<h2>Caret and selection</h2>
+<ul>
+<li><strong>Click</strong> places the caret; <strong>drag</strong>, <strong>Shift-click</strong> or <kbd>Shift</kbd> + arrow keys select. <kbd>Ctrl A</kbd> / <kbd>⌘ A</kbd> selects the whole run.</li>
+<li><kbd>←</kbd> <kbd>→</kbd> move one glyph and wrap between lines. In right-to-left text, <kbd>→</kbd> always moves towards the right edge of the screen.</li>
+<li><kbd>↑</kbd> <kbd>↓</kbd> move to the same character position on the neighbouring line.</li>
+<li><strong>Ligatures</strong> with anchors named <code>caret_1</code>, <code>caret_2</code> … let the caret stop inside them; without those anchors a ligature — like a base letter with attached marks — is treated as one unit.</li>
+<li>The view scrolls to keep the caret visible; <kbd>Ctrl 0</kbd> / <kbd>⌘ 0</kbd> fits the whole run.</li>
+</ul>
+
+<h2>Editing glyphs in context</h2>
+<ul>
+<li>Double-click a glyph — or leave text mode — to edit it with the normal tools while the rest of the line stays visible. With text mode off, double-click another glyph in the line to switch to it.</li>
+<li>In a shaped line you edit the glyph you <em>see</em> — an Arabic medial form or a ligature — not the character you typed.</li>
+<li>Edits save to the font immediately, and every copy of that glyph in the line and in other tabs updates.</li>
+</ul>
+
+<h2>Shaping</h2>
+<p>Ink shapes each line with <a href="https://github.com/harfbuzz/harfrust" target="_blank" rel="noopener">HarfRust</a>, the HarfBuzz project's Rust port, so text behaves as it will in apps. Behind the scenes Ink compiles a temporary static font from your <strong>default master</strong> and shapes against it.</p>
+<h3>When it updates</h3>
+<ul>
+<li>A line is reshaped shortly after you stop typing.</li>
+<li>Changes to the glyph set, Unicode values, advance widths, kerning, anchors, feature code or designspace rebuild the temporary font first, so the line may briefly appear unshaped before it snaps into place. Outline edits never trigger a rebuild.</li>
+</ul>
+<h3>Features applied</h3>
+<p>The shaper applies the standard default features — the same set HarfBuzz uses — and offers no switches:</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Always</td><td><code>rvrn</code> <code>ccmp</code> <code>locl</code> <code>rlig</code> <code>mark</code> <code>mkmk</code> <code>abvm</code> <code>blwm</code></td></tr>
+<tr><td>Horizontal text</td><td><code>calt</code> <code>clig</code> <code>liga</code> <code>rclt</code> <code>curs</code> <code>kern</code> <code>dist</code></td></tr>
+<tr><td>By direction</td><td><code>ltra</code> <code>ltrm</code> · <code>rtla</code> <code>rtlm</code></td></tr>
+<tr><td>Fractions</td><td><code>frac</code> <code>numr</code> <code>dnom</code>, around U+2044 FRACTION SLASH</td></tr>
+<tr><td>Script-specific</td><td>e.g. Arabic <code>isol</code> <code>init</code> <code>medi</code> <code>fina</code>, and the Indic and Universal Shaping Engine sets</td></tr>
+<tr><td>Not applied</td><td>Optional features such as <code>ss01</code>–<code>ss20</code>, <code>salt</code>, <code>smcp</code>, <code>dlig</code>, <code>onum</code>, <code>tnum</code>, <code>case</code></td></tr>
+</tbody></table>
+</div>
+<h3>Script, direction and language</h3>
+<ul>
+<li>Direction comes from the text-direction button, never from the text itself.</li>
+<li>The script is taken from the first letter of each line, and each line is shaped on its own.</li>
+<li>No language is set, so the default language system is used.</li>
+</ul>
+<h3>Positioning</h3>
+<p>Substitutions and mark and cursive attachment come from the shaper. Advance widths and kerning come from Ink's own data — the active master's for glyphs you typed, the default master's for substituted glyphs such as ligatures — so what you see always reflects your latest kerning.</p>
+<h3>Glyphs without a Unicode value</h3>
+<p>A glyph inserted by name (see <a href="#clipboard">Clipboard</a>) appears exactly as placed and isn't shaped with its neighbours; the text on each side is shaped separately. Ink's kerning still applies to it.</p>
+<h3>When shaping fails</h3>
+<p>If the temporary font can't be built — usually because the feature code has errors — a warning-triangle button appears next to the text-direction button and the line renders unshaped. Check <a href="fontinfo-features.html">Font Info → Features</a> and press Validate.</p>
+<div class="specs">
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/gsub" target="_blank" rel="noopener">OpenType spec · GSUB ↗</a>
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/gpos" target="_blank" rel="noopener">GPOS ↗</a>
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/gdef" target="_blank" rel="noopener">GDEF ↗</a>
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/cmap" target="_blank" rel="noopener">cmap ↗</a>
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/featuretags" target="_blank" rel="noopener">Feature tags ↗</a>
+<a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/scripttags" target="_blank" rel="noopener">Script tags ↗</a>
+</div>
+
+<h2>Text direction</h2>
+<ul>
+<li>While text mode is on, a <strong>Text direction</strong> button (pilcrow icon) sits next to <strong>Text Mode</strong>. It is highlighted for right-to-left.</li>
+<li>Direction is set per tab, starts left-to-right, and isn't saved.</li>
+<li>It decides which kerning set is read and written, the direction the shaper uses, and the column order in the metrics table and preview.</li>
+<li>A right-to-left line simply runs right to left — there is no bidirectional reordering, so digits and Latin inside an Arabic line are reversed too. Use a separate tab for mixed-direction proofs.</li>
+</ul>
+
+<h2>Kerning while you type</h2>
+<ul>
+<li>The line shows your kerning for the active master and the tab's direction, and refreshes whenever kerning changes anywhere in Ink.</li>
+<li>The toolbar's <strong>kern</strong> button opens the kerning panel. <em>Context · cursor</em> shows the pair at the caret; <em>Context · glyph</em> shows the left and right pairs of the glyph you are editing.</li>
+<li>A value from a glyph-to-glyph pair is edited directly. A value that comes from a class pair shows the <code>@class</code> names and a padlock; click the padlock to unlock it and edit the class value.</li>
+</ul>
+<p>The full kerning workflow is in the <a href="manual-kerning.html">Kerning editor</a> manual.</p>
+
+<h2>Metrics table</h2>
+<p>Turn it on with <strong>View → Show Metrics Table</strong> or <a href="settings-editor.html">Settings → Editor → Metrics Table</a>. It sits under the preview, one column per glyph of the caret's line in on-screen order, and appears when the active layer is a master.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Header</td><td>The character, or the glyph name when it has no Unicode value.</td></tr>
+<tr><td>LSB</td><td>Moves the outline sideways, keeping the right sidebearing.</td></tr>
+<tr><td>RSB</td><td>Changes the advance width.</td></tr>
+<tr><td>AW</td><td>The advance width.</td></tr>
+<tr><td>KERN</td><td>From two glyphs on, the pair between neighbouring columns. It edits an existing glyph pair, otherwise the pair between the glyphs' kerning classes.</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>Type a formula such as <code>=h-1</code> to link a value to another glyph's metric.</li>
+<li>In a shaped line, the columns follow the shaped glyphs — you kern the forms that actually appear.</li>
+<li>All values are for the active master.</li>
+</ul>
+
+<h2>Preview panel</h2>
+<ul>
+<li>The toolbar's eye button shows or hides the preview strip under the canvas. Drag its top edge to resize it (80–500 px).</li>
+<li>It shows the caret's whole line with the same shaping, kerning and direction as the canvas — even after you leave text mode.</li>
+<li>Glyphs are sized from the font's ascender-to-descender height, so they keep their true proportions.</li>
+<li><strong>Black on white / White on black</strong> inverts it. For hinted compiled fonts, <strong>Show hinting preview</strong> renders hinted glyphs at a pixels-per-em size from 8 to 72.</li>
+</ul>
+
+<h2>Masters and variations</h2>
+<p>The active master is the edited glyph's layer, chosen in the inspector's <strong>Layers</strong> section. Switching masters updates that glyph's outline, advance and guides in the line, and switches the kerning and metrics shown. Mark positions and the advances of substituted glyphs always come from the default master.</p>
+
+<h2>Line length</h2>
+<p><a href="settings-editor.html">Settings → Editor → Text line length</a> sets how many glyphs fit on a line before it wraps (5–200, default 50). Wrapping counts glyphs, not width, and a wrap becomes a real line break.</p>
+
+<h2 id="clipboard">Clipboard</h2>
+<ul>
+<li><kbd>Ctrl C</kbd> / <kbd>⌘ C</kbd> copies the selection as plain text; <kbd>Ctrl X</kbd> / <kbd>⌘ X</kbd> cuts; <kbd>Ctrl V</kbd> / <kbd>⌘ V</kbd> pastes text as if you had typed it.</li>
+<li>Glyphs with a Unicode value are copied as their character. Glyphs without one are copied as <code>/glyphname</code> followed by a space — the convention Glyphs uses — and the slash itself as <code>/slash</code>.</li>
+<li>Pasting <code>/name</code> inserts that glyph. A name the font doesn't have becomes a placeholder that keeps the name. Typing <code>/name</code> key by key types a slash and letters instead — paste it.</li>
+<li>Pasting into an empty line sets the tab's direction from the pasted letters: Hebrew and Arabic make it right-to-left.</li>
+</ul>
+<p>On macOS, Copy, Cut, Paste and Select All work through the standard keyboard shortcuts; choosing <strong>Edit → Copy</strong> from the menu bar with the mouse doesn't copy a glyph run.</p>
+
+<h2>Shortcuts while the caret is live</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="kt" style="width: 100%; border-collapse: collapse; min-width: 480px">
+<thead><tr><th>Action</th><th>Windows</th><th>macOS</th></tr></thead>
+<tbody>
+<tr><td>Leave text mode, Select tool on the glyph left of the caret</td><td><kbd>Esc</kbd></td><td><kbd>Esc</kbd></td></tr>
+<tr><td>New line</td><td><kbd>Enter</kbd></td><td><kbd>Return</kbd></td></tr>
+<tr><td>Delete back · forward</td><td><kbd>Backspace</kbd> · <kbd>Delete</kbd></td><td><kbd>Delete</kbd> · <kbd>Fn Delete</kbd></td></tr>
+<tr><td>Move · extend selection</td><td>Arrows · <kbd>Shift</kbd> + arrows</td><td>Arrows · <kbd>⇧</kbd> + arrows</td></tr>
+<tr><td>Select the whole run</td><td><kbd>Ctrl A</kbd></td><td><kbd>⌘ A</kbd></td></tr>
+<tr><td>Copy · cut · paste</td><td><kbd>Ctrl C</kbd> · <kbd>Ctrl X</kbd> · <kbd>Ctrl V</kbd></td><td><kbd>⌘ C</kbd> · <kbd>⌘ X</kbd> · <kbd>⌘ V</kbd></td></tr>
+<tr><td>Fit the run in the pane</td><td><kbd>Ctrl 0</kbd></td><td><kbd>⌘ 0</kbd></td></tr>
+<tr><td>Edit a glyph</td><td>Double-click</td><td>Double-click</td></tr>
+</tbody>
+</table>
+</div>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Current limitations</div>
+<ul>
+<li>Undo and redo don't apply to typed text while the caret is live. Outline edits made after leaving text mode undo normally.</li>
+<li>No Home / End, word-by-word movement, or double- and triple-click selection.</li>
+<li>Optional features (stylistic sets, small caps …) and language-specific forms can't be previewed yet.</li>
+<li>A line mixing scripts is shaped as one script; there is no vertical text.</li>
+<li>Characters missing from the font appear as blank gaps without a warning.</li>
+</ul>
+</div>
+
+<h2>References</h2>
+<ul class="refs">
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cmap" target="_blank" rel="noopener">cmap — Character to Glyph Index Mapping Table</a></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gsub" target="_blank" rel="noopener">GSUB</a>, <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gpos" target="_blank" rel="noopener">GPOS</a> and <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gdef" target="_blank" rel="noopener">GDEF</a> <span>· substitution, positioning, glyph classes</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/featuretags" target="_blank" rel="noopener">Feature Tag Registry</a> and <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/scripttags" target="_blank" rel="noopener">Script tags</a></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/hmtx" target="_blank" rel="noopener">hmtx — Horizontal Metrics Table</a> <span>· advance widths and sidebearings</span></li>
+<li><a href="https://harfbuzz.github.io/" target="_blank" rel="noopener">HarfBuzz manual</a> and <a href="https://github.com/harfbuzz/harfrust" target="_blank" rel="noopener">HarfRust</a> <span>· the shaping engine</span></li>
+<li><a href="https://www.unicode.org/reports/tr9/" target="_blank" rel="noopener">Unicode Bidirectional Algorithm (UAX #9)</a> <span>· what full bidi reordering would do</span></li>
+</ul>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="manual-kerning.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Kerning editor</a>
+<a href="fontinfo-general.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Font Info →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

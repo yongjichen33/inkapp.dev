@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kerning editor — Ink manual</title>
+<meta name="description" content="A dedicated window for viewing, adding and editing kerning pairs and classes for each master — as a sortable list or a class-by-class matrix, with full left-to-right and right-to-left support.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.shot{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 12px 32px rgba(45,51,54,.10)}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.spec{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:5px 11px;border-radius:999px;background:#e3e1ec;color:#2f2a96}
+.spec:hover{background:#d6d3ea;color:#231f7a}
+.refs li{font-size:16px;line-height:26px}
+.refs span{color:#5a6063;font-size:14px}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html" class="on">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 780px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Kerning editor</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">A dedicated window for viewing, adding and editing kerning pairs and classes for each master — as a sortable list or a class-by-class matrix, with full left-to-right and right-to-left support.</p>
+
+<div style="margin-top: 32px; background: #e4e9ec; border-radius: 14px; padding: 28px">
+<img class="shot" src="assets/screenshots/kerning-editor.png" alt="Kerning editor in list view, showing class pairs, values and direction for the Regular master">
+</div>
+
+<h2>Opening the editor</h2>
+<p>Press <kbd>Ctrl Shift K</kbd> / <kbd>⌘ ⇧ K</kbd>. The Kerning Editor opens as its own window for the active font (or comes to the front if already open) and closes when you close that font.</p>
+
+<h2>Masters and views</h2>
+<ul>
+<li><strong>Master</strong> — choose which master's values you are editing. It starts on the default master; every master stores its own kerning values.</li>
+<li><strong>List / Matrix</strong> — switch between the two views in the top-right corner.</li>
+<li>In fonts converted from OTF or TTF, a note may say that some kerning rules from the original font are preserved but cannot be edited, with the reason. Those rules stay in the font as feature code.</li>
+</ul>
+
+<h2>List view</h2>
+<h3>Finding pairs</h3>
+<ul>
+<li><strong>Filter glyph or class…</strong> searches both sides.</li>
+<li>Kind chips: <strong>All</strong>, <strong>Pair</strong> (glyph–glyph), <strong>Group</strong> (class–class), <strong>Exception</strong> (glyph–class or class–glyph) and <strong>Fallback</strong> (pairs not tied to a particular master).</li>
+<li><strong>non-zero only</strong> hides pairs whose value is 0; the direction menu filters to LTR, RTL or vertical.</li>
+<li>Click the First, Second or Kern column header to sort; click again to reverse.</li>
+</ul>
+<h3>Editing</h3>
+<ul>
+<li>Click a value, type a number, then <kbd>Enter</kbd> to commit or <kbd>Esc</kbd> to cancel. Clicking away also commits.</li>
+<li>The chevron at the end of a row opens a drawer with each glyph's LSB, RSB and advance width and a preview of the pair.</li>
+<li>Check rows and use <strong>Delete (n)</strong> to remove them after a confirmation.</li>
+</ul>
+
+<h2>Adding pairs and classes</h2>
+<ul>
+<li><strong>+ Add</strong> — choose the first and second side (a glyph or a class), a value and a direction. If the list is filtered to LTR or RTL, that direction is preselected.</li>
+<li><strong>+ New Class</strong> — choose <em>Left (first)</em> or <em>Right (second)</em>, type a name (the <code>@</code> is added for you, e.g. <code>@kern.left_a</code>) and pick members from a filterable glyph list.</li>
+<li><strong>From the grid</strong> — every glyph's left and right kerning groups can also be set in the grid inspector. When a multi-glyph selection disagrees, the field shows “Mixed”.</li>
+</ul>
+
+<h2>Matrix view</h2>
+<p>A grid of first classes against second classes, with a count such as “12 × 30 classes”. Turn on <strong>Hide empty rows/columns</strong> to declutter. Click a cell to select it and double-click to edit its value.</p>
+<p>A cell where the same class pair exists in both LTR and RTL is marked <em>mixed directions</em> and cannot be edited in the matrix; its tooltip shows both values. Edit those pairs in the list view.</p>
+
+<h2>Right-to-left kerning</h2>
+<ul>
+<li>Direction belongs to each pair, not to the font, so one font can mix Arabic and Latin, and the same pair can carry separate LTR and RTL values.</li>
+<li>Pair sides are logical — first and second — not left and right. In RTL text the first glyph appears on the right.</li>
+<li>A new pair gets the direction you choose in the Add dialog or with the LTR / RTL toggle in text mode. Ink never guesses it from the glyphs.</li>
+<li>Vertical kerning from imported fonts is shown read-only.</li>
+</ul>
+
+<h2>Kerning while you type</h2>
+<p>You do not have to leave the glyph editor to kern. In text mode, the kerning panel shows the pair at the cursor; when the value comes from classes it shows their <code>@class</code> names.</p>
+<ul>
+<li>A value from a glyph-to-glyph pair is edited directly. A value that comes from a class pair is locked; click the <strong>padlock</strong> to unlock it and edit the class value.</li>
+<li>In the metrics table's KERN row, an edit changes an existing glyph pair, or otherwise the pair between the glyphs' kerning classes. See <a href="manual-text-mode.html">Text mode</a>.</li>
+<li><strong>View → Show Metrics Table</strong> lists LSB, RSB, width and kern for every glyph on the current line, in on-screen order (reversed for RTL).</li>
+</ul>
+
+<h2>How kerning is exported</h2>
+<p>In compiled fonts, kerning is a GPOS pair-adjustment lookup (lookup type 2): glyph pairs use format 1, class pairs format 2. The legacy <code>kern</code> table is not needed by modern apps.</p>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/gpos" target="_blank" rel="noopener">OpenType spec · GPOS ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/featuretags" target="_blank" rel="noopener">kern · dist feature tags ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/kern" target="_blank" rel="noopener">legacy kern table ↗</a></div>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table style="width: 100%; border-collapse: collapse; font-size: 16px; line-height: 25px; min-width: 520px">
+<thead><tr style="background: #f2f4f5; text-align: left"><th style="padding: 14px 20px; font-weight: 700; width: 150px">Format</th><th style="padding: 14px 20px; font-weight: 700">Behaviour</th></tr></thead>
+<tbody>
+<tr><td style="padding: 14px 20px; font-weight: 600; vertical-align: top">OTF / TTF</td><td style="padding: 14px 20px; color: #3c4245">Ink builds the <code>kern</code> feature (and <code>dist</code> for Indic-style scripts) from your kerning on every export. You never write kern feature code by hand.</td></tr>
+<tr style="background: #f9f9fa"><td style="padding: 14px 20px; font-weight: 600; vertical-align: top">UFO</td><td style="padding: 14px 20px; color: #3c4245">Written to <code>groups.plist</code> and <code>kerning.plist</code>. If a pair exists in both directions the LTR value is written, with a warning; vertical pairs are left out.</td></tr>
+<tr><td style="padding: 14px 20px; font-weight: 600; vertical-align: top">.glyphs</td><td style="padding: 14px 20px; color: #3c4245">LTR, RTL and vertical kerning are all kept.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Good to know</div>
+<ul>
+<li>Fonts opened directly as OTF or TTF are read-only. Save them as an <code>.ink</code> project to edit kerning.</li>
+<li>Kerning edits are captured by Time Machine at the next snapshot.</li>
+</ul>
+</div>
+
+<h2>References</h2>
+<ul class="refs">
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gpos" target="_blank" rel="noopener">GPOS — Glyph Positioning Table</a> <span>· lookup type 2, pair adjustment</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/featuretags" target="_blank" rel="noopener">Feature Tag Registry</a> <span>· <code>kern</code>, <code>dist</code>, <code>vkrn</code></span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/kern" target="_blank" rel="noopener">kern — Kerning Table</a> <span>· legacy format</span></li>
+</ul>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="manual-time-machine.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Time Machine</a>
+<a href="manual-text-mode.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Text mode →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

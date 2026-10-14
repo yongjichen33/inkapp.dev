@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font Info: Masters — Ink manual</title>
+<meta name="description" content="Masters are the drawn extremes of a family — Light and Black, Regular and Condensed. This tab adds, duplicates and removes them, and edits each master's metrics, zones, position in the designspace and custom parameters.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.spec{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:5px 11px;border-radius:999px;background:#e3e1ec;color:#2f2a96}
+.spec:hover{background:#d6d3ea;color:#231f7a}
+.refs li{font-size:16px;line-height:26px}
+.refs span{color:#5a6063;font-size:14px}
+.ft td{padding:13px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.ft td:first-child{font-weight:700;color:#2d3336;width:30%}
+.ft tr:nth-child(even){background:#f9f9fa}
+.ft th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html" class="on">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual · Font Info</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Masters</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Masters are the drawn extremes of a family — Light and Black, Regular and Condensed. This tab adds, duplicates and removes them, and edits each master's metrics, zones, position in the designspace and custom parameters.</p>
+
+<h2>The master list</h2>
+<p>Masters are listed on the left; the default master carries a <strong>DEFAULT</strong> tag. Click a name to edit it on the right. The toolbar under the list has four buttons:</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>+ Add master</td><td>Asks for a name and creates an empty master at the end of the list. Every glyph gets an empty layer on it, ready to draw. The first master in a font becomes the default.</td></tr>
+<tr><td>Duplicate master</td><td>Asks for a name and copies the selected master's metrics, alignment zones and custom parameters. Glyph outlines are <em>not</em> copied — every glyph starts with an empty layer.</td></tr>
+<tr><td>− Remove master</td><td>Deletes the selected master straight away. Ink refuses if any glyph has outlines or components on that master and lists the glyphs (up to 20). The last remaining master cannot be removed.</td></tr>
+<tr><td>★ Set as default master</td><td>Makes the selected master the reference for interpolation, compatibility checks and the default location of a variable font.</td></tr>
+</tbody></table>
+</div>
+<p>Fields on the right save when you leave them.</p>
+
+<h2>Identification</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Name</td><td>The master's name, as shown in layer lists and master switchers.</td></tr>
+<tr><td>Visible</td><td>Whether the master is shown.</td></tr>
+</tbody></table>
+</div>
+
+<h2>Metrics</h2>
+<p>Each master has its own vertical metrics. Leaving a field empty unsets it. On export they seed the font-wide line metrics in hhea and OS/2 (which you can override on the <a href="fontinfo-advanced.html">Advanced</a> tab), and the italic angle becomes post.italicAngle.</p>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/hhea" target="_blank" rel="noopener">OpenType spec · hhea ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/os2" target="_blank" rel="noopener">OS/2 ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/post" target="_blank" rel="noopener">post ↗</a></div>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Ascender · Descender</td><td>Top and bottom of the design space for this master.</td></tr>
+<tr><td>x-height · Cap height</td><td>Lowercase and capital heights. They also position the standard alignment zones below.</td></tr>
+<tr><td>Italic angle</td><td>Slope of the italic, in degrees. The default master's angle is the one exported.</td></tr>
+<tr><td>Slant angle</td><td>Slant used for slanted (rather than true italic) designs.</td></tr>
+</tbody></table>
+</div>
+
+<h2>Axis coordinates</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/otvaroverview" target="_blank" rel="noopener">OpenType spec · Font Variations overview ↗</a></div>
+<p>One field per designspace axis, labelled with its tag and name — for example <code>wght · Weight</code>. Values are in <strong>design-space</strong> units, the units your outlines are drawn in. If the master has no stored value for an axis, the axis default is shown.</p>
+<p>A font with no axes shows “No axes defined — add axes in the Designspace tab.” These are the same values as <strong>Master positions</strong> on the <a href="fontinfo-designspace.html">Designspace</a> tab.</p>
+
+<h2>Zones</h2>
+<p>Alignment zones tell hinting where overshoots belong. In PostScript-flavoured fonts they become the BlueValues and OtherBlues of the CFF Private DICT: <em>blue</em> and <em>other</em> zones map to those, and the <em>family</em> kinds to FamilyBlues and FamilyOtherBlues.</p>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff" target="_blank" rel="noopener">OpenType spec · CFF ↗</a></div>
+<h3>Standard zones</h3>
+<p>Five fixed rows — <strong>Ascender</strong>, <strong>Cap-height</strong>, <strong>x-height</strong>, <strong>Baseline</strong> and <strong>Descender</strong>. Each sits at the matching metric of this master; you enter only the zone's <em>size</em> (overshoot). A size of 0 removes the zone. A row is disabled when its metric is not set on this master.</p>
+<h3>Custom zones</h3>
+<ul>
+<li>Each row has a <strong>Position</strong>, a <strong>Size</strong> and a <strong>Kind</strong>: <em>blue</em>, <em>other</em>, <em>family blue</em> or <em>family other</em>.</li>
+<li><strong>+ Add custom zone</strong> adds a row at position 0; <strong>×</strong> removes one.</li>
+</ul>
+
+<h2>Custom parameters</h2>
+<p>Name / value pairs carried with the master, such as those imported from a .glyphs source. Values are read as JSON where possible and stored as plain text otherwise. <strong>+ Add parameter</strong> adds a row; <strong>×</strong> removes one.</p>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Good to know</div>
+<ul>
+<li>Removing a master asks for no confirmation — but masters, zones, parameters and coordinates are all captured by Time Machine.</li>
+<li>Masters cannot be reordered from this tab.</li>
+<li>After adding a master, check the <a href="fontinfo-compatibility.html">Compatibility</a> tab: its glyphs will need outlines that match the default master's structure.</li>
+</ul>
+</div>
+
+<h2>References</h2>
+<ul class="refs">
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/otvaroverview" target="_blank" rel="noopener">OpenType Font Variations overview</a> <span>· default instance, master regions</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/hhea" target="_blank" rel="noopener">hhea — Horizontal Header Table</a> <span>· ascender, descender</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/os2" target="_blank" rel="noopener">OS/2 — OS/2 and Windows Metrics Table</a> <span>· sTypoAscender, sxHeight, sCapHeight</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/post" target="_blank" rel="noopener">post — PostScript Table</a> <span>· italicAngle</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff" target="_blank" rel="noopener">CFF — Compact Font Format table</a> <span>· Private DICT blue zones</span></li>
+</ul>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="fontinfo-general.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← General</a>
+<a href="fontinfo-designspace.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Designspace →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

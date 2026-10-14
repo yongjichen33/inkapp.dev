@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font Info: Advanced — Ink manual</title>
+<meta name="description" content="Expert overrides for individual OpenType tables. Ink computes sensible values for all of these on export; fill a field only when you need to depart from the computed default.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.ft td{padding:12px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.ft td:first-child{font-weight:700;color:#2d3336;width:32%}
+.ft tr:nth-child(even){background:#f9f9fa}
+.ft th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.spec{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:5px 11px;border-radius:999px;background:#e3e1ec;color:#2f2a96}
+.spec:hover{background:#d6d3ea;color:#231f7a}
+.refs li{font-size:16px;line-height:26px}
+.refs span{color:#5a6063;font-size:14px}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html" class="on">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual · Font Info</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Advanced</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">Expert overrides for individual OpenType tables. Ink computes sensible values for all of these on export; fill a field only when you need to depart from the computed default.</p>
+
+<h2>Derived values and overrides</h2>
+<ul>
+<li>An empty field shows the value Ink will derive as a grey placeholder. Leave it empty and the field keeps following its source.</li>
+<li>Click the <strong>Recalculate</strong> icon inside a field to write the derived value in. From then on it is a fixed override and no longer follows its source.</li>
+<li>Empty the field again to return it to automatic.</li>
+<li>The groups below are collapsed when the tab opens; click a heading to expand it.</li>
+</ul>
+<p>For a compiled font opened directly, a banner warns that changes aren't saved to disk — export an OTF or TTF to write them.</p>
+
+<h2>OS/2 (advanced)</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/os2" target="_blank" rel="noopener">OpenType spec · OS/2 ↗</a></div>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Selection flags</td><td>fsSelection checkboxes: Underscore, Negative, Outlined, Strikeout, Use typo metrics, WWS and Oblique. Italic, Bold and Regular are shown read-only — they come from the Style Name on the General tab.</td></tr>
+<tr><td>PANOSE</td><td>The 10-digit visual classification. Choose a family type first (Latin Text, Latin Hand Written, Latin Decorative or Latin Symbol); the nine remaining digits then appear with labelled choices such as Serif style, Weight and Proportion. Changing the family type resets them.</td></tr>
+<tr><td>Family class</td><td>sFamilyClass — an IBM class such as Oldstyle Serifs or Sans Serif, plus a subclass where one applies.</td></tr>
+<tr><td>Unicode ranges</td><td>ulUnicodeRange1–4. <strong>Edit…</strong> opens a filterable list of Unicode blocks grouped by region; nothing is saved until you click Done.</td></tr>
+<tr><td>Code page ranges</td><td>ulCodePageRange1–2, edited the same way, grouped into Windows and OEM / MS-DOS code pages.</td></tr>
+<tr><td>OS/2 typo ascender · descender</td><td>Default to the font's ascender and descender.</td></tr>
+<tr><td>OS/2 typo line gap</td><td>Extra line spacing.</td></tr>
+<tr><td>OS/2 win ascent · win descent</td><td>Read-only. Measured at export from the tallest and lowest outlines in the default master; “—” when there is nothing to measure.</td></tr>
+<tr><td>Embedding permissions</td><td>fsType: Installable, Restricted license, Preview &amp; print, or Editable embedding, plus <em>No subsetting</em> and <em>Bitmap embedding only</em>.</td></tr>
+<tr><td>Subscript · Superscript</td><td>X and Y size and offset for each.</td></tr>
+<tr><td>Strikeout size · position</td><td>Thickness and height of the strikeout line.</td></tr>
+</tbody></table>
+</div>
+<p>If an imported flag value doesn't look like a valid bit list, Ink warns that editing it will replace it.</p>
+
+<h2>head</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/head" target="_blank" rel="noopener">OpenType spec · head ↗</a></div>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Mac style</td><td>Underline, Outline, Shadow, Condensed and Extended. Bold and Italic are read-only, from the Style Name.</td></tr>
+<tr><td>head flags</td><td>Rasterizer hints such as <em>Baseline at y=0</em>, <em>Left sidebearing at x=0</em>, <em>Force integer ppem</em>, <em>Optimized for ClearType</em> and Apple-specific layout flags. Until you change them, the default (baseline, left sidebearing and integer ppem) is shown.</td></tr>
+<tr><td>Lowest recommended PPEM</td><td>Smallest readable size in pixels per em.</td></tr>
+<tr><td>head created</td><td>Creation date, in ISO 8601.</td></tr>
+</tbody></table>
+</div>
+
+<h2>gasp</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/gasp" target="_blank" rel="noopener">OpenType spec · gasp ↗</a></div>
+<p>Grid-fitting and anti-aliasing behaviour per pixel size. With no rows, no gasp table is exported.</p>
+<ul>
+<li><strong>Add range</strong> adds a row with a <em>Max PPEM</em> and four switches: Grid-fit, Grayscale, Symmetric grid-fit and Symmetric smoothing.</li>
+<li>Rows are sorted by size when saved.</li>
+<li>Ink warns if the last row doesn't reach 65535 (sizes above it fall back to the rasterizer's defaults) or if two rows share a size.</li>
+</ul>
+
+<h2>hhea</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/hhea" target="_blank" rel="noopener">OpenType spec · hhea ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/hmtx" target="_blank" rel="noopener">hmtx ↗</a></div>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>hhea ascender · descender</td><td>Default to the font's ascender and descender.</td></tr>
+<tr><td>hhea line gap</td><td>Line gap used by macOS.</td></tr>
+<tr><td>Caret slope rise · run · offset</td><td>The angle and offset of the text cursor, for italics.</td></tr>
+</tbody></table>
+</div>
+
+<h2>vhea (vertical layout)</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/vhea" target="_blank" rel="noopener">OpenType spec · vhea ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/vmtx" target="_blank" rel="noopener">vmtx ↗</a></div>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Vertical metrics</td><td><strong>Auto</strong>, <strong>On</strong> or <strong>Off</strong>. Auto exports vhea / vmtx when vhea fields are set or any glyph has vertical metrics. A status line says whether the tables will be exported and why. Off keeps the stored values but doesn't export them.</td></tr>
+<tr><td>vhea ascender · descender · line gap</td><td>Default to half the em above and below, and 0.</td></tr>
+<tr><td>Caret slope rise · run · offset</td><td>Default 0, 1 and 0.</td></tr>
+</tbody></table>
+</div>
+<p>Setting vhea fields can turn Auto export on, so these fields have no Recalculate.</p>
+
+<h2>PostScript</h2>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/post" target="_blank" rel="noopener">OpenType spec · post ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff" target="_blank" rel="noopener">CFF ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/name" target="_blank" rel="noopener">name (ID 6) ↗</a></div>
+<p>The post table carries the underline values, fixed-pitch flag and glyph-name format. The hinting zones, stems and width defaults belong to the CFF table's Private DICT, used by OTF (PostScript-flavoured) fonts.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>post table format</td><td>Auto (3 for OTF, 2 for TTF), <em>2 — with glyph names</em>, or <em>3 — no glyph names</em>. Format 3 drops glyph names; in a TTF they can't be recovered.</td></tr>
+<tr><td>PS Font Name</td><td>The PostScript name (name ID 6). Defaults to Family-Style, limited to ASCII letters, digits and dots.</td></tr>
+<tr><td>PS Full Name</td><td>Defaults to “Family Style”.</td></tr>
+<tr><td>PS Slant Angle</td><td>Defaults to the italic angle.</td></tr>
+<tr><td>PS Weight Name</td><td>Defaults from the weight class, e.g. Bold for 700.</td></tr>
+<tr><td>PS Unique ID</td><td>Legacy unique ID.</td></tr>
+<tr><td>Underline thickness · position</td><td>Written to the post table.</td></tr>
+<tr><td>Blue values · Other blues · Family blues · Family other blues · Stem snap H · Stem snap V</td><td>PostScript hinting zones and stems, as lists.</td></tr>
+<tr><td>Blue fuzz · Blue shift · Blue scale · Force bold</td><td>Further PostScript hinting parameters.</td></tr>
+<tr><td>Default width X · Nominal width X</td><td>CFF width defaults.</td></tr>
+<tr><td>Default character · Windows char set</td><td>Legacy character settings.</td></tr>
+<tr><td>Is fixed pitch</td><td>Marks the font as monospaced.</td></tr>
+</tbody></table>
+</div>
+
+<h2>WOFF metadata</h2>
+<div class="specs"><a class="spec" href="https://www.w3.org/TR/WOFF/" target="_blank" rel="noopener">W3C · WOFF extended metadata ↗</a></div>
+<p>WOFF major and minor version, a metadata unique ID, and JSON fields for Vendor, Credits, Description, License, Copyright, Trademark, Licensee and Extensions.</p>
+
+<h2>Macintosh legacy</h2>
+<p>FOND family ID and FOND name, for classic Mac font suitcases.</p>
+
+<h2>Raw vendor JSON</h2>
+<p>Keys Ink doesn't recognise, kept from the imported source and written back unchanged on export. It must be a JSON object; anything else is refused when you leave the field, and nothing is saved until the error is fixed.</p>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Good to know</div>
+<ul>
+<li>Leaving these fields empty is the safest choice — Ink's derived values follow your metrics as they change.</li>
+<li>Advanced values are captured by Time Machine with the rest of Font Info.</li>
+</ul>
+</div>
+
+<h2>References</h2>
+<ul class="refs">
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/os2" target="_blank" rel="noopener">OS/2 — OS/2 and Windows Metrics Table</a> <span>· fsSelection, PANOSE, sFamilyClass, ulUnicodeRange, ulCodePageRange, fsType, typo and win metrics</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/head" target="_blank" rel="noopener">head — Font Header Table</a> <span>· macStyle, flags, lowestRecPPEM, created</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gasp" target="_blank" rel="noopener">gasp — Grid-fitting and Scan-conversion Procedure Table</a></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/hhea" target="_blank" rel="noopener">hhea — Horizontal Header Table</a> and <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/hmtx" target="_blank" rel="noopener">hmtx</a></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/vhea" target="_blank" rel="noopener">vhea — Vertical Header Table</a> and <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/vmtx" target="_blank" rel="noopener">vmtx</a></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/post" target="_blank" rel="noopener">post — PostScript Table</a> <span>· formats 2 and 3, underline, isFixedPitch</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff" target="_blank" rel="noopener">CFF — Compact Font Format table</a> <span>· Private DICT hinting values</span></li>
+<li><a href="https://www.w3.org/TR/WOFF/" target="_blank" rel="noopener">WOFF File Format 1.0</a> <span>· extended metadata block (W3C)</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/" target="_blank" rel="noopener">OpenType specification — home</a></li>
+</ul>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="fontinfo-features.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Features</a>
+<a href="fontinfo-compatibility.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Compatibility →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

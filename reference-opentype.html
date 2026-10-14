@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenType references — Ink reference</title>
+<meta name="description" content="The OpenType tables Ink writes when you export a font, what each one is for, and where in Ink you control it. Every table name links to its chapter of the OpenType specification on Microsoft Learn.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc p{margin:14px 0 0}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.ot td{padding:12px 16px;vertical-align:top;font-size:15px;line-height:23px;color:#3c4245}
+.ot td:first-child{font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:500;width:16%}
+.ot td:last-child{width:30%}
+.ot tr:nth-child(even){background:#f9f9fa}
+.ot th{padding:12px 16px;text-align:left;font-size:14px;background:#f2f4f5}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ reference</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-time-machine.html" style="color: #5a6063">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html" class="on">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 860px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Reference</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">OpenType references</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">The OpenType tables Ink writes when you export a font, what each one is for, and where in Ink you control it. Every table name links to its chapter of the <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/" target="_blank" rel="noopener">OpenType specification</a> on Microsoft Learn.</p>
+
+<h2>Naming and identification</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ot" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Table</th><th>What it holds</th><th>In Ink</th></tr></thead>
+<tbody>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/name" target="_blank" rel="noopener">name</a></td><td>Every human-readable string: family, style, full and PostScript names, copyright, licence, axis and instance names.</td><td><a href="fontinfo-names.html">Font Info → Names</a>, <a href="fontinfo-general.html">General</a></td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/os2" target="_blank" rel="noopener">OS/2</a></td><td>Weight and width class, vendor ID, style flags, PANOSE, Unicode and code-page ranges, embedding rights, typo and Windows metrics.</td><td><a href="fontinfo-general.html">General</a>, <a href="fontinfo-advanced.html">Advanced → OS/2</a></td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/head" target="_blank" rel="noopener">head</a></td><td>Units per em, style bits, rasterizer flags, dates.</td><td><a href="fontinfo-general.html">General</a>, <a href="fontinfo-advanced.html">Advanced → head</a></td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/post" target="_blank" rel="noopener">post</a></td><td>Italic angle, underline, fixed pitch, glyph names (format 2) or none (format 3).</td><td><a href="fontinfo-advanced.html">Advanced → PostScript</a>, <a href="fontinfo-masters.html">Masters</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Metrics</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ot" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Table</th><th>What it holds</th><th>In Ink</th></tr></thead>
+<tbody>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/hhea" target="_blank" rel="noopener">hhea</a> · <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/hmtx" target="_blank" rel="noopener">hmtx</a></td><td>Horizontal line metrics and caret slope; every glyph's advance width and left sidebearing.</td><td><a href="fontinfo-masters.html">Masters</a>, <a href="fontinfo-advanced.html">Advanced → hhea</a>, glyph metrics in the editor</td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/vhea" target="_blank" rel="noopener">vhea</a> · <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/vmtx" target="_blank" rel="noopener">vmtx</a></td><td>Vertical-layout metrics, exported when needed.</td><td><a href="fontinfo-advanced.html">Advanced → vhea</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Outlines and characters</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ot" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Table</th><th>What it holds</th><th>In Ink</th></tr></thead>
+<tbody>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/glyf" target="_blank" rel="noopener">glyf</a></td><td>Quadratic TrueType outlines (TTF).</td><td><a href="settings-export.html">Settings → Export</a> (curve conversion)</td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff" target="_blank" rel="noopener">CFF</a> · <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff2" target="_blank" rel="noopener">CFF2</a></td><td>Cubic PostScript outlines and hinting values (OTF); CFF2 for variable fonts.</td><td><a href="fontinfo-advanced.html">Advanced → PostScript</a>, <a href="fontinfo-masters.html">Masters → Zones</a></td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cmap" target="_blank" rel="noopener">cmap</a></td><td>Maps Unicode code points to glyphs.</td><td>Each glyph's Unicode values in the grid inspector</td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gasp" target="_blank" rel="noopener">gasp</a></td><td>Grid-fitting and smoothing per pixel size.</td><td><a href="fontinfo-advanced.html">Advanced → gasp</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Layout</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ot" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Table</th><th>What it holds</th><th>In Ink</th></tr></thead>
+<tbody>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gsub" target="_blank" rel="noopener">GSUB</a></td><td>Glyph substitution: ligatures, alternates, small caps, contextual forms.</td><td><a href="fontinfo-features.html">Font Info → Features</a></td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gpos" target="_blank" rel="noopener">GPOS</a></td><td>Glyph positioning: kerning, mark attachment, cursive attachment.</td><td><a href="manual-kerning.html">Kerning editor</a>, anchors in the editor, <a href="fontinfo-features.html">Features</a></td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gdef" target="_blank" rel="noopener">GDEF</a></td><td>Glyph classes (base, ligature, mark), mark sets, ligature carets.</td><td>Glyph categories; generated on export</td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/kern" target="_blank" rel="noopener">kern</a></td><td>Legacy kerning table, superseded by GPOS.</td><td>Read from imported fonts</td></tr>
+</tbody>
+</table>
+</div>
+<p>Registries: <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/featuretags" target="_blank" rel="noopener">feature tags</a>, <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/scripttags" target="_blank" rel="noopener">script tags</a> and <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/languagetags" target="_blank" rel="noopener">language system tags</a>. Feature code is written in the <a href="https://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html" target="_blank" rel="noopener">OpenType Feature File syntax</a> (Adobe).</p>
+
+<h2>Variations</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ot" style="width: 100%; border-collapse: collapse; min-width: 600px">
+<thead><tr><th>Table</th><th>What it holds</th><th>In Ink</th></tr></thead>
+<tbody>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/fvar" target="_blank" rel="noopener">fvar</a></td><td>Axes and named instances.</td><td><a href="fontinfo-designspace.html">Designspace → Axes, Instances</a></td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/avar" target="_blank" rel="noopener">avar</a></td><td>Non-linear axis mapping.</td><td><a href="fontinfo-designspace.html">Designspace → Mapping</a></td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/stat" target="_blank" rel="noopener">STAT</a></td><td>Style labels for font menus.</td><td><a href="fontinfo-designspace.html">Designspace → Labels</a></td></tr>
+<tr><td><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gvar" target="_blank" rel="noopener">gvar</a></td><td>Outline deltas for TrueType variable fonts.</td><td><a href="fontinfo-masters.html">Masters</a>, brace layers, <a href="fontinfo-compatibility.html">Compatibility</a></td></tr>
+</tbody>
+</table>
+</div>
+<p>Background: the <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/otvaroverview" target="_blank" rel="noopener">Font Variations overview</a> and the <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg" target="_blank" rel="noopener">Design-Variation Axis Tag Registry</a>.</p>
+
+<h2>Beyond OpenType</h2>
+<p><a href="https://www.w3.org/TR/WOFF/" target="_blank" rel="noopener">WOFF</a> (W3C) for web-font metadata — see <a href="fontinfo-advanced.html">Advanced → WOFF metadata</a>; <a href="https://freetype.org/ttfautohint/doc/ttfautohint.html" target="_blank" rel="noopener">ttfautohint</a> for TrueType hinting — see <a href="settings-export.html">Settings → Export</a>.</p>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="reference-ink-format.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← .ink file format</a>
+<a href="api-plugins.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Building plugins →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

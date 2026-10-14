@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ink — a font editor with a memory</title>
+<meta name="description" content="Ink is a cross-platform editor for designing and engineering type — outlines, variable designspaces, kerning and OpenType features — in one quiet workspace that keeps every version of your work inside the file.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+.shot{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 12px 32px rgba(45,51,54,.10)}
+@media (max-width: 900px){
+.stack{grid-template-columns:minmax(0,1fr) !important}
+.navlinks{display:none !important}
+.hero-h{font-size:48px !important;line-height:52px !important}
+.sec-h{font-size:34px !important;line-height:40px !important}
+.pad{padding-left:16px !important;padding-right:16px !important}
+.proof{font-size:56px !important}
+}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="#spin" style="color: #5a6063">Why Ink</a>
+<a href="#gallery" style="color: #5a6063">Tour</a>
+<a href="#manuals" style="color: #5a6063">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="#download" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px; min-height: 20px">Download</a>
+</header>
+
+<section class="pad" style="padding: 72px 48px 56px; max-width: 1280px; margin: 0 auto; box-sizing: border-box">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #5a6063">Font editor · macOS &amp; Windows · v0.6</div>
+<h1 class="hero-h" style="margin: 20px 0 0; font-size: 88px; line-height: 92px; font-weight: 800; letter-spacing: -0.035em; max-width: 980px">A font editor with a memory.</h1>
+<p style="margin: 28px 0 0; font-size: 21px; line-height: 33px; color: #5a6063; max-width: 720px">Ink is a cross-platform editor for designing and engineering type — outlines, variable designspaces, kerning and OpenType features — in one quiet workspace that keeps every version of your work inside the file.</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px">
+<a href="#download" style="padding: 15px 24px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 700; font-size: 16px">Download for macOS</a>
+<a href="#download" style="padding: 15px 24px; border-radius: 6px; background: #e3e1ec; color: #515159; font-weight: 700; font-size: 16px">Download for Windows</a>
+<a href="#manuals" style="padding: 15px 20px; border-radius: 6px; color: #2d3336; font-weight: 600; font-size: 16px">Read the manual →</a>
+</div>
+<div style="margin-top: 64px; background: #e4e9ec; border-radius: 16px; padding: 40px">
+<img class="shot" src="assets/screenshots/grid-view.png" alt="Ink's grid view showing the Inter font, with a category sidebar, glyph cells and the glyph inspector">
+</div>
+</section>
+
+<section style="background: #111314; color: #f9f9fa; overflow: hidden">
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 48px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #a9afb3">Proof · Manrope ExtraBold</div>
+<div class="proof" style="font-size: 120px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; white-space: nowrap">Hamburgefonstiv</div>
+</div>
+</section>
+
+<section id="spin" class="pad" style="padding: 112px 48px; max-width: 1280px; margin: 0 auto; box-sizing: border-box">
+<div class="stack" style="display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 72px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Familiar hands</div>
+<h2 class="sec-h" style="margin: 0; font-size: 48px; line-height: 54px; font-weight: 800; letter-spacing: -0.025em">If you have drawn a font before, you already know your way around.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 29px; color: #5a6063">Ink borrows the conventions type designers rely on in Glyphs, FontLab, RoboFont and FontForge, so your habits carry over on day one.</p>
+<ul style="margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 16px; line-height: 25px">
+<li style="padding: 16px 18px; background: #f2f4f5; border-radius: 8px">A glyph grid organised by Unicode category and script, with coverage counts per set.</li>
+<li style="padding: 16px 18px; background: #f2f4f5; border-radius: 8px">Masters, brace (intermediate) layers and instances for variable families.</li>
+<li style="padding: 16px 18px; background: #f2f4f5; border-radius: 8px">Class-based kerning with exceptions, in a list or a matrix.</li>
+<li style="padding: 16px 18px; background: #f2f4f5; border-radius: 8px">OpenType features written in AFDKO feature syntax, with classes and prefixes.</li>
+<li style="padding: 16px 18px; background: #f2f4f5; border-radius: 8px">Opens UFO, .designspace, .glyphs and compiled OTF / TTF fonts.</li>
+<li style="padding: 16px 18px; background: #f2f4f5; border-radius: 8px">Python scripting and plugins for automating the dull parts.</li>
+</ul>
+</div>
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Its own spin</div>
+<div class="stack" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<div style="background: #ffffff; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4a43c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 4v4h4"></path><path d="M12 7v5l3 2"></path></svg>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">Time Machine</h3>
+<p style="margin: 0; font-size: 15px; line-height: 24px; color: #5a6063">Imports, exports, auto-saves and manual save points become snapshots stored in the project. Browse a timeline, diff outlines, restore in one click.</p>
+</div>
+<div style="background: #ffffff; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4a43c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V5h16v2"></path><path d="M12 5v14"></path><path d="M9 19h6"></path></svg>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">Text mode, inside the editor</h3>
+<p style="margin: 0; font-size: 15px; line-height: 24px; color: #5a6063">Type a line on the drawing canvas and edit any glyph in context, with sidebearings, advances and kerning for the whole line in a table below.</p>
+</div>
+<div style="background: #ffffff; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4a43c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"></ellipse><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"></path><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"></path></svg>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">One file, one database</h3>
+<p style="margin: 0; font-size: 15px; line-height: 24px; color: #5a6063">An .ink project is a single SQLite file holding outlines, masters, kerning, features and history — easy to copy, back up and hand over. <a href="reference-ink-format.html">How it works →</a></p>
+</div>
+<div style="background: #ffffff; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4a43c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4H5v16h3"></path><path d="M16 4h3v16h-3"></path><path d="M10 9l2 2 2-2"></path><path d="M12 11V5"></path><path d="M9 15h6"></path></svg>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">Binary fonts, editable again</h3>
+<p style="margin: 0; font-size: 15px; line-height: 24px; color: #5a6063">Open a compiled OTF or TTF and Ink turns its kerning, mark attachment and GSUB / GPOS lookups back into editable data and feature code.</p>
+</div>
+<div style="background: #ffffff; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4a43c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"></path><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3Z"></path></svg>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">Compatibility, built in</h3>
+<p style="margin: 0; font-size: 15px; line-height: 24px; color: #5a6063">A checker flags glyphs whose masters will not interpolate — before export, not after a failed build.</p>
+</div>
+<div style="background: #ffffff; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4a43c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v4"></path><path d="M15 3v4"></path><path d="M6 7h12v4a6 6 0 0 1-12 0V7Z"></path><path d="M12 17v4"></path></svg>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">Plugins in HTML and Python</h3>
+<p style="margin: 0; font-size: 15px; line-height: 24px; color: #5a6063">Plugins dock as sandboxed web panels with a JavaScript SDK, and hand heavy work to Python scripts in an environment Ink installs and manages.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="gallery" style="background: #f2f4f5">
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 112px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 104px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 760px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">A tour of the workspace</div>
+<h2 class="sec-h" style="margin: 0; font-size: 48px; line-height: 54px; font-weight: 800; letter-spacing: -0.025em">Every view docks as a tab, so the grid, editors and history sit side by side.</h2>
+</div>
+
+<article class="stack" style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: center">
+<img class="shot" loading="lazy" src="assets/screenshots/grid-view.png" alt="Grid view with category sidebar and glyph inspector">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063">01 — Grid view</div>
+<h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 700; letter-spacing: -0.015em">The whole font at a glance</h3>
+<p style="margin: 0; font-size: 16px; line-height: 26px; color: #5a6063">The sidebar sorts all 2,926 glyphs of Inter by category — Letter, Number, Punctuation, Symbol, Mark — and by script super sets with coverage counts such as Latin 1233 / 1452. The opsz and wght sliders above the grid preview any point in the designspace. The inspector edits the selected glyph's sidebearings and advance width, its export flag, a color label and its left and right kerning groups.</p>
+</div>
+</article>
+
+<article class="stack" style="display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063">02 — Glyph sets</div>
+<h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 700; letter-spacing: -0.015em">Fill the gaps without typing code points</h3>
+<p style="margin: 0; font-size: 16px; line-height: 26px; color: #5a6063">Browse Unicode blocks, Adobe and Google glyph sets or GlyphsData lists. Glyphs the font is missing appear as ghost cells; pick the ones you need — here five currency symbols — and Add Glyphs creates them in one step.</p>
+</div>
+<img class="shot" loading="lazy" src="assets/screenshots/grid-view-glyph-sets.png" alt="Grid view showing the Currency Symbols Unicode block with five missing glyphs selected">
+</article>
+
+<article class="stack" style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: center">
+<img class="shot" loading="lazy" src="assets/screenshots/glyph-editor.png" alt="Glyph editor showing the letter A with nodes, layers and anchors">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063">03 — Glyph editor</div>
+<h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 700; letter-spacing: -0.015em">Outlines, with every master on hand</h3>
+<p style="margin: 0; font-size: 16px; line-height: 26px; color: #5a6063">Draw with pen, pencil, shape and knife tools on a Skia-rendered canvas. The inspector shows a live thumbnail with sidebearings, a layer list for every master (Regular, opsz 32, wght 100, wght 900…), notes, components and anchors with their coordinates. The strip under the canvas keeps LSB, RSB and advance width editable.</p>
+</div>
+</article>
+
+<article class="stack" style="display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063">04 — Selection &amp; transform</div>
+<h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 700; letter-spacing: -0.015em">Precise edits from a floating panel</h3>
+<p style="margin: 0; font-size: 16px; line-height: 26px; color: #5a6063">Select nodes and the panel offers copy, join, open path and reverse, then a nine-point origin grid for exact X and Y, scale, rotation, flips and alignment. The status bar reports the selection count, its bounding box and the contour's node count as you work.</p>
+</div>
+<img class="shot" loading="lazy" src="assets/screenshots/glyph-editor-selection.png" alt="Glyph editor with 58 nodes of the letter C selected and the transform panel open">
+</article>
+
+<article class="stack" style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: center">
+<img class="shot" loading="lazy" src="assets/screenshots/glyph-editor-variation.png" alt="Variation preview overlaying masters of the letter A with a designspace plot below">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063">05 — Variation preview</div>
+<h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 700; letter-spacing: -0.015em">See the designspace while you draw</h3>
+<p style="margin: 0; font-size: 16px; line-height: 26px; color: #5a6063">Switch on VAR and every master is overlaid, with lines joining matching points. Drag the axis sliders — or the location on the designspace plot below — and Ink offers to add a brace layer at that exact spot, here opsz 14 · wght 400.</p>
+</div>
+</article>
+
+<article class="stack" style="display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063">06 — Text mode</div>
+<h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 700; letter-spacing: -0.015em">Edit glyphs in the words they live in</h3>
+<p style="margin: 0; font-size: 16px; line-height: 26px; color: #5a6063">Type a sentence right on the editing canvas and every glyph in it becomes editable in context. A preview strip renders the line under the cursor, and the table below lists LSB, RSB, advance width and kerning for each glyph in the line.</p>
+<a href="manual-text-mode.html" style="font-weight: 600; font-size: 15px">Read the Text mode manual →</a>
+</div>
+<img class="shot" loading="lazy" src="assets/screenshots/glyph-editor-text-mode.png" alt="Glyph editor in text mode with a typed sentence, a preview strip and a metrics table">
+</article>
+
+<article class="stack" style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: center">
+<div class="stack" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start">
+<img class="shot" loading="lazy" src="assets/screenshots/font-info-general.png" alt="Font Info window, General section">
+<img class="shot" loading="lazy" src="assets/screenshots/font-info-features.png" alt="Font Info window, Features section with the ccmp feature code and validation warnings">
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063">07 — Font Info</div>
+<h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 700; letter-spacing: -0.015em">Names, masters and feature code in one window</h3>
+<p style="margin: 0; font-size: 16px; line-height: 26px; color: #5a6063">General holds identification and common OpenType values — family and style names, style-map, units per em, version and copyright — next to Masters, Designspace, Names, Features, Advanced and Compatibility. In Features, classes, prefixes and features sit in a list beside a code editor; Validate compiles the code and reports errors and warnings by feature and line.</p>
+</div>
+</article>
+
+<article class="stack" style="display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063">08 — Kerning editor</div>
+<h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 700; letter-spacing: -0.015em">Fourteen thousand pairs, still findable</h3>
+<p style="margin: 0; font-size: 16px; line-height: 26px; color: #5a6063">Pick a master and filter its pairs by kind — pair, group, exception or fallback — or show only non-zero values. Each pair carries its direction, LTR or RTL. Switch to Matrix to work class against class, create new classes, and delete selected pairs in bulk.</p>
+</div>
+<img class="shot" loading="lazy" src="assets/screenshots/kerning-editor.png" alt="Kerning editor list view showing class pairs for the Regular master">
+</article>
+
+<article class="stack" style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: center">
+<div class="stack" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start">
+<img class="shot" loading="lazy" src="assets/screenshots/time-machine.png" alt="Time Machine timeline with a snapshot card summarising changes">
+<img class="shot" loading="lazy" src="assets/screenshots/time-machine-compare.png" alt="Compare outlines dialog showing the before and after shape of the letter A">
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063">09 — Time Machine</div>
+<h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 700; letter-spacing: -0.015em">Every version, one click away</h3>
+<p style="margin: 0; font-size: 16px; line-height: 26px; color: #5a6063">Snapshots line up on a timeline you can filter by auto-save, manual, import, export and restore points. Each card summarises what changed — masters, metadata fields, features, outlines — and “view →” opens a diff with the old shape in red and the new one in green. Restore to this version when you need to go back.</p>
+</div>
+</article>
+</div>
+</section>
+
+<section id="manuals" class="pad" style="padding: 112px 48px; max-width: 1280px; margin: 0 auto; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 760px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">How-to</div>
+<h2 class="sec-h" style="margin: 0; font-size: 48px; line-height: 54px; font-weight: 800; letter-spacing: -0.025em">Manuals</h2>
+<p style="margin: 0; font-size: 18px; line-height: 29px; color: #5a6063">Technical guides to the parts of Ink that reward a closer read.</p>
+</div>
+<div class="stack" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<a href="manual-time-machine.html" style="background: #ffffff; border-radius: 12px; padding: 28px; color: #2d3336; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5a6063">Manual</span>
+<span style="font-size: 21px; font-weight: 700">Time Machine snapshots</span>
+<span style="font-size: 15px; line-height: 23px; color: #5a6063">Snapshot kinds, the timeline, comparing outlines and restoring.</span>
+</a>
+<a href="manual-kerning.html" style="background: #ffffff; border-radius: 12px; padding: 28px; color: #2d3336; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5a6063">Manual</span>
+<span style="font-size: 21px; font-weight: 700">Kerning editor</span>
+<span style="font-size: 15px; line-height: 23px; color: #5a6063">Classes, pairs and exceptions, per master, in list or matrix.</span>
+</a>
+<a href="manual-text-mode.html" style="background: #ffffff; border-radius: 12px; padding: 28px; color: #2d3336; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5a6063">Manual</span>
+<span style="font-size: 21px; font-weight: 700">Text mode</span>
+<span style="font-size: 15px; line-height: 23px; color: #5a6063">Type, shape and edit glyphs in context, with the preview and metrics table.</span>
+</a>
+<div style="background: #ffffff; border-radius: 12px; padding: 28px; color: #2d3336; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5a6063">Reference</span>
+<a href="reference-ink-format.html" style="font-size: 21px; font-weight: 700; color: #2d3336">The .ink file format</a>
+<span style="font-size: 15px; line-height: 23px; color: #5a6063">How Ink stores a font, and how it compares with Glyphs and UFO.</span>
+<a href="reference-opentype.html" style="font-size: 15px; font-weight: 600; margin-top: 4px">OpenType references →</a>
+</div>
+<div style="background: #ffffff; border-radius: 12px; padding: 28px; color: #2d3336; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5a6063">Manual · 7 tabs</span>
+<a href="fontinfo-general.html" style="font-size: 21px; font-weight: 700; color: #2d3336">Font Info</a>
+<span style="font-size: 15px; line-height: 23px; color: #5a6063">Everything that applies to the whole font, tab by tab.</span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; font-size: 14px">
+<a href="fontinfo-general.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">General</a>
+<a href="fontinfo-masters.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">Masters</a>
+<a href="fontinfo-designspace.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">Designspace</a>
+<a href="fontinfo-names.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">Names</a>
+<a href="fontinfo-features.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">Features</a>
+<a href="fontinfo-advanced.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">Advanced</a>
+<a href="fontinfo-compatibility.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">Compatibility</a>
+</span>
+</div>
+<div style="background: #ffffff; border-radius: 12px; padding: 28px; color: #2d3336; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5a6063">Manual · 6 sections</span>
+<a href="settings-general.html" style="font-size: 21px; font-weight: 700; color: #2d3336">Settings</a>
+<span style="font-size: 15px; line-height: 23px; color: #5a6063">App-wide preferences, shortcuts, Python and plugins.</span>
+<span style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; font-size: 14px">
+<a href="settings-general.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">General</a>
+<a href="settings-editor.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">Editor</a>
+<a href="settings-export.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">Export</a>
+<a href="settings-shortcuts.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">Keyboard shortcuts</a>
+<a href="settings-python.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">Python</a>
+<a href="settings-plugins.html" style="padding: 6px 12px; border-radius: 999px; background: #f2f4f5">Plugins</a>
+</span>
+</div>
+</div>
+<a href="api-plugins.html" class="stack" style="background: #2d3336; color: #f9f9fa; border-radius: 16px; padding: 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center">
+<span style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #c9c5f5">For developers</span>
+<span style="font-size: 32px; line-height: 38px; font-weight: 800; letter-spacing: -0.02em">Build plugins with ink-api</span>
+<span style="font-size: 16px; line-height: 26px; color: #c4c9cc">Panels in HTML and JavaScript, automation in Python. Read fonts, glyphs, layers, contours, anchors and kerning through one typed API.</span>
+<span style="font-weight: 700; color: #ffffff">Read the API docs →</span>
+</span>
+<span style="display: block; background: #111314; border-radius: 10px; padding: 24px; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 23px; color: #d7dbde; white-space: pre; overflow-x: auto">import ink
+
+font = ink.current_font()
+for glyph in ink.selected_glyphs() or font.glyphs:
+    print(glyph.name, len(glyph.contours), glyph.width)</span>
+</a>
+</section>
+
+<section id="download" style="background: #e4e9ec">
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 96px 48px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; gap: 24px">
+<h2 class="sec-h" style="margin: 0; font-size: 48px; line-height: 54px; font-weight: 800; letter-spacing: -0.025em; max-width: 760px">Start drawing.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 29px; color: #5a6063; max-width: 640px">Ink 0.6 runs natively on macOS and Windows. [LICENSE / PRICE NOTE]</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap">
+<a href="#" style="padding: 15px 24px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 700; font-size: 16px">macOS (.dmg)</a>
+<a href="#" style="padding: 15px 24px; border-radius: 6px; background: #ffffff; color: #2d3336; font-weight: 700; font-size: 16px">Windows (.msi)</a></div>
+</div>
+</section>
+
+<footer class="pad" style="max-width: 1280px; margin: 0 auto; padding: 40px 48px 56px; box-sizing: border-box; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 14px; color: #5a6063">
+<span style="display: flex; align-items: center; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#5a6063"></path></svg>Ink · inkapp.dev</span>
+<span style="display: flex; gap: 24px; flex-wrap: wrap">
+<a href="#manuals" style="color: #5a6063">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+<a href="api-python.html" style="color: #5a6063">Python reference</a>
+<a href="#" style="color: #5a6063">GitHub</a>
+</span>
+</footer>
+</div>
+</body>
+</html>
