@@ -21,6 +21,7 @@ a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
 .proof{font-size:56px !important}
 }
 </style>
+<script src="assets/js/download.js" defer></script>
 </head>
 <body>
 <div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
@@ -40,12 +41,12 @@ a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
 </header>
 
 <section class="pad" style="padding: 72px 48px 56px; max-width: 1280px; margin: 0 auto; box-sizing: border-box">
-<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #5a6063">Font editor · macOS &amp; Windows · v0.6</div>
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #5a6063">Font editor · macOS &amp; Windows</div>
 <h1 class="hero-h" style="margin: 20px 0 0; font-size: 88px; line-height: 92px; font-weight: 800; letter-spacing: -0.035em; max-width: 980px">A font editor with a memory.</h1>
 <p style="margin: 28px 0 0; font-size: 21px; line-height: 33px; color: #5a6063; max-width: 720px">Ink is a cross-platform editor for designing and engineering type — outlines, variable designspaces, kerning and OpenType features — in one quiet workspace that keeps every version of your work inside the file.</p>
 <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px">
-<a href="#download" style="padding: 15px 24px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 700; font-size: 16px">Download for macOS</a>
-<a href="#download" style="padding: 15px 24px; border-radius: 6px; background: #e3e1ec; color: #515159; font-weight: 700; font-size: 16px">Download for Windows</a>
+<a href="#download" data-download="macos" style="padding: 15px 24px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 700; font-size: 16px">Download for macOS</a>
+<a href="#download" data-download="windows" style="padding: 15px 24px; border-radius: 6px; background: #e3e1ec; color: #515159; font-weight: 700; font-size: 16px">Download for Windows</a>
 <a href="#manuals" style="padding: 15px 20px; border-radius: 6px; color: #2d3336; font-weight: 600; font-size: 16px">Read the manual →</a>
 </div>
 <div style="margin-top: 64px; background: #e4e9ec; border-radius: 16px; padding: 40px">
@@ -217,6 +218,11 @@ a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
 <p style="margin: 0; font-size: 18px; line-height: 29px; color: #5a6063">Technical guides to the parts of Ink that reward a closer read.</p>
 </div>
 <div class="stack" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<a href="manual-grid-view.html" style="background: #ffffff; border-radius: 12px; padding: 28px; color: #2d3336; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5a6063">Manual</span>
+<span style="font-size: 21px; font-weight: 700">Grid view</span>
+<span style="font-size: 15px; line-height: 23px; color: #5a6063">Categories, glyph sets and smart sets, and the inspector for metrics, colours and kerning groups.</span>
+</a>
 <a href="manual-time-machine.html" style="background: #ffffff; border-radius: 12px; padding: 28px; color: #2d3336; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
 <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5a6063">Manual</span>
 <span style="font-size: 21px; font-weight: 700">Time Machine snapshots</span>
@@ -284,10 +290,11 @@ for glyph in ink.selected_glyphs() or font.glyphs:
 <section id="download" style="background: #e4e9ec">
 <div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 96px 48px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; gap: 24px">
 <h2 class="sec-h" style="margin: 0; font-size: 48px; line-height: 54px; font-weight: 800; letter-spacing: -0.025em; max-width: 760px">Start drawing.</h2>
-<p style="margin: 0; font-size: 18px; line-height: 29px; color: #5a6063; max-width: 640px">Ink 0.6 runs natively on macOS and Windows. [LICENSE / PRICE NOTE]</p>
+<p style="margin: 0; font-size: 18px; line-height: 29px; color: #5a6063; max-width: 640px">Ink runs natively on macOS and Windows. The macOS download is for Macs with Apple silicon.</p>
 <div style="display: flex; gap: 12px; flex-wrap: wrap">
-<a href="#" style="padding: 15px 24px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 700; font-size: 16px">macOS (.dmg)</a>
-<a href="#" style="padding: 15px 24px; border-radius: 6px; background: #ffffff; color: #2d3336; font-weight: 700; font-size: 16px">Windows (.msi)</a></div>
+<a href="#download" data-download="macos" style="padding: 15px 24px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 700; font-size: 16px">macOS (.dmg)</a>
+<a href="#download" data-download="windows" style="padding: 15px 24px; border-radius: 6px; background: #ffffff; color: #2d3336; font-weight: 700; font-size: 16px">Windows (.exe)</a></div>
+<p data-download-status role="status" aria-live="polite" style="margin: 0; min-height: 24px; font-size: 15px; line-height: 24px; color: #3c4245"></p>
 </div>
 </section>
 

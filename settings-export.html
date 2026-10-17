@@ -57,6 +57,7 @@ code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;bo
 
 <aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
 <span class="grp">Manuals</span>
+<a href="manual-grid-view.html">Grid view</a>
 <a href="manual-time-machine.html">Time Machine</a>
 <a href="manual-kerning.html">Kerning editor</a>
 <a href="manual-text-mode.html">Text mode</a>
@@ -105,13 +106,14 @@ code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;bo
 <p>If you export with autohinting on and a package is missing, the export dialog offers to install it. Without Python, the font still exports — unhinted.</p>
 
 <h2>Curve conversion</h2>
-<p>TTF fonts store outlines in the glyf table as quadratic curves, while OTF fonts keep cubic curves in CFF (or CFF2 for variable fonts). Ink draws in cubics, so a TTF export converts them.</p>
+<p>TTF fonts store outlines in the glyf table as quadratic curves, while OTF fonts keep cubic curves in CFF (or CFF2 for variable fonts). One tolerance governs every conversion between the two, in both directions: exporting cubic outlines to TTF, and the <strong>Glyph → Path → Convert to Quadratic</strong> and <strong>Convert to Cubic</strong> commands.</p>
+<p>The tolerance is measured per 1000 em and scaled to the font: the default 1.0 allows a deviation of 1 unit on a 1000-UPM font and 2.048 units on a 2048-UPM font — in line with the tolerance fontmake uses, so quadratic outlines it produced convert back to clean cubics.</p>
 <div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/glyf" target="_blank" rel="noopener">OpenType spec · glyf ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff" target="_blank" rel="noopener">CFF ↗</a><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/cff2" target="_blank" rel="noopener">CFF2 ↗</a></div>
 <div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
 <table class="st" style="width: 100%; border-collapse: collapse; min-width: 560px">
 <thead><tr><th>Setting</th><th>What it does</th><th style="text-align: right">Default</th></tr></thead>
 <tbody>
-<tr><td>Cubic → Quadratic tolerance</td><td>How closely TTF quadratic curves follow your cubic outlines (0.01–10). Lower is more accurate but makes a larger file.</td><td>1.0</td></tr>
+<tr><td>Curve conversion tolerance</td><td>The maximum distance a converted curve may stray from the original, in units per 1000 em (0.01–10). Ink scales it to each font's units per em, so the same setting behaves alike on a 1000-UPM and a 2048-UPM font. Used for TrueType export and for Convert to Cubic / Quadratic. Lower is more accurate but produces more points — and, in a TTF, a larger file.</td><td>1.0</td></tr>
 </tbody>
 </table>
 </div>

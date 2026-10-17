@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid view — Ink manual</title>
+<meta name="description" content="The grid is the font at a glance: every glyph as a cell, organised by category and script on the left, with an inspector on the right for metrics, colour labels and kerning groups.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#f9f9fa}
+a{color:#4a43c8;text-decoration:none}a:hover{color:#2f2a96}
+kbd{font-family:'JetBrains Mono',monospace;font-size:13px;background:#ffffff;border-radius:4px;padding:2px 7px;box-shadow:0 1px 0 rgba(45,51,54,.18);color:#2d3336;white-space:nowrap}
+code{font-family:'JetBrains Mono',monospace;font-size:14px;background:#e4e9ec;border-radius:4px;padding:1px 6px}
+.doc h2{margin:56px 0 0;font-size:28px;line-height:34px;font-weight:800;letter-spacing:-0.015em}
+.doc h3{margin:28px 0 0;font-size:19px;font-weight:700}
+.doc p,.doc li{font-size:17px;line-height:28px;color:#3c4245}
+.doc ul,.doc ol{padding-left:22px;margin:14px 0 0;display:flex;flex-direction:column;gap:8px}
+.doc p{margin:14px 0 0}
+.shot{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 12px 32px rgba(45,51,54,.10)}
+.side a{padding:8px 10px;border-radius:6px;color:#3c4245}
+.side .on{background:#e4e9ec;color:#2d3336;font-weight:700}
+.side .grp{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5a6063;padding:18px 10px 6px}
+.side .sub{font-size:12px;color:#5a6063;padding:10px 10px 2px;font-weight:600}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.spec{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:5px 11px;border-radius:999px;background:#e3e1ec;color:#2f2a96}
+.spec:hover{background:#d6d3ea;color:#231f7a}
+.refs li{font-size:16px;line-height:26px}
+.refs span{color:#5a6063;font-size:14px}
+.ft td{padding:12px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.ft td:first-child{font-weight:700;color:#2d3336;width:28%}
+.ft tr:nth-child(even){background:#f9f9fa}
+.ft th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+.fx td{padding:12px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.fx td:first-child{font-family:'JetBrains Mono',monospace;font-size:14px;color:#2f2a96;width:24%;white-space:nowrap}
+.fx tr:nth-child(even){background:#f9f9fa}
+.fx th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+.kt td{padding:11px 18px;vertical-align:top;font-size:15.5px;line-height:24px;color:#3c4245}
+.kt tr:nth-child(even){background:#f9f9fa}
+.kt th{padding:12px 18px;text-align:left;font-size:14px;background:#f2f4f5}
+.sw{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:4px}
+@media (max-width: 900px){.pad{padding-left:16px !important;padding-right:16px !important}.navlinks{display:none !important}.doc-h{font-size:38px !important;line-height:44px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'Manrope', system-ui, sans-serif; color: #2d3336; background: #f9f9fa; min-width: 0">
+
+<header class="pad" style="padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: 1280px; margin: 0 auto">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; color: #2d3336">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5 10.2 5 15a7 7 0 0 0 14 0c0-4.8-7-12.5-7-12.5Z" fill="#2d3336"></path></svg>
+<span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Ink</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5a6063; margin-left: 6px">/ docs</span>
+</a>
+<nav class="navlinks" style="display: flex; gap: 32px; font-size: 15px; font-weight: 500">
+<a href="index.html" style="color: #5a6063">Home</a>
+<a href="manual-grid-view.html" style="color: #2d3336">Manuals</a>
+<a href="api-plugins.html" style="color: #5a6063">Plugin API</a>
+</nav>
+<a href="index.html" style="padding: 12px 20px; border-radius: 6px; background: #5e5e65; color: #ffffff; font-weight: 600; font-size: 15px">Download</a>
+</header>
+
+<div class="pad" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 120px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<aside class="side" style="flex: 1 1 220px; max-width: 260px; background: #f2f4f5; border-radius: 12px; padding: 14px 20px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px; font-size: 15px">
+<span class="grp">Manuals</span>
+<a href="manual-grid-view.html" class="on">Grid view</a>
+<a href="manual-time-machine.html">Time Machine</a>
+<a href="manual-kerning.html">Kerning editor</a>
+<a href="manual-text-mode.html">Text mode</a>
+<span class="grp">Font Info</span>
+<a href="fontinfo-general.html">General</a>
+<a href="fontinfo-masters.html">Masters</a>
+<a href="fontinfo-designspace.html">Designspace</a>
+<a href="fontinfo-names.html">Names</a>
+<a href="fontinfo-features.html">Features</a>
+<a href="fontinfo-advanced.html">Advanced</a>
+<a href="fontinfo-compatibility.html">Compatibility</a>
+<span class="grp">Settings</span>
+<a href="settings-general.html">General</a>
+<a href="settings-editor.html">Editor</a>
+<a href="settings-export.html">Export</a>
+<a href="settings-shortcuts.html">Keyboard shortcuts</a>
+<span class="sub">Extensions</span>
+<a href="settings-python.html">Python</a>
+<a href="settings-plugins.html">Plugins</a>
+<span class="grp">Reference</span>
+<a href="reference-ink-format.html">.ink file format</a>
+<a href="reference-opentype.html">OpenType references</a>
+<span class="grp">Developers</span>
+<a href="api-plugins.html">Building plugins</a>
+<a href="api-python.html">Python reference</a>
+</aside>
+
+<main class="doc" style="flex: 999 1 560px; min-width: 0; max-width: 800px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a43c8">Manual</div>
+<h1 class="doc-h" style="margin: 14px 0 0; font-size: 52px; line-height: 58px; font-weight: 800; letter-spacing: -0.03em">Grid view</h1>
+<p style="font-size: 20px; line-height: 32px; color: #5a6063">The grid is the font at a glance: every glyph as a cell, organised by category and script on the left, with an inspector on the right for metrics, colour labels and kerning groups.</p>
+
+<div style="margin-top: 32px; background: #e4e9ec; border-radius: 14px; padding: 28px">
+<img class="shot" src="assets/screenshots/grid-view.png" alt="Grid view: category sidebar on the left, glyph cells in the middle, the Selection inspector on the right">
+</div>
+
+<h2>Layout</h2>
+<p>The grid tab has three parts: the <strong>sidebar</strong> on the left, the <strong>grid</strong> with its toolbar in the middle, and the <strong>Selection</strong> panel on the right. <kbd>Ctrl G</kbd> / <kbd>⌘ G</kbd> brings the grid to the front from anywhere.</p>
+<h3>Header</h3>
+<p>The header shows the family and style, the number of glyphs and the units per em. For variable and multi-master fonts it adds variation controls:</p>
+<ul>
+<li>A <strong>named instance</strong> menu, which reads <em>Custom</em> when the sliders sit between instances.</li>
+<li>A <strong>slider per axis</strong>, with ticks where masters sit. Click the number beside a slider to type a value; the small <strong>×</strong> resets the axis to its default.</li>
+<li>Every cell redraws at the chosen location, so you can scan the whole font at, say, Bold Condensed.</li>
+</ul>
+<h3>Toolbar</h3>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Grid · List</td><td>Switch between cells and a table of ID, glyph, name and Unicode. In the list, click a column header to sort by it.</td></tr>
+<tr><td>Sort by</td><td><strong>Glyph ID</strong> (default), <strong>Unicode</strong> (unencoded glyphs last) or <strong>Name</strong>. The arrow beside it reverses the order.</td></tr>
+<tr><td>+ Add</td><td>Opens <strong>Add Glyphs</strong> — see <a href="#adding">Adding glyphs</a>.</td></tr>
+<tr><td>Cell size</td><td>70–200 px (default 100). Columns adjust to fill the width.</td></tr>
+</tbody></table>
+</div>
+
+<h2>Left panel</h2>
+<h3>Search</h3>
+<p><strong>Search glyph…</strong> at the top of the sidebar filters by any part of a glyph name, or by glyph ID, as you type (up to 500 results). It doesn't search by Unicode value or by character.</p>
+
+<h3>Categories</h3>
+<p><strong>All</strong> shows every glyph. Below it, <strong>Categories</strong> is a tree — Letter, Number, Punctuation, Symbol, Mark, Separator and Other — with sub-categories such as Uppercase, Lowercase, Smallcaps, Ligature, Decimal Digit, Fraction, Currency, Math, Arrow, Spacing and Superscript. Only categories the font uses are listed, each with its glyph count. Click one to filter the grid; click it again to return to All.</p>
+<p>Ink decides a glyph's category by looking it up in the bundled GlyphsData by name, production name or code point; then by Unicode range; and for unencoded glyphs by name suffix — <code>f_i</code> is a ligature, <code>.sc</code> and <code>.smcp</code> are small caps, <code>.numr</code>, <code>.dnom</code> and <code>.frac</code> are fractions, names starting with <code>_</code> are marks.</p>
+<p>To override it, right-click glyphs and choose <strong>Move to Category…</strong> (or use the group icon in the Selection panel). Pick a <strong>Category</strong> and <strong>Sub-Category</strong> and <strong>Save</strong>; <strong>Clear Override</strong> goes back to the computed values.</p>
+
+<h3>Super sets</h3>
+<p>Scripts the font contains — Latin, Cyrillic, Greek, Arabic, Hebrew, Thai, Devanagari, Han — plus <strong>Common</strong> (script-neutral glyphs) and <strong>Unencoded</strong>. Each shows <em>glyphs in the font / code points in the script</em>, e.g. <code>1233 / 1452</code>. Because alternates such as <code>a.ss01</code> count towards the first number, read it as a guide rather than exact coverage.</p>
+
+<h3 id="smart-sets">Smart sets</h3>
+<div style="margin-top: 20px; background: #e4e9ec; border-radius: 14px; padding: 28px">
+<img class="shot" loading="lazy" src="assets/screenshots/grid-view-glyph-sets.png" alt="The Currency Symbols Unicode block selected: existing glyphs, ghost cells for missing ones, and Add Glyphs in the Selection panel">
+</div>
+<p>Smart sets track how much of a published glyph list your font covers. They come from four built-in catalogues, each a section in the sidebar: <strong>Adobe</strong>, <strong>Google</strong>, <strong>GlyphsData</strong> and <strong>Unicode Blocks</strong>.</p>
+<ul>
+<li>Click a section's <strong>+</strong> (<em>Add Smart Set</em>), search the catalogue, tick one or more sets and click <strong>Add</strong>. Sets you already have are marked <em>added</em>.</li>
+<li>Each set appears with a <strong>present / total</strong> badge.</li>
+<li>Right-click a set for <strong>Add Missing Glyphs</strong> — every code point you lack, in one step — or <strong>Remove Smart Set</strong>.</li>
+<li>Smart sets are saved in the <code>.ink</code> file. They can't be renamed or edited, and a set whose catalogue entry no longer exists moves to an <strong>Other</strong> section.</li>
+</ul>
+
+<h3>Ghost cells: filling the gaps</h3>
+<p>Selecting a single super set or smart set switches the grid to a coverage view of that set, in its own order. Glyphs you have appear normally; code points you're missing appear as <strong>ghost cells</strong> — a faint reference character, its <code>U+</code> code and a <strong>+</strong>.</p>
+<ul>
+<li>Click a ghost cell's <strong>+</strong> to add that glyph immediately, named from GlyphsData or as <code>uniXXXX</code>.</li>
+<li>Or select several ghost cells (click, <kbd>Shift</kbd>, <kbd>Ctrl</kbd> / <kbd>⌘</kbd>, or <kbd>Ctrl A</kbd> / <kbd>⌘ A</kbd> for all missing) — the panel shows <em>N codepoints</em> — and click <strong>Add Glyphs</strong>. Adding more than 20 asks you to confirm the list first.</li>
+<li>Real glyphs and ghost cells can't be selected together.</li>
+</ul>
+
+<h2>The grid</h2>
+<h3>What a cell shows</h3>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Glyph</td><td>Outlines drawn at one shared scale and baseline, centred on the advance width, with the name underneath.</td></tr>
+<tr><td>Composite</td><td>Each component in its own tint.</td></tr>
+<tr><td>Empty glyph</td><td>A hatched tile, or a faint reference character if it has a code point.</td></tr>
+<tr><td>Colour label</td><td>Tints the whole tile.</td></tr>
+<tr><td>Not exported</td><td>Drawn at half opacity.</td></tr>
+<tr><td>Compatibility</td><td>A thin yellow (warning) or red (blocker) bar along the bottom — when <a href="settings-general.html">Auto compatibility check</a> is on.</td></tr>
+<tr><td>Selected</td><td>A thick inset ring.</td></tr>
+</tbody></table>
+</div>
+<h3>Selecting</h3>
+<ul>
+<li><strong>Click</strong> selects one glyph; <strong>Ctrl-click</strong> / <strong>⌘-click</strong> adds or removes; <strong>Shift-click</strong> selects a range.</li>
+<li><kbd>Ctrl A</kbd> / <kbd>⌘ A</kbd> selects every glyph under the current filter or search.</li>
+<li>Right-clicking doesn't change the selection.</li>
+</ul>
+<h3>Opening glyphs</h3>
+<ul>
+<li><strong>Double-click</strong> a cell to open it in an editor tab.</li>
+<li>The pencil in the Selection panel, or <strong>Open N Glyphs</strong> from the context menu, opens all selected glyphs together in one tab — as a line you can proof in <a href="manual-text-mode.html">Text mode</a>.</li>
+</ul>
+<h3>Context menu</h3>
+<p>Right-click a cell for <strong>Open</strong>, <strong>Move to Category…</strong>, <strong>Create composite from Anchors</strong> and <strong>Decompose</strong>, plus any commands plugins add. If the cell is part of a selection, the command applies to the whole selection.</p>
+
+<h3 id="adding">Adding glyphs</h3>
+<ul>
+<li><strong>Add Glyph</strong> (<kbd>Ctrl Shift N</kbd> / <kbd>⌘ ⇧ N</kbd>) takes a character, a code point such as <code>U+00E1</code>, or a name, previews the result and opens the new glyph.</li>
+<li><strong>Add Glyphs…</strong> (<strong>+ Add</strong>, or <kbd>Ctrl Shift G</kbd> / <kbd>⌘ ⇧ G</kbd>) takes a list of names. The preview marks each as a composite (base + marks), empty, existing or invalid; with <strong>Auto-create missing components</strong> on, missing bases and marks are created as empty glyphs too.</li>
+<li>Smart sets and ghost cells add glyphs by code point — see above.</li>
+</ul>
+
+<h2>Right panel: Selection</h2>
+<p>The header pill counts what is selected — <em>1 glyph</em>, <em>N glyphs</em> or <em>N codepoints</em>. Its four buttons:</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px"><tbody>
+<tr><td>Pencil</td><td>Open the selection in one editor tab.</td></tr>
+<tr><td>Trash</td><td><strong>Remove from font.</strong> The dialog lists the glyphs and where they are still used — feature code, rules and attachment lookups. Attachment lookups are updated for you; feature code and rules are not, so run Validate afterwards. Recover removed glyphs with Time Machine.</td></tr>
+<tr><td>Group</td><td>Move to category…</td></tr>
+<tr><td>Eraser</td><td>Clear the selection.</td></tr>
+</tbody></table>
+</div>
+
+<h3>Glyph</h3>
+<p>The panel describes the glyph you clicked last (<em>Preview: name (1 of N)</em> when several are selected): its code points (read-only here — edit them in the glyph's editor tab), a preview with the advance box and x-height and cap-height lines, its name, glyph ID and <strong>Export</strong> checkbox.</p>
+<ul>
+<li>Click the name to <strong>rename</strong> the glyph (single selection only). Metric formulas that refer to it are rewritten.</li>
+<li><strong>Export</strong> shows a partial tick when the selection is mixed; clicking turns export on for all.</li>
+</ul>
+
+<h3>Sidebearings and width</h3>
+<p>The <strong>LSB</strong> and <strong>RSB</strong> fields sit either side of the preview, with <strong>Width</strong> (advance width) beneath. Values are for the location on the header sliders; edits go to the master at that location. Away from a master the fields are read-only.</p>
+<ul>
+<li>With several glyphs selected, a field whose values differ shows <em>Mixed</em>, and an edit applies to every selected glyph.</li>
+<li>LSB and RSB are disabled for glyphs without an outline. In a composite aligned automatically from its components they show <code>auto (N)</code> — set the width instead.</li>
+</ul>
+
+<h3 id="formulas">Metric formulas</h3>
+<p>Instead of a number, type a formula beginning with <code>=</code> to link a metric to another glyph. The result previews in grey as you type, and is applied when you press <kbd>Enter</kbd> or leave the field.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="fx" style="width: 100%; border-collapse: collapse; min-width: 520px">
+<thead><tr><th>Formula</th><th>Means</th></tr></thead>
+<tbody>
+<tr><td>=H</td><td>The same metric as glyph H — H's LSB in the LSB field, H's RSB in the RSB field, H's width in Width.</td></tr>
+<tr><td>=n+10 · =o*1.1</td><td>Arithmetic: <code>+</code> <code>-</code> <code>*</code> <code>/</code>, parentheses such as <code>=(H+O)/2</code>, negative values and decimals.</td></tr>
+<tr><td>=H.lsb · =H.rsb · =H.width</td><td>A specific metric of H, whichever field you are in.</td></tr>
+<tr><td>=|H</td><td>Mirror: in the LSB field, H's <em>right</em> sidebearing; in the RSB field, H's <em>left</em>. Useful for symmetrical pairs such as <code>b</code> / <code>d</code>.</td></tr>
+<tr><td>=|</td><td>This glyph's own opposite side — keeps a symmetrical glyph like <code>o</code> centred.</td></tr>
+<tr><td>=a.sc</td><td>Glyph names can contain letters, digits, <code>_</code> and dots.</td></tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>A linked field shows an <strong>ƒ</strong> badge; hover it to see the formula. A red <strong>!</strong> means the formula can't be worked out right now.</li>
+<li><strong>Changes cascade.</strong> When a glyph's metrics change, every glyph whose formula depends on it is recalculated at once — change <code>H</code> and every <code>=H</code> follows.</li>
+<li>On a non-default master, <code>=H</code> reads H on that same master.</li>
+<li>Errors — an unknown glyph, a syntax error, division by zero, a mirror in Width, or a cycle such as <code>A → B → A</code> — turn the field red, with the reason in its tooltip.</li>
+<li>To unlink a field, type a plain number.</li>
+<li>A hyphen is read as minus: <code>=a-cy</code> means “a minus cy”.</li>
+<li>Formulas round-trip through <code>.glyphs</code> files as metric keys. The same syntax works in the <a href="manual-text-mode.html">metrics table</a> under the editor.</li>
+</ul>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/hmtx" target="_blank" rel="noopener">OpenType spec · hmtx (advance and LSB) ↗</a></div>
+
+<h3>Colour</h3>
+<p>Thirteen swatches: <strong>No color</strong>, then Red, Orange, Brown, Yellow, Light Green, Dark Green, Light Blue, Dark Blue, Purple, Magenta, Light Gray and Dark Gray. Click one to label every selected glyph; <strong>No color</strong> clears the label. With mixed colours, no swatch is highlighted.</p>
+
+<h3>Kerning groups</h3>
+<p>The <strong>Left</strong> and <strong>Right</strong> fields assign the selected glyphs to kerning groups. Type a group name and press <kbd>Enter</kbd>; a group that doesn't exist yet is created. Empty a field to remove that side's group. A multi-selection that disagrees shows <em>Mixed</em>.</p>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="ft" style="width: 100%; border-collapse: collapse; min-width: 520px">
+<thead><tr><th>Field</th><th>Used when the glyph is…</th><th>Elsewhere called</th></tr></thead>
+<tbody>
+<tr><td>Left</td><td>the <strong>first</strong> (left) glyph of a pair — so it describes the glyph's <em>right</em> edge</td><td>UFO <code>public.kern1</code> · Glyphs 3 <code>kernRight</code></td></tr>
+<tr><td>Right</td><td>the <strong>second</strong> (right) glyph of a pair — its <em>left</em> edge</td><td>UFO <code>public.kern2</code> · Glyphs 3 <code>kernLeft</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>If you come from Glyphs, note that its labels name the edge rather than the pair side. Pairs between groups are edited in the <a href="manual-kerning.html">Kerning editor</a> and exported as GPOS class kerning.</p>
+<div class="specs"><a class="spec" href="https://learn.microsoft.com/en-us/typography/opentype/spec/gpos" target="_blank" rel="noopener">OpenType spec · GPOS ↗</a><a class="spec" href="https://unifiedfontobject.org/versions/ufo3/groups.plist/" target="_blank" rel="noopener">UFO groups.plist ↗</a></div>
+
+<h3>Compatibility</h3>
+<p>For multi-master fonts with <a href="settings-general.html">Auto compatibility check</a> on, a <strong>Compatibility</strong> section lists the masters where the selected glyph doesn't match the default. Click a row to open the glyph on that master. See <a href="fontinfo-compatibility.html">Font Info → Compatibility</a>.</p>
+
+<h2>Shortcuts</h2>
+<div style="margin-top: 16px; background: #ffffff; border-radius: 12px; overflow-x: auto; box-shadow: 0 12px 32px rgba(45,51,54,.05)">
+<table class="kt" style="width: 100%; border-collapse: collapse; min-width: 460px">
+<thead><tr><th>Action</th><th>Windows</th><th>macOS</th></tr></thead>
+<tbody>
+<tr><td>Go to the glyph grid</td><td><kbd>Ctrl G</kbd></td><td><kbd>⌘ G</kbd></td></tr>
+<tr><td>Add a glyph</td><td><kbd>Ctrl Shift N</kbd></td><td><kbd>⌘ ⇧ N</kbd></td></tr>
+<tr><td>Add glyphs…</td><td><kbd>Ctrl Shift G</kbd></td><td><kbd>⌘ ⇧ G</kbd></td></tr>
+<tr><td>Select all visible</td><td><kbd>Ctrl A</kbd></td><td><kbd>⌘ A</kbd></td></tr>
+<tr><td>Add to / remove from selection</td><td><kbd>Ctrl</kbd>-click</td><td><kbd>⌘</kbd>-click</td></tr>
+<tr><td>Select a range</td><td><kbd>Shift</kbd>-click</td><td><kbd>⇧</kbd>-click</td></tr>
+<tr><td>Open a glyph</td><td>Double-click</td><td>Double-click</td></tr>
+</tbody>
+</table>
+</div>
+
+<div style="margin-top: 48px; background: #e3e1ec; border-radius: 12px; padding: 24px 28px">
+<div style="font-weight: 800; font-size: 17px; color: #2f2a96">Good to know</div>
+<ul>
+<li>View mode, sort order and cell size reset when the grid tab is reopened.</li>
+<li>There is no drag-to-reorder; order comes from Sort by.</li>
+<li>Removing glyphs is undone through <a href="manual-time-machine.html">Time Machine</a>, not Undo.</li>
+<li>Glyphs in a compiled font opened directly are read-only for metrics; save it as <code>.ink</code> first.</li>
+</ul>
+</div>
+
+<h2>References</h2>
+<ul class="refs">
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/hmtx" target="_blank" rel="noopener">hmtx — Horizontal Metrics Table</a> <span>· advance width and left sidebearing</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/cmap" target="_blank" rel="noopener">cmap — Character to Glyph Index Mapping</a> <span>· code points</span></li>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/spec/gpos" target="_blank" rel="noopener">GPOS — Glyph Positioning Table</a> <span>· class-based kerning</span></li>
+<li><a href="https://unifiedfontobject.org/versions/ufo3/groups.plist/" target="_blank" rel="noopener">UFO groups.plist</a> <span>· kern1 / kern2 groups</span></li>
+<li><a href="https://www.unicode.org/charts/" target="_blank" rel="noopener">Unicode code charts</a> <span>· the blocks behind Unicode smart sets</span></li>
+</ul>
+
+<div style="margin-top: 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="index.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">← Home</a>
+<a href="manual-time-machine.html" style="padding: 18px 22px; background: #f2f4f5; border-radius: 10px; color: #2d3336; font-weight: 600">Next: Time Machine →</a>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>
